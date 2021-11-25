@@ -1,0 +1,79 @@
+﻿@model Data.DTOs.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+<!-- Preloader-->
+<div class="preloader" id="preloader">
+    <div class="spinner-grow text-secondary" role="status">
+        <div class="sr-only">بارگذاری...</div>
+    </div>
+</div>
+
+<!-- Login Wrapper Area-->
+<div class="login-wrapper d-flex align-items-center justify-content-center text-center">
+    <!-- Background Shape-->
+    <div class="background-shape"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5">
+                <img class="big-logo" src="~/img/core-img/logo-white.png" alt="">
+                <hr />
+                @if (ViewBag.IsSuccess == true)
+                {
+                    <div class="text-black-50">
+                        <p> ورود شما با موفقیت انجام شد</p>
+                    </div>
+                    <script>
+                        //Yore delay in milliseconds
+                        var delay = 2000;
+                        setTimeout(function () { window.location = "https://localhost:5002/UserPanel"; }, delay);
+                    </script>
+                }
+                @if (ViewBag.EditProfile==true)
+                {
+                    <div class="text-black-50">
+                        بدلیل ویرایش پروفایل و بارگذاری مجدد اطلاعات لطفا مجدد وارد شوید
+                    </div>
+                }
+                <!-- Register Form-->
+                <div class="register-form mt-5 px-4">
+                    <form asp-action="login" method="post">
+                        <div class="form-group text-left mb-4">
+                            <span>نام کاربری</span>
+                            <label asp-for="Email"><i class="lni lni-user"></i></label>
+                            <input asp-for="Email" class="form-control" id="username" type="email" placeholder="info@example.com">
+                            <span asp-validation-for="Email" class="text-dark"></span>
+                        </div>
+                        <div class="form-group text-left mb-4">
+                            <span>کلمه عبور</span>
+                            <label asp-for="Password"><i class="lni lni-lock"></i></label>
+                            <input asp-for="Password" class="form-control" id="password" type="password" placeholder="********************">
+                            <span asp-validation-for="Password" class="text-dark"></span>
+                        </div>
+                        <div class="form-group text-left mb-4">
+                            <div class="checkbox">
+                                <label asp-for="RememberMe"><i class="lni lni-user"></i></label>
+                                <input asp-for="RememberMe" />
+                                @Html.DisplayNameFor(m => m.RememberMe)
+                            </div>
+                        </div>
+
+                        <button class="btn btn-success btn-lg w-100" type="submit"> ورود</button>
+                    </form>
+                </div>
+                <hr />
+                <!-- Login Meta-->
+                <div class="login-meta-data">
+                    <p>
+                        <a asp-action="ForgotPassword">رمز عبور را فراموش کرده اید؟</a>
+                    </p>
+                    <p>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">ثبت نام کاربر جدید</a>
+                    </p>
+                </div>
+                <!-- View As Guest-->
+                <div class="view-as-guest mt-3"><a class="btn" href="home.html">مشاهده به عنوان مهمان</a></div>
+            </div>
+        </div>
+    </div>
+</div>

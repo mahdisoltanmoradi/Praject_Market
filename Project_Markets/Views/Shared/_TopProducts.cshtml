@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Entities.Product.Product>
+
+<div class="top-products-area clearfix py-3">
+    <div class="container">
+        <div class="section-heading d-flex align-items-center justify-content-between">
+            <h6 class="ml-1">محصولات برتر</h6><a class="btn btn-danger btn-sm" href="shop-grid.html">مشاهده همه</a>
+        </div>
+        <div class="row g-3">
+            <!-- Single Top Product Card-->
+            @foreach (var item in Model)
+            {
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card top-product-card">
+                        <div class="card-body mt-4">
+                            <span class="badge badge-success">فروش</span>
+                            <a class="wishlist-btn" href="#">
+                                <i class="lni lni-heart"></i>
+                            </a>
+                            <a class="product-thumbnail d-block" href="/Product/ProductInformation/@item.Id">
+                                <img class="mb-2" style="border-radius:10px" src="/ImageProductCategory/@item.ProductImageName" alt="">
+                            </a>
+                            <a class="product-title d-block text-left" href="/Product/ProductInformation/@item.Id">@item.ProductTitle</a>
+                            <p class="sale-price text-left">36 تومان <span class="real-price"> @item.ProductPrice تومان</span></p>
+                            <div class="product-rating text-left">
+                                <i class="lni lni-star-filled"></i>
+                                <i class="lni lni-star-filled"></i>
+                                <i class="lni lni-star-filled"></i>
+                                <i class="lni lni-star-filled"></i>
+                                <i class="lni lni-star-filled"></i>
+                            </div>
+                            <a class="btn btn-success btn-sm add2cart-notify" href="/Product/ProductInformation/@item.Id">
+                                <i class="lni lni-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

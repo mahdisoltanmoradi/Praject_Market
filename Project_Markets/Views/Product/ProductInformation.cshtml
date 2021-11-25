@@ -1,0 +1,263 @@
+﻿@model Entities.Product.Product
+@{
+    ViewData["Title"] = "ProductInformation";
+}
+
+<!-- Preloader-->
+<div class="preloader" id="preloader">
+    <div class="spinner-grow text-secondary" role="status">
+        <div class="sr-only">بارگذاری...</div>
+    </div>
+</div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container h-100 d-flex align-items-center justify-content-between">
+        <!-- Back Button-->
+        <div class="back-button"><a href="shop-grid.html"><i class="lni lni-arrow-right"></i></a></div>
+        <!-- Page Title-->
+        <div class="page-heading">
+            <h6 class="mb-0">مشخصات محصول</h6>
+        </div>
+        <!-- Navbar Toggler-->
+        <div class="suha-navbar-toggler d-flex justify-content-between flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>
+    </div>
+</div>
+<!-- Sidenav Black Overlay-->
+<div class="sidenav-black-overlay"></div>
+<!-- Side Nav Wrapper-->
+<div class="suha-sidenav-wrapper" id="sidenavWrapper">
+    <!-- Sidenav Profile-->
+    <div class="sidenav-profile">
+        <div class="user-profile"><img src="img/bg-img/9.jpg" alt=""></div>
+        <div class="user-info">
+            <h6 class="user-name mb-0">نیلوفر</h6>
+            <p class="available-balance">حساب شما <span><span class="counter">350000</span></span><span> تومان</span></p>
+        </div>
+    </div>
+    <!-- Sidenav Nav-->
+    <ul class="sidenav-nav pl-0">
+        <li><a href="profile.html"><i class="lni lni-user"></i>پروفایل من</a></li>
+        <li><a href="notifications.html"><i class="lni lni-alarm lni-tada-effect"></i>اطلاعیه ها <span class="ml-3 badge badge-warning">3</span></a></li>
+        <li class="suha-dropdown-menu">
+            <a href="#"><i class="lni lni-cart"></i>صفحات خرید</a>
+            <ul>
+                <li><a href="shop-grid.html">- فروشگاه شبکه</a></li>
+                <li><a href="shop-list.html">- لیست فروشگاه</a></li>
+                <li><a href="single-product.html">- مشخصات محصول</a></li>
+                <li><a href="featured-products.html">- محصولات برجسته</a></li>
+                <li><a href="flash-sale.html">- فروش فلش</a></li>
+            </ul>
+        </li>
+        <li><a href="pages.html"><i class="lni lni-empty-file"></i>تمام صفحات</a></li>
+        <li class="suha-dropdown-menu">
+            <a href="wishlist-grid.html"><i class="lni lni-heart"></i>علاقه مندی های من</a>
+            <ul>
+                <li><a href="wishlist-grid.html">- شبکه مورد علاقه</a></li>
+                <li><a href="wishlist-list.html">- لیست دلخواه</a></li>
+            </ul>
+        </li>
+        <li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
+        <li><a href="intro.html"><i class="lni lni-power-switch"></i>خروج از سیستم</a></li>
+    </ul>
+    <!-- Go Back Button-->
+    <div class="go-home-btn" id="goHomeBtn"><i class="lni lni-arrow-right"></i></div>
+</div>
+<div class="page-content-wrapper">
+    <!-- Product Slides-->
+    <div class="product-slides owl-carousel">
+        <!-- Single Hero Slide-->
+        <div class="single-product-slide" style="background-image: url('/ImageProductCategory/@Model.ProductImageName')"></div>
+
+    </div>
+    <div class="product-description pb-3">
+        <!-- Product Title & Meta Data-->
+        <div class="product-title-meta-data bg-white mb-3 py-3">
+            <div class="container d-flex justify-content-between">
+                <div class="p-title-price">
+                    <h6 class="mb-1">@Model.ProductTitle</h6>
+                    <p class="sale-price mb-0">@Model.ProductPrice تومان <span>@Model.DeleteProductPrice تومان</span></p>
+                </div>
+                <div class="p-wishlist-share">
+                    <a href="Product/@Model.Id">
+                        <i class="lni lni-heart"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Ratings-->
+            <div class="product-ratings">
+                <div class="container d-flex align-items-center justify-content-between">
+                    @foreach (var item in Model.ScoreProduct.ToString())
+                    {
+                        @for (int i = 5; i <= 5; i++)
+                        {
+                            <div class="ratings">
+                                <i class="lni lni-star-filled"></i>
+                                <span class="pl-1"></span>
+                            </div>
+                        }
+
+                    }
+                    <div class="total-result-of-ratings"><span>5.0 </span><span>خیلی خوب @Model.ScoreProduct</span></div>
+                </div>
+            </div>
+        </div>
+        <!-- Flash Sale Panel-->
+        <div class="flash-sale-panel bg-white mb-3 py-3">
+            <div class="container">
+                <!-- Sales Offer Content-->
+                <div class="sales-offer-content d-flex align-items-end justify-content-between">
+                    <!-- Sales End-->
+                    <div class="sales-end">
+                        @if (Model.ProductCount == 0)
+                        {
+                            <p class="mb-1 font-weight-bold text-danger"><i class="lni lni-bolt"></i> این محصول در انبار موجود نیست</p>
+                        }
+                        else
+                        {
+                            if (Model.ProductCount <= 5)
+                            {
+                                <p class="mb-1 font-weight-bold text-success"><i class="lni lni-bolt"></i>تنها @Model.ProductCount عدد باقی مانده</p>
+                            }
+                            else
+                            {
+                                <p class="mb-1 font-weight-bold text-success"><i class="lni lni-bolt"></i>موجود در انبار</p>
+                            }
+                        }
+
+                    </div>
+                    <!-- Sales Volume-->
+                    <div class="sales-volume text-left">
+                        <p class="mb-1 font-weight-bold">تعداد باقی مانده @Model.ProductCount عدد</p>
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: @Model.ProductCount%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Selection Panel-->
+        <div class="selection-panel bg-white mb-3 py-3">
+            <div class="container d-flex align-items-center justify-content-between">
+                <!-- Choose Color-->
+                <div class="choose-color-wrapper">
+                    <p class="mb-1 font-weight-bold">رنگ</p>
+                    <div class="choose-color-radio d-flex align-items-center">
+                        <!-- Single Radio Input-->
+                        @foreach (var item in Model.ProductColor.ToString().Split('-'))
+                        {
+                            <div class="form-check mb-0">
+                                <input class="form-check-input blue" id="colorRadio1" type="radio" name="colorRadio" checked="">
+                                <label class="form-check-label" for="colorRadio1"></label>
+                                <select class="form-control" asp-items="Html.GetEnumSelectList<Entities.Product.Color>()"></select>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                <!-- Choose Size-->
+                <div class="choose-size-wrapper text-left">
+                    <p class="mb-1 font-weight-bold">اندازه</p>
+                    <div class="choose-size-radio d-flex align-items-center">
+                        <!-- Single Radio Input-->
+                        @foreach (var item in Model.ProductSize.ToString().Split('-'))
+                        {
+                            <div class="form-check mb-0 mr-2">
+                                <input class="form-check-input" id="sizeRadio1" type="radio" name="sizeRadio">
+                                <label class="form-check-label" for="sizeRadio1"></label>
+                                <select class="form-control" asp-items="Html.GetEnumSelectList<Entities.Product.Size>()"></select>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add To Cart-->
+        <div class="cart-form-wrapper bg-white mb-3 py-3">
+            <div class="container">
+                <form class="cart-form" asp-action="ProductInformation" method="get">
+                    <div class="order-plus-minus d-flex align-items-center">
+                        <div class="quantity-button-handler">-</div>
+                        <input class="form-control cart-quantity-input" type="text" step="1" name="quantity" value="3">
+                        <div class="quantity-button-handler">+</div>
+                    </div>
+                    <button href="/Cart/@Model.CategoryId" class="btn btn-danger ml-3" type="submit">افزودن به سبد خرید</button>
+                </form>
+            </div>
+        </div>
+        <!-- Product Specification-->
+        <div class="p-specification bg-white mb-3 py-3">
+            <div class="container">
+                <h6>مشخصات فنی</h6>
+                <p>@Model.ProductDescription</p>
+            </div>
+        </div>
+        <!-- Rating & Review Wrapper-->
+        @{
+            List<Entities.Product.ProductComment> comments = ViewData["Comment"] as List<Entities.Product.ProductComment>;
+        }
+        <div class="rating-and-review-wrapper bg-white py-3 mb-3">
+            <div class="container">
+                <h6>رتبه بندی ها ونظر ها</h6>
+                @foreach (var item in comments)
+                {
+                <div class="rating-review-content">
+                    <ul class="pl-0">
+                        <li class="single-user-review d-flex">
+                            <div class="user-thumbnail"><img src="" alt=""/></div>
+                            <div class="rating-comment">
+                                <div class="rating">
+                                    <i class="lni lni-star-filled"></i>
+                                    <i class="lni lni-star-filled"></i>
+                                    <i class="lni lni-star-filled"></i>
+                                    <i class="lni lni-star-filled"></i>
+                                    <i class="lni lni-star-filled"></i>
+                                </div>
+                                <p class="comment mb-0">@item.Message</p><span class="name-date">@item.CreateDate</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                }
+            </div>
+        </div>
+        <!-- Ratings Submit Form-->
+        <div class="ratings-submit-form bg-white py-3">
+            <div class="container">
+                <h6>ارسال نظر</h6>
+                <form action="ProductInformation" method="post">
+                    <div class="stars mb-3">
+                        <input class="star-1" type="radio" value="1" name="star" id="star1">
+                        <label class="star-1" for="star1"></label>
+                        <input class="star-2" type="radio" value="2" name="star" id="star2">
+                        <label class="star-2" for="star2"></label>
+                        <input class="star-3" type="radio" value="3" name="star" id="star3">
+                        <label class="star-3" for="star3"></label>
+                        <input class="star-4" type="radio" value="4" name="star" id="star4">
+                        <label class="star-4" for="star4"></label>
+                        <input class="star-5" type="radio" value="5" name="star" id="star5">
+                        <label class="star-5" for="star5"></label><span></span>
+                    </div>
+                    <textarea class="form-control mb-3" id="comments" name="comment" cols="30" rows="10" data-max-length="200" placeholder="نظرخود را بنویسید ..."></textarea>
+                    <button href="#" class="btn btn-sm btn-primary" type="submit">نظررا ذخیره کنید</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Internet Connection Status-->
+<div class="internet-connection-status" id="internetStatus"></div>
+<!-- Footer Nav-->
+<div class="footer-nav-area" id="footerNav">
+    <div class="container h-100 px-0">
+        <div class="suha-footer-nav h-100">
+            <ul class="h-100 d-flex align-items-center justify-content-between pl-0">
+                <li class="active"><a href="home.html"><i class="lni lni-home"></i>خانه</a></li>
+                <li><a href="message.html"><i class="lni lni-life-ring"></i>حمایت کردن</a></li>
+                <li><a href="cart.html"><i class="lni lni-shopping-basket"></i>سبد خرید</a></li>
+                <li><a href="pages.html"><i class="lni lni-heart"></i>صفحات</a></li>
+                <li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

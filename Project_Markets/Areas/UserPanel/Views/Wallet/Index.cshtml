@@ -1,0 +1,148 @@
+﻿@using Common.Utilities.Convertors
+@model Data.DTOs.ChargeWalletViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<!-- Preloader-->
+<div class="preloader" id="preloader">
+    <div class="spinner-grow text-secondary" role="status">
+        <div class="sr-only">بارگذاری...</div>
+    </div>
+</div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container h-100 d-flex align-items-center justify-content-between">
+        <!-- Back Button-->
+        <div class="back-button"><a href="shop-grid.html"><i class="lni lni-arrow-right"></i></a></div>
+        <!-- Page Title-->
+        <div class="page-heading">
+            <h6 class="mb-0">کیف پول من</h6>
+        </div>
+        <!-- Navbar Toggler-->
+        <div class="suha-navbar-toggler d-flex justify-content-between flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>
+    </div>
+</div>
+<!-- Sidenav Black Overlay-->
+<div class="sidenav-black-overlay"></div>
+<!-- Side Nav Wrapper-->
+<div class="suha-sidenav-wrapper" id="sidenavWrapper">
+    <!-- Sidenav Profile-->
+    <div class="sidenav-profile">
+        <div class="user-profile"><img src="img/bg-img/9.jpg" alt=""></div>
+        <div class="user-info">
+            <h6 class="user-name mb-0">نیلوفر</h6>
+            <p class="available-balance">حساب شما <span><span class="counter">350000</span></span><span> تومان</span></p>
+        </div>
+    </div>
+    <!-- Sidenav Nav-->
+    <ul class="sidenav-nav pl-0">
+        <li><a href="profile.html"><i class="lni lni-user"></i>پروفایل من</a></li>
+        <li><a href="notifications.html"><i class="lni lni-alarm lni-tada-effect"></i>اطلاعیه ها <span class="ml-3 badge badge-warning">3</span></a></li>
+        <li class="suha-dropdown-menu">
+            <a href="#"><i class="lni lni-cart"></i>صفحات خرید</a>
+            <ul>
+                <li><a href="shop-grid.html">- فروشگاه شبکه</a></li>
+                <li><a href="shop-list.html">- لیست فروشگاه</a></li>
+                <li><a href="single-product.html">- مشخصات محصول</a></li>
+                <li><a href="featured-products.html">- محصولات برجسته</a></li>
+                <li><a href="flash-sale.html">- فروش فلش</a></li>
+            </ul>
+        </li>
+        <li><a href="pages.html"><i class="lni lni-empty-file"></i>تمام صفحات</a></li>
+        <li class="suha-dropdown-menu">
+            <a href="wishlist-grid.html"><i class="lni lni-heart"></i>علاقه مندی های من</a>
+            <ul>
+                <li><a href="wishlist-grid.html">- شبکه مورد علاقه</a></li>
+                <li><a href="wishlist-list.html">- لیست دلخواه</a></li>
+            </ul>
+        </li>
+        <li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
+        <li><a href="intro.html"><i class="lni lni-power-switch"></i>خروج از سیستم</a></li>
+    </ul>
+    <!-- Go Back Button-->
+    <div class="go-home-btn" id="goHomeBtn"><i class="lni lni-arrow-right"></i></div>
+</div>
+<div class="page-content-wrapper">
+    <div class="container">
+        <!-- Coupon Area-->
+        <div class="card coupon-card mb-3 mt-4" >
+            <div class="card-body mt-4">
+                <div class="apply-coupon">
+                    <h6 class="mb-0"></h6>
+                    <p class="mb-2"></p>
+                    <div class="coupon-form">
+                        <form asp-action="Index" method="post">
+                            <input asp-for="Amount" class="form-control" type="number" placeholder="مبلغ به تومان">
+                            <button class="btn btn-primary" type="submit">شارژ کیف پول</button>
+                        </form>
+                    </div>
+                    <div class="text-danger" asp-validation-summary="All"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Wrapper-->
+        <div class="cart-wrapper-area py-3">
+            <div class="cart-table card mb-3">
+                <div class="table-responsive card-body">
+                    @{
+                        List<Data.DTOs.WalletViewModel> wallets = ViewBag.ListWallet as List<Data.DTOs.WalletViewModel>;
+                    }
+
+                    <table class="table mb-0">
+                        <tbody>
+                            <tr>
+                                <th>مبلغ </th>
+                                <th>تاریخ</th>
+                                <th>نوع تراکنش</th>
+                                <th>شرح</th>
+                            </tr>
+                            @foreach (var item in wallets)
+                            {
+
+                                <tr>
+                                    <td>@item.Amount.ToString("#,0 تومان")</td>
+                                    <td>
+                                        @item.DateTime.ToShamsi()
+                                    </td>
+                                    <td>
+                                        @if (item.Type == 1)
+                                        {
+                                            <p class="text-success">واریز به حساب</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-danger">برداشت از حساب</p>
+                                        }
+                                    </td>
+                                    <td>
+                                        @item.Description
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Internet Connection Status-->
+<div class="internet-connection-status" id="internetStatus"></div>
+<!-- Footer Nav-->
+<div class="footer-nav-area" id="footerNav">
+    <div class="container h-100 px-0">
+        <div class="suha-footer-nav h-100">
+            <ul class="h-100 d-flex align-items-center justify-content-between pl-0">
+                <li class="active"><a href="home.html"><i class="lni lni-home"></i>خانه</a></li>
+                <li><a href="message.html"><i class="lni lni-life-ring"></i>حمایت کردن</a></li>
+                <li><a href="cart.html"><i class="lni lni-shopping-basket"></i>سبد خرید</a></li>
+                <li><a href="pages.html"><i class="lni lni-heart"></i>صفحات</a></li>
+                <li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+

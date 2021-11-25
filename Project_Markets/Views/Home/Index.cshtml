@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Entities.Product.Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Preloader-->
+<div class="preloader" id="preloader">
+    <div class="spinner-grow text-secondary" role="status">
+        <div class="sr-only">بارگذاری...</div>
+    </div>
+</div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container h-100 d-flex align-items-center justify-content-between">
+        <!-- Logo Wrapper-->
+        <div class="logo-wrapper"><a href="home.html"><img src="/img/core-img/logo-small.png" alt=""></a></div>
+
+
+        <!-- Search Form-->
+        <div class="top-search-form">
+            <form action="#">
+                <input class="form-control" type="search" placeholder="کلمه کلیدی خود را وارد کنید">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Navbar Toggler-->
+        <div class="suha-navbar-toggler d-flex flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>
+    </div>
+</div>
+<!-- Sidenav Black Overlay-->
+<div class="sidenav-black-overlay"></div>
+
+<!-- PWA Install Alert-->
+<div class="toast pwa-install-alert shadow" id="pwaInstallToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="8000" data-autohide="true">
+    <div class="toast-body">
+        <button class="ml-3 close" type="button" data-dismiss="toast" aria-label="نزدیک"><span aria-hidden="true">×</span></button>
+        <div class="content d-flex align-items-center mb-2">
+            <img src="/img/icons/icon-72x72.png" alt="">
+            <h6 class="mb-0 text-white">افزودن Url صفحه اصلی</h6>
+        </div><span class="mb-0 d-block text-white">سوهارا در صفحه اصلی تلفن همراه خود اضافه کنید. بر روی دکمه <strong class="mx-1">"افزودن به صفحه اصلی"</strong> کلیک کنید و مانند یک برنامه معمولی از آن لذت ببرید.</span>
+    </div>
+</div>
+<div class="page-content-wrapper">
+    <!-- Hero Slides-->
+    <partial name="_MainSlider" />
+
+    <!-- Product Categories-->
+    @await Component.InvokeAsync("ProductCategoryComponent")
+    <!-- Flash Sale Slide-->
+    <partial name="_Slider" />
+
+    <!-- Top Products-->
+    <partial name="_TopProducts" />
+
+    <!-- Cool Facts Area-->
+    <div class="cta-area">
+        <div class="container">
+            <div class="cta-text p-4 p-lg-5" style="background-image: url(/img/bg-img/24.jpg)">
+                <h4>فروش زمستانی 50٪ تخفیف</h4>
+                <p>سوها <br>الگوی تلفن همراه چند منظوره ، خلاق و مدرن است.</p><a class="btn btn-danger" href="#">خرید امروز</a>
+            </div>
+        </div>
+    </div>
+    <!-- Weekly Best Sellers-->
+    <partial name="_WeeklyBestSellers" />
+    <!-- Discount Coupon Card-->
+    <partial name="_DiscountCode" />
+
+    <!-- Featured Products Wrapper-->
+    <partial name="_FeaturedProducts" />
+
+    <div class="card" id="ChatBox">
+        <div class="card-header">
+            <b>پشتیبانی آنلاین</b>
+        </div>
+        <div id="MessagePanel">
+            <ul id="Messages">
+            </ul>
+
+
+            <div id="SendNewMessage">
+                <form id="NewMessageForm" class="row">
+                    <input id="MessageInput"
+                           class="form-control col-md-8 col-sm-8"
+                           placeholder="پیام خود را وارد کنید..." />
+                    <button class="btn btn-success col-md-4 col-md-4">
+                        ارسال
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Night Mode View Card-->
+    <div class="night-mode-view-card pb-3">
+        <div class="container">
+            <div class="card settings-card">
+                <div class="card-body">
+                    <div class="single-settings d-flex align-items-center justify-content-between">
+                        <div class="title"><i class="lni lni-night"></i><span>حالت شب</span></div>
+                        <div class="data-content">
+                            <div class="toggle-button-cover">
+                                <div class="button r">
+                                    <input class="checkbox" id="darkSwitch" type="checkbox">
+                                    <div class="knobs"></div>
+                                    <div class="layer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Nav-->
+<partial name="_Footer" />

@@ -1,0 +1,242 @@
+﻿@model IEnumerable<Entities.Product.Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Preloader-->
+<div class="preloader" id="preloader">
+    <div class="spinner-grow text-secondary" role="status">
+        <div class="sr-only">بارگذاری...</div>
+    </div>
+</div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container h-100 d-flex align-items-center justify-content-between">
+        <!-- Back Button-->
+        <div class="back-button"><a href="catagory.html"><i class="lni lni-arrow-right"></i></a></div>
+        <!-- Page Title-->
+        <div class="page-heading">
+            <h6 class="mb-0">تن پوش</h6>
+        </div>
+        <!-- Filter Option-->
+        <div class="filter-option" id="suhaNavbarToggler"><i class="lni lni-cog"></i></div>
+    </div>
+</div>
+<!-- Sidenav Black Overlay-->
+<div class="sidenav-black-overlay"></div>
+<!-- Side Nav Wrapper-->
+<div class="suha-sidenav-wrapper filter-nav" id="sidenavWrapper">
+    <!-- Catagory Sidebar Area-->
+    <div class="catagory-sidebar-area">
+        <!-- Catagory-->
+        <div class="widget catagory mb-4">
+            <h6 class="widget-title mb-3">نام تجاری محصول</h6>
+            <div class="widget-desc">
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="zara" type="checkbox" checked="">
+                    <label class="form-check-label font-weight-bold" for="zara">زارا</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="Gucci" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="Gucci">گوچی</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="Addidas" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="Addidas">آدیداس</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="Nike" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="Nike">نایک</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="Denim" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="Denim">جین</label>
+                </div>
+            </div>
+        </div>
+        <!-- Color-->
+        <div class="widget color mb-4">
+            <h6 class="widget-title mb-3">خانواده رنگی</h6>
+            <div class="widget-desc">
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="Purple" type="checkbox" checked="">
+                    <label class="form-check-label font-weight-bold" for="Purple">رنگ بنفش</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="Black" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="Black">سیاه</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="White" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="White">سفید</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="Red" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="Red">قرمز</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="Pink" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="Pink">رنگ صورتی</label>
+                </div>
+            </div>
+        </div>
+        <!-- Size-->
+        <div class="widget size mb-4">
+            <h6 class="widget-title mb-3">اندازه</h6>
+            <div class="widget-desc">
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="XtraLarge" type="checkbox" checked="">
+                    <label class="form-check-label font-weight-bold" for="XtraLarge">بزرگ</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="Large" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="Large">بزرگ</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="medium" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="medium">متوسط</label>
+                </div>
+
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="ExtraSmall" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="ExtraSmall">بسیار کوچک</label>
+                </div>
+            </div>
+        </div>
+        <!-- Ratings-->
+        <div class="widget ratings mb-4">
+            <h6 class="widget-title mb-3">رتبه بندی</h6>
+            <div class="widget-desc">
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="5star" type="checkbox" checked="">
+                    <label class="form-check-label font-weight-bold" for="5star">5 ستاره</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="4star" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="4star">4 ستاره</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="3star" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="3star">3 ستاره</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="2star" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="2star">2 ستاره</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="1star" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="1star">1 ستاره</label>
+                </div>
+            </div>
+        </div>
+        <!-- Payment Type-->
+        <div class="widget payment-type mb-4">
+            <h6 class="widget-title mb-3">نوع پرداخت</h6>
+            <div class="widget-desc">
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="cod" type="checkbox" checked="">
+                    <label class="form-check-label font-weight-bold" for="cod">پرداخت نقدی هنگام تحویل</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="paypal" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="paypal">پی پال</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="checkpayment" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="checkpayment">پرداخت رانظر کنید</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="payonner" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="payonner">پیونر</label>
+                </div>
+                <!-- Single Checkbox-->
+                <div class="form-check">
+                    <input class="form-check-input" id="mobbanking" type="checkbox">
+                    <label class="form-check-label font-weight-bold" for="mobbanking">بانکداری موبایل</label>
+                </div>
+            </div>
+        </div>
+        <!-- Apply Filter-->
+        <div class="apply-filter-btn"><a class="btn btn-success" href="">اعمال محدودیت</a></div>
+    </div>
+    <!-- Go Back Button-->
+    <div class="go-home-btn" id="goHomeBtn"><i class="lni lni-arrow-right"></i></div>
+</div>
+<div class="page-content-wrapper">
+    <!-- Catagory Single Image-->
+    <div class="catagory-single-img" style="background-image: url('/img/bg-img/5.jpg')"></div>
+    <!-- Top Products-->
+    <div class="top-products-area py-3">
+        <div class="container">
+            <div class="section-heading d-flex align-items-center justify-content-between">
+                <h6 class="ml-1">محصولات دیگر</h6>
+            </div>
+            <div class="row g-3">
+                <!-- Single Top Product Card-->
+                @foreach (var product in Model)
+                {
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card top-product-card">
+                            <div class="card-body mb-3 mt-3 text-left">
+                                <span class="badge badge-success">فروش</span>
+                                <a class="wishlist-btn" href="#">
+                                    <i class="lni lni-heart"></i>
+                                </a>
+                                <p></p>
+                                <a class="product-thumbnail d-block" href="/Product/ProductInformation/@product.Id">
+                                    <img class="mb-2" style="border-radius:20px" src="/ImageProductCategory/@product.ProductImageName" alt="">
+                                </a>
+                                <a class="product-title d-block" href="/Product/ProductInformation/@product.Id">@product.ProductTitle</a>
+                                <p class="sale-price">@product.ProductPrice تومان <span class="real-price"> @product.DeleteProductPrice تومان</span></p>
+
+                                <a class="btn btn-success btn-sm add2cart-notify" href="#">
+                                    <i class="lni lni-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Internet Connection Status-->
+<div class="internet-connection-status" id="internetStatus"></div>
+<!-- Footer Nav-->
+<div class="footer-nav-area" id="footerNav">
+    <div class="container h-100 px-0">
+        <div class="suha-footer-nav h-100">
+            <ul class="h-100 d-flex align-items-center justify-content-between pl-0">
+                <li class="active"><a href="home.html"><i class="lni lni-home"></i>خانه</a></li>
+                <li><a href="message.html"><i class="lni lni-life-ring"></i>حمایت کردن</a></li>
+                <li><a href="cart.html"><i class="lni lni-shopping-basket"></i>سبد خرید</a></li>
+                <li><a href="pages.html"><i class="lni lni-heart"></i>صفحات</a></li>
+                <li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

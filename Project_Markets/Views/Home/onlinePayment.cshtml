@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "نتیجه پرداخت";
+}
+
+<!-- Preloader-->
+<div class="preloader" id="preloader">
+    <div class="spinner-grow text-secondary" role="status">
+        <div class="sr-only">بارگذاری...</div>
+    </div>
+</div>
+<!-- Order/Payment Success-->
+<div class="order-success-wrapper">
+    <div class="content">
+        <i class="lni lni-checkmark-circle"></i>
+        @if (ViewBag.IsSuccess == true)
+        {
+            <h2>پرداخت با موفقیت انجام شد</h2>
+            <p>کد پیگیری :@ViewBag.Code</p>
+            <a class="btn btn-warning mt-3" href="/UserPanel/Wallet">ورود به کیف پول</a>
+        }
+        else
+        {
+            <h2> پرداخت با شکست مواجه شد</h2>
+            <a class="btn btn-warning mt-3" href="/UserPanel/Wallet">ورود به کیف پول</a>
+        }
+
+    </div>
+</div>
