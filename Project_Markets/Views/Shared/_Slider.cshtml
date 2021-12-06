@@ -10,9 +10,9 @@
                 <h6 class="ml-1">فروش فلش</h6><a class="btn btn-primary btn-sm" href="/flash-sale.html">مشاهده همه</a>
             </div>
             <!-- Flash Sale Slide-->
-            @foreach (var item in Slider)
-            {
-                <div class="flash-sale-slide owl-carousel">
+            <div class="flash-sale-slide owl-carousel">
+                @foreach (var item in Slider)
+                {
                     <!-- Single Flash Sale Card-->
                     <div class="card flash-sale-card">
                         <div class="card-body">
@@ -26,8 +26,8 @@
                             </a>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 }

@@ -63,7 +63,7 @@ namespace Project_Markets.Controllers
             return View();
         }
 
-        [Route("Login")]
+        [HttpGet]
         public IActionResult Login(bool EditProfile=false)
         {
             ViewBag.EditProfile = EditProfile;
@@ -71,7 +71,6 @@ namespace Project_Markets.Controllers
         }
 
         [HttpPost]
-        [Route("Login")]
         public async Task<IActionResult> Login(LoginViewModel login, CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid)

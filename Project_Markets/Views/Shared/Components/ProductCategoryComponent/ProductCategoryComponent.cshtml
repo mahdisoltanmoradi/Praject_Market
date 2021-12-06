@@ -11,7 +11,7 @@
         <div class="product-catagory-wrap">
             <div class="row g-3">
                 <!-- Single Catagory Card-->
-                @foreach (var product in Model.Where(p => p.ParentId == null))
+                @foreach (var product in Model)
                 {
                     <div class="col-4">
                         <div class="cards-Wrapper h-100">
@@ -22,13 +22,6 @@
                                 <a href="/Product/index/@product.Id" class="h-100">
                                     <img src="/ImageProductCategory/@product.ImageProduct" class="card-img h-100 position-relative" />
                                 </a>
-                                @if (Model.Any(p => p.ParentId == product.Id))
-                                {
-                                    @foreach (var Sub in Model.Where(p => p.ParentId == product.Id))
-                                    {
-                                        <a href="/Product/index/@Sub.Id/@Sub.ImageProduct" class="h-100"></a>
-                                    }
-                                }
                             </div>
                         </div>
                     </div>

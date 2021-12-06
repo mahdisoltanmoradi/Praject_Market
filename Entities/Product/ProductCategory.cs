@@ -1,38 +1,41 @@
 ﻿using Entities.Common;
-using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.Product
 {
-    public class ProductCategory:BaseEntity<int>
+    public class ProductCategory : BaseEntity<int>
     {
-
+        public ProductCategory()
+        {
+            IsDelete = false;
+        }
         [Display(Name = "عنوان گروه")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
         public string GroupTitle { get; set; }
-    
-        [Display(Name ="تصویر گروه محصول")]
+
+        [Display(Name = "تصویر گروه محصول")]
         public string ImageProduct { get; set; }
 
         [Display(Name = "حذف شده ؟")]
         public bool IsDelete { get; set; }
 
-        [Display(Name = "گروه اصلی")]
-        public int? ParentId { get; set; }
 
-        [ForeignKey("ParentId")]
-        public List<ProductCategory> productCategorie { get; set; }
+        #region Relations
+        public ICollection<Product> Products { get; set; }
 
-        [InverseProperty("SubCategories")]
-        public List<Product> SubCategory { get; set; }
+        #endregion
 
-        [InverseProperty("Category")]
-        public List<Product> Category { get; set; }
+    }
+    public class ProductCategoryConfiguration : IEntityTypeConfiguration<ProductCategory>
+    {
+        public void Configure(EntityTypeBuilder<ProductCategory> builder)
+        {
+            builder.HasQueryFilter(f => !f.IsDelete);
+
+        }
     }
 }

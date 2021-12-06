@@ -1,9 +1,7 @@
 ﻿using Entities.Common;
-using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.User
 {
@@ -16,5 +14,12 @@ namespace Entities.User
         #region Relation
         public List<User> Users { get; set; }
         #endregion
+    }
+    public class ProductConfiguration : IEntityTypeConfiguration<FavoriteUser>
+    {
+        public void Configure(EntityTypeBuilder<FavoriteUser> builder)
+        {
+            builder.HasKey(x => x.Id);
+        }
     }
 }

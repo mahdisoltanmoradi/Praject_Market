@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\Products\" />
     <Folder Include="wwwroot\PageImages\" />
   </ItemGroup>
   

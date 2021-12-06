@@ -10,48 +10,36 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Services.SeedServices;
 using SignalR.Bugeto.Hubs;
 using System;
-using System.Reflection;
+using WebFramework.Configoration;
 
 namespace Project_Markets
 {
     public class Startup
     {
-        private readonly SiteSettings _siteSetting;
-        public IConfiguration Configuration { get; }
+        private readonly IdentitySettings _identitySettings;
+        public IConfiguration Configuration { get; set; }
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            _siteSetting = configuration.GetSection(nameof(SiteSettings)).Get<SiteSettings>();
+            _identitySettings = configuration.GetSection(nameof(IdentitySettings)).Get<IdentitySettings>();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+             services.InitializeAutoMapper();
             //services.AddControllersWithViews(opt => opt.Filters.Add<PermissionAuthorizeAttribute>());
-
-            var mvcBuilder = services.AddControllersWithViews();
-
-#if DEBUG
-            mvcBuilder.AddRazorRuntimeCompilation();
-#endif
-            services.AddSignalR();
-
-            services.AddAutoMapper(Assembly.GetEntryAssembly());
-
-            services.Configure<SiteSettings>(Configuration.GetSection(nameof(SiteSettings)));
-
-            services.InitializeAutoMapper();
-
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionSql"));
             });
-
-            services.AddCustomIdentity(_siteSetting.IdentitySettings);
+            services.AddCustomIdentity(_identitySettings);
+            var mvcBuilder = services.AddControllersWithViews();
+            mvcBuilder.AddRazorRuntimeCompilation();
+            //services.Configure<IdentitySettings>(Configuration.GetSection(nameof(IdentitySettings)));
 
             #region Autentication
             services.AddAuthentication(options =>
@@ -68,6 +56,7 @@ namespace Project_Markets
             #endregion
 
             services.AddRazorPages();
+            services.AddSignalR();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -77,12 +66,7 @@ namespace Project_Markets
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                var seedService = scope.ServiceProvider.GetRequiredService<ISeedRepository>();
-                seedService.SeedAsync().GetAwaiter().GetResult();
-            }
-
+            app.IntializeDatabase();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

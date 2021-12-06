@@ -1,12 +1,10 @@
 ﻿using Entities.Common;
 using Entities.Order;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.Product
 {
@@ -14,8 +12,7 @@ namespace Entities.Product
     {
         public int CategoryId { get; set; }
 
-        public int? SubCategory { get; set; }
-
+        [Display(Name = "وضعیت")]
         [Required]
         public bool Status { get; set; }
 
@@ -67,22 +64,23 @@ namespace Entities.Product
         [Required]
         public DateTime CreateDate { get; set; }
 
-
         #region Relation
 
-        public User.User User { get; set; }
-
-        [ForeignKey("CategoryId")]
-        public ProductCategory Category { get; set; }
-
-        [ForeignKey("SubCategory")]
-        public ProductCategory SubCategories { get; set; }
+        public ProductCategory ProductCategories { get; set; }
 
         public List<OrderDetail> OrderDetails { get; set; }
         public List<ProductComment> ProductComment { get; set; }
 
 
         #endregion
+    }
+    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    {
+        public void Configure(EntityTypeBuilder<Product> builder)
+        {
+            builder.HasKey(x => x.Id);
+            builder.HasOne(x => x.ProductCategories).WithMany(x => x.Products).HasForeignKey(x=>x.CategoryId);
+        }
     }
 
     public enum Size

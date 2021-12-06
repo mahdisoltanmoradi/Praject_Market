@@ -3,10 +3,7 @@ using Common;
 using Data;
 using Data.Contracts;
 using Data.Repositories;
-using Entities;
 using Entities.Common;
-using infrastructure.Services;
-using infrastructure.WebFramework.Api;
 
 namespace infrastructure.WebFramework.Configuration
 {
@@ -17,10 +14,10 @@ namespace infrastructure.WebFramework.Configuration
             //RegisterType > As > Liftetime
             containerBuilder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 
-            var commonAssembly = typeof(SiteSettings).Assembly;
+            var commonAssembly = typeof(IdentitySettings).Assembly;
             var entitiesAssembly= typeof(IEntity).Assembly;
             var dataAssembly = typeof(ApplicationDbContext).Assembly;
-            var servicesAssembly = typeof(JwtService).Assembly;
+            var servicesAssembly = typeof(IdentitySettings).Assembly;
 
             containerBuilder.RegisterAssemblyTypes(commonAssembly, entitiesAssembly, dataAssembly,servicesAssembly)
                 .AssignableTo<IScopedDependency>()

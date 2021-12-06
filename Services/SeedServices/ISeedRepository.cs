@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Common;
 using System.Threading.Tasks;
 
 namespace Services.SeedServices
 {
-    public interface ISeedRepository
+    public interface ISeedRepository:IScopedDependency
     {
         Task SeedAsync(); 
     }

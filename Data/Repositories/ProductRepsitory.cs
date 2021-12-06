@@ -34,7 +34,7 @@ namespace Data.Repositories
 
         public async Task<IEnumerable<Product>> GetProductInSlider(CancellationToken cancellationToken)
         {
-            return await TableNoTracking.OrderByDescending(p => p.CreateDate).Take(4).Distinct().ToListAsync(cancellationToken);
+            return await TableNoTracking.OrderByDescending(p => p.CreateDate).Take(4).ToListAsync(cancellationToken);
         }
 
         public async Task<List<Product>> GetProducts(CancellationToken cancellationToken)
@@ -44,7 +44,8 @@ namespace Data.Repositories
 
         public async Task<List<Product>> GetProducts(int id, CancellationToken cancellationToken)
         {
-            return await TableNoTracking.Where(p => p.Id == id).ToListAsync();
+            var product= await TableNoTracking.Where(p => p.CategoryId==id).ToListAsync();
+            return product;
         }
 
         public async Task<IEnumerable<Product>> GetTopProduct(CancellationToken cancellationToken, int take = 4)

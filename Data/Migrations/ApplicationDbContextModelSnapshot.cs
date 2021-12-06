@@ -19,6 +19,104 @@ namespace Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Entities.Blog.BlogCategories", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BlogCategoryTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("CreateDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogCategories");
+                });
+
+            modelBuilder.Entity("Entities.Blog.BlogComments", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Blog_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("CreateDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("Reply_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("User_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Blog_id");
+
+                    b.HasIndex("Reply_id");
+
+                    b.HasIndex("User_id");
+
+                    b.ToTable("BlogComments");
+                });
+
+            modelBuilder.Entity("Entities.Blog.Blogs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BlogTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Category_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("CreateDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Category_id");
+
+                    b.ToTable("Blogs");
+                });
+
             modelBuilder.Entity("Entities.Chat.ChatMessage", b =>
                 {
                     b.Property<Guid>("Id")
@@ -171,23 +269,13 @@ namespace Data.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("SubCategory")
-                        .HasColumnType("int");
-
                     b.Property<string>("Tags")
                         .HasMaxLength(600)
                         .HasColumnType("nvarchar(600)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("SubCategory");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -210,12 +298,7 @@ namespace Data.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
 
                     b.ToTable("ProductCategories");
                 });
@@ -586,6 +669,42 @@ namespace Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Entities.Blog.BlogComments", b =>
+                {
+                    b.HasOne("Entities.Blog.Blogs", "Blogs")
+                        .WithMany("BlogComments")
+                        .HasForeignKey("Blog_id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Blog.BlogComments", "ReplyComment")
+                        .WithMany("Children")
+                        .HasForeignKey("Reply_id");
+
+                    b.HasOne("Entities.User.User", "User")
+                        .WithMany("BlogComments")
+                        .HasForeignKey("User_id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Blogs");
+
+                    b.Navigation("ReplyComment");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entities.Blog.Blogs", b =>
+                {
+                    b.HasOne("Entities.Blog.BlogCategories", "Category")
+                        .WithMany("Blogs")
+                        .HasForeignKey("Category_id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("Entities.Chat.ChatMessage", b =>
                 {
                     b.HasOne("Entities.Chat.ChatRoom", "ChatRoom")
@@ -629,32 +748,13 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.Product.Product", b =>
                 {
-                    b.HasOne("Entities.Product.ProductCategory", "Category")
-                        .WithMany("Category")
+                    b.HasOne("Entities.Product.ProductCategory", "ProductCategories")
+                        .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Entities.Product.ProductCategory", "SubCategories")
-                        .WithMany("SubCategory")
-                        .HasForeignKey("SubCategory");
-
-                    b.HasOne("Entities.User.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Category");
-
-                    b.Navigation("SubCategories");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Entities.Product.ProductCategory", b =>
-                {
-                    b.HasOne("Entities.Product.ProductCategory", null)
-                        .WithMany("productCategorie")
-                        .HasForeignKey("ParentId");
+                    b.Navigation("ProductCategories");
                 });
 
             modelBuilder.Entity("Entities.Product.ProductComment", b =>
@@ -768,6 +868,21 @@ namespace Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Entities.Blog.BlogCategories", b =>
+                {
+                    b.Navigation("Blogs");
+                });
+
+            modelBuilder.Entity("Entities.Blog.BlogComments", b =>
+                {
+                    b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("Entities.Blog.Blogs", b =>
+                {
+                    b.Navigation("BlogComments");
+                });
+
             modelBuilder.Entity("Entities.Chat.ChatRoom", b =>
                 {
                     b.Navigation("ChatMessages");
@@ -787,11 +902,7 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.Product.ProductCategory", b =>
                 {
-                    b.Navigation("Category");
-
-                    b.Navigation("productCategorie");
-
-                    b.Navigation("SubCategory");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Entities.Role.Role", b =>
@@ -801,6 +912,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.User.User", b =>
                 {
+                    b.Navigation("BlogComments");
+
                     b.Navigation("ProductComment");
 
                     b.Navigation("Wallets");

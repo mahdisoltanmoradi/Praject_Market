@@ -202,7 +202,7 @@
                         <div class="card top-product-card">
                             <div class="card-body mb-3 mt-3 text-left">
                                 <span class="badge badge-success">فروش</span>
-                                <a class="wishlist-btn" href="#">
+                                <a id="get-product-link" class="wishlist-btn" onclick="setFavorite(@product.Id)">
                                     <i class="lni lni-heart"></i>
                                 </a>
                                 <p></p>
@@ -240,3 +240,32 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+        function setFavorite(id) {
+
+            //$.post(`/Product/favoriteProduct?productId=${id}`, () => {
+            //    alert('این محصول به لیست علاقه مندی های شما اضافه شد');
+            //    $('#get-product-link').find("i").toggleClass("lni lni-heart lni lni-heart-filled");
+            //})
+
+            $.ajax({
+                url: `/Product/favoriteProduct?productId=${id}`,
+                method: 'POST',
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert('این محصول به لیست علاقه مندی های شما اضافه شد');
+                    $('#get-product-link').find("i").toggleClass("lni lni-heart lni lni-heart-filled");
+                },
+                error: function () {
+                    alert('خطایی رخ داد');
+                }
+            }).done(function (res) {
+                debugger;
+
+            });
+        }
+    </script>
+}
+
