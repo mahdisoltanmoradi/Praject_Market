@@ -41,7 +41,7 @@ namespace Project_Markets.Areas.UserPanel.Controllers
 
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             
-            return Redirect("/Login?EditProfile=true");
+            return Redirect("/Account/Login?EditProfile=true");
         }
 
     }

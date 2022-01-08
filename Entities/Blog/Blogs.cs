@@ -34,6 +34,9 @@ namespace Entities.Blog
         [Display(Name = "وضعیت")]
         public bool IsActive { get; set; }
 
+        [Display(Name = "بازدید")]
+        public int BlogVisit { get; set; }
+
         [Display(Name = "تاریخ ایجاد")]
         public DateTimeOffset CreateDate { get; set; }
 

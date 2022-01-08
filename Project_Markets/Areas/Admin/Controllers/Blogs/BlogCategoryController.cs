@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project_Markets.Areas.Admin.Controllers.Products
+namespace Project_Markets.Areas.Admin.Controllers.Blogs
 {
     [Area("Admin")]
     public class BlogCategoryController : Controller

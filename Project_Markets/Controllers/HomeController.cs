@@ -1,5 +1,7 @@
 ﻿using Data.Contracts;
+using Entities.Blog;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +14,17 @@ namespace Project_Markets.Controllers
     {
         private IProductRepository _productRepository;
         private readonly IWalletRepository _walletRepository;
-        public HomeController(IProductRepository productRepository, IWalletRepository walletRepository)
+        private readonly IRepository<Blogs> _blogrepository;
+        public HomeController(IProductRepository productRepository, IWalletRepository walletRepository,IRepository<Blogs> repository)
         {
             this._productRepository = productRepository;
             this._walletRepository = walletRepository;
+            this._blogrepository = repository;
         }
 
         public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
+            ViewData["Blogs"] = await _blogrepository.TableNoTracking.OrderByDescending(b => b.BlogVisit).Take(3).ToListAsync();
             ViewData["Slider"] = await _productRepository.GetProductInSlider(cancellationToken);
             return View(await _productRepository.GetTopProduct(cancellationToken));
         }

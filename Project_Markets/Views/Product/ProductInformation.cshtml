@@ -64,10 +64,9 @@
 </div>
 <div class="page-content-wrapper">
     <!-- Product Slides-->
-    <div class="product-slides owl-carousel">
+    <div class="product-slides owl-carousel text-center align-items-center">
         <!-- Single Hero Slide-->
-        <div class="single-product-slide" style="background-image: url('/ImageProductCategory/@Model.ProductImageName')"></div>
-
+        <div class="single-product-slide mb-5 mt-1" style="border-radius:50%;background-position:center;background-size:cover;background-repeat:no-repeat;position:relative;margin-left:30%;height:400px!important;width:40%; background-image: url('/ImageProductCategory/@Model.ProductImageName')"></div>
     </div>
     <div class="product-description pb-3">
         <!-- Product Title & Meta Data-->
@@ -200,48 +199,64 @@
                 <h6>رتبه بندی ها ونظر ها</h6>
                 @foreach (var item in comments)
                 {
-                <div class="rating-review-content">
-                    <ul class="pl-0">
-                        <li class="single-user-review d-flex">
-                            <div class="user-thumbnail"><img src="" alt=""/></div>
-                            <div class="rating-comment">
-                                <div class="rating">
-                                    <i class="lni lni-star-filled"></i>
-                                    <i class="lni lni-star-filled"></i>
-                                    <i class="lni lni-star-filled"></i>
-                                    <i class="lni lni-star-filled"></i>
-                                    <i class="lni lni-star-filled"></i>
+                    <div class="rating-review-content">
+                        <ul class="pl-0">
+                            <li class="single-user-review d-flex">
+                                <div class="user-thumbnail"><img src="" alt="" /></div>
+                                <div class="rating-comment">
+                                    <div class="rating">
+                                        <i class="lni lni-star-filled"></i>
+                                        <i class="lni lni-star-filled"></i>
+                                        <i class="lni lni-star-filled"></i>
+                                        <i class="lni lni-star-filled"></i>
+                                        <i class="lni lni-star-filled"></i>
+                                    </div>
+                                    <p class="comment mb-0">@item.Message</p><span class="name-date">@item.CreateDate</span>
                                 </div>
-                                <p class="comment mb-0">@item.Message</p><span class="name-date">@item.CreateDate</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                            </li>
+                        </ul>
+                    </div>
                 }
             </div>
         </div>
         <!-- Ratings Submit Form-->
-        <div class="ratings-submit-form bg-white py-3">
-            <div class="container">
-                <h6>ارسال نظر</h6>
-                <form action="ProductInformation" method="post">
-                    <div class="stars mb-3">
-                        <input class="star-1" type="radio" value="1" name="star" id="star1">
-                        <label class="star-1" for="star1"></label>
-                        <input class="star-2" type="radio" value="2" name="star" id="star2">
-                        <label class="star-2" for="star2"></label>
-                        <input class="star-3" type="radio" value="3" name="star" id="star3">
-                        <label class="star-3" for="star3"></label>
-                        <input class="star-4" type="radio" value="4" name="star" id="star4">
-                        <label class="star-4" for="star4"></label>
-                        <input class="star-5" type="radio" value="5" name="star" id="star5">
-                        <label class="star-5" for="star5"></label><span></span>
-                    </div>
-                    <textarea class="form-control mb-3" id="comments" name="comment" cols="30" rows="10" data-max-length="200" placeholder="نظرخود را بنویسید ..."></textarea>
-                    <button href="#" class="btn btn-sm btn-primary" type="submit">نظررا ذخیره کنید</button>
-                </form>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="ratings-submit-form bg-white py-3">
+                <div class="container">
+                    <h6>ارسال نظر</h6>
+                    <form action="ProductInformation" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="stars mb-3">
+                            <input asp-for="ScoreProduct" class="star-1" type="radio" value="1" name="star" id="star1">
+                            <label class="star-1" for="star1"></label>
+                            <input asp-for="ScoreProduct" class="star-2" type="radio" value="2" name="star" id="star2">
+                            <label class="star-2" for="star2"></label>
+                            <input asp-for="ScoreProduct" class="star-3" type="radio" value="3" name="star" id="star3">
+                            <label class="star-3" for="star3"></label>
+                            <input asp-for="ScoreProduct" class="star-4" type="radio" value="4" name="star" id="star4">
+                            <label class="star-4" for="star4"></label>
+                            <input asp-for="ScoreProduct" class="star-5" type="radio" value="5" name="star" id="star5">
+                            <label class="star-5" for="star5"></label><span></span>
+                        </div>
+                        <textarea class="form-control mb-3" id="comments" name="comment" cols="30" rows="10" data-max-length="200" placeholder="نظرخود را بنویسید ..."></textarea>
+                        <button href="#" class="btn btn-sm btn-primary" type="submit">نظررا ذخیره کنید</button>
+                    </form>
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="ratings-submit-form bg-white py-3">
+                <div class="container">
+                    <div class="alert alert-info">
+                        <p>شما نمیتوانید نظری ارسال کنید</p>
+                        <p>برای ارسال پیام باید لاگین شوید</p>
+                        <a class="text-warning" href="/Account/Login">ورود به سایت</a>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
 <!-- Internet Connection Status-->

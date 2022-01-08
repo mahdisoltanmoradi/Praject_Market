@@ -53,6 +53,9 @@ namespace Data.Migrations
                     b.Property<int>("Blog_id")
                         .HasColumnType("int");
 
+                    b.Property<string>("CommentText")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTimeOffset>("CreateDate")
                         .HasColumnType("datetimeoffset");
 
@@ -62,20 +65,12 @@ namespace Data.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Reply_id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("User_id")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Blog_id");
-
-                    b.HasIndex("Reply_id");
 
                     b.HasIndex("User_id");
 
@@ -91,6 +86,9 @@ namespace Data.Migrations
 
                     b.Property<string>("BlogTitle")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BlogVisit")
+                        .HasColumnType("int");
 
                     b.Property<int>("Category_id")
                         .HasColumnType("int");
@@ -452,11 +450,6 @@ namespace Data.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -677,10 +670,6 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Entities.Blog.BlogComments", "ReplyComment")
-                        .WithMany("Children")
-                        .HasForeignKey("Reply_id");
-
                     b.HasOne("Entities.User.User", "User")
                         .WithMany("BlogComments")
                         .HasForeignKey("User_id")
@@ -688,8 +677,6 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Blogs");
-
-                    b.Navigation("ReplyComment");
 
                     b.Navigation("User");
                 });
@@ -871,11 +858,6 @@ namespace Data.Migrations
             modelBuilder.Entity("Entities.Blog.BlogCategories", b =>
                 {
                     b.Navigation("Blogs");
-                });
-
-            modelBuilder.Entity("Entities.Blog.BlogComments", b =>
-                {
-                    b.Navigation("Children");
                 });
 
             modelBuilder.Entity("Entities.Blog.Blogs", b =>

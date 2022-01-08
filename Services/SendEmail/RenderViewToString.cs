@@ -16,7 +16,7 @@ namespace Services.SendEmails
     {
         string RenderToStringAsync(string viewName, object model);
     }
-    public class RenderViewToString : IViewRenderService,IScopedDependency
+    public class RenderViewToString : IViewRenderService
     {
         private readonly IRazorViewEngine _razorViewEngine;
         private readonly ITempDataProvider _tempDataProvider;

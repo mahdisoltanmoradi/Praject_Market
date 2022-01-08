@@ -73,7 +73,8 @@ namespace Data.Repositories
         {
             string FixeEmail = FixedText.FixeEmail(login.Email);
             string hashPassword = login.Password;
-            return await TableNoTracking.SingleOrDefaultAsync(u => u.Email == login.Email && u.Password == hashPassword, cancellationToken);
+            var user= await TableNoTracking.SingleOrDefaultAsync(u => u.Email == login.Email && u.PasswordHash == hashPassword, cancellationToken);
+            return user;
         }
 
         public async Task<User> IsExistUserByUserEmail(string email, CancellationToken cancellationToken)
@@ -168,13 +169,13 @@ namespace Data.Repositories
         public async Task<bool> CompareOldPassword(string oldPassword, string username, CancellationToken cancellationToken)
         {
             var hashPassword = PasswordHelper.EncodePasswordMd5(oldPassword);
-            return await Table.AnyAsync(u => u.UserName == username && u.Password == hashPassword);
+            return await Table.AnyAsync(u => u.UserName == username && u.PasswordHash == hashPassword);
         }
 
         public async Task ChangeUserPassword(string userName, string newPassword, CancellationToken cancellationToken)
         {
             var user = await TableNoTracking.SingleOrDefaultAsync(u => u.UserName == userName);
-            user.Password = PasswordHelper.EncodePasswordMd5(newPassword);
+            user.PasswordHash = PasswordHelper.EncodePasswordMd5(newPassword);
             await UpdateAsync(user, cancellationToken);
         }
 
@@ -227,7 +228,7 @@ namespace Data.Repositories
         public async Task AddUserFromAdmin(CreateUserViewModel user, CancellationToken cancellationToken)
         {
             User addUser = new User();
-            addUser.Password = PasswordHelper.EncodePasswordMd5(user.Password);
+            addUser.PasswordHash = PasswordHelper.EncodePasswordMd5(user.Password);
             addUser.ActiveCode = NameGenerator.GeneratorUniqCode();
             addUser.Email = user.Email;
             addUser.IsActive = true;
@@ -270,7 +271,7 @@ namespace Data.Repositories
             user.Email = editUser.Email;
             if (!string.IsNullOrEmpty(editUser.Password))
             {
-                user.Password = PasswordHelper.EncodePasswordMd5(editUser.Password);
+                user.PasswordHash = PasswordHelper.EncodePasswordMd5(editUser.Password);
             }
 
             if (editUser.UserAvatar != null)

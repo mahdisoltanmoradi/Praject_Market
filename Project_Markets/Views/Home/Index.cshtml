@@ -68,6 +68,54 @@
 
     <!-- Featured Products Wrapper-->
     <partial name="_FeaturedProducts" />
+    @{
+        List<Entities.Blog.Blogs> blogs = ViewData["Blogs"] as List<Entities.Blog.Blogs>;
+    }
+
+    <div class="top-products-area py-3">
+        <div class="container">
+            <div class="section-heading d-flex align-items-center justify-content-between">
+                <h6 class="ml-1">پر بازدیدترین وبلاگها</h6>
+                <!-- Layout Options-->
+                <div class="layout-options">
+                    <a class="active" href="/DefaultBlog/Index">
+                        <i class="lni lni-radio-button">
+                        </i>
+                    </a>
+                </div>
+            </div>
+            <div class="product-section w-100 d-flex justify-content-center align-items-center text-center  flex-wrap col-12">
+                @foreach (var item in blogs)
+                {
+                    <!-- Single Blog Card-->
+                    <div class="col-12 col-md-4 px-1 my-2">
+                        <div class="card blog-card list-card">
+                            <!-- Post Image-->
+                            <div class="post-img col-12 w-100 h-100"><img class="card-img img-fluid" style="width:300px; height:200px" src="/img/bg-img/@item.ImageName" alt=""></div>
+                            <!-- Post Bookmark--><a class="post-bookmark" href="#"><i class="lni lni-bookmark"></i></a>
+                            <!-- Read More Button--><a class="btn btn-danger btn-sm read-more-btn" href="/DefaultBlog/GetBlogInformation/@item.Id">بیشتر بخوانید</a>
+                            <!-- Post Content-->
+                            <div class="post-content">
+                                <div class="bg-shapes">
+                                    <div class="circle1"></div>
+                                    <div class="circle2"></div>
+                                    <div class="circle3"></div>
+                                    <div class="circle4"></div>
+                                </div>
+                                <!-- Post Catagory--><a class="post-catagory d-block" href="#">نظر</a>
+                                <!-- Post Title--><a class="post-title d-block" href="/DefaultBlog/GetBlogInformation/@item.Id">@item.BlogTitle</a>
+                                <!-- Post Meta-->
+                                <div class="post-meta d-flex align-items-center justify-content-between flex-wrap"><a href="#"><i class="lni lni-user"></i>یاسین</a><span><i class="lni lni-timer"></i>2 دقیقه</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Single Blog Card-->
+                }
+
+            </div>
+
+        </div>
+    </div>
 
     <div class="card" id="ChatBox">
         <div class="card-header">

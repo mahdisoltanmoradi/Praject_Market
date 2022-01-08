@@ -26,10 +26,6 @@ namespace Project_Markets.Areas.Admin.Controllers.Users
 
         public async Task<IActionResult> Index(CancellationToken cancellationToken, UserForAdminViewModel user, int pageId = 1, string filterUserName = "", string filterEmail = "")
         {
-            if (!ModelState.IsValid)
-            {
-
-            }
             var users = await _userRepository.GetUsers(cancellationToken, pageId, filterEmail, filterUserName);
 
             return View(users);

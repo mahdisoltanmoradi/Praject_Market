@@ -742,3 +742,8 @@ D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\refs\Windows
 D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\Support\Index.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\Blog\Index.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\Blog\Create.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\Blog\Details.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\DefaultBlog\Index.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\DefaultBlog\GetBlogInformation.cshtml.g.cs
