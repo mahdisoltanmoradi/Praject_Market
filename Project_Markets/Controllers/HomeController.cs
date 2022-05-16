@@ -54,28 +54,6 @@ namespace Project_Markets.Controllers
 
             }
             return View();
-
-            //if (HttpContext.Request.Query["Status"] != "" &&
-            //   HttpContext.Request.Query["Status"].ToString().ToLower() == "ok"
-            //   && HttpContext.Request.Query["Authority"] != "")
-            //{
-            //    string authority = HttpContext.Request.Query["Authority"];
-
-            //    var wallet = _userRepository.GetWalletByWalletId(id,cancellationToken);
-
-            //    var payment = new ZarinpalSandbox.Payment(wallet.Amount);
-            //    var res = payment.Verification(authority).Result;
-            //    if (res.Status == 100)
-            //    {
-            //        ViewBag.code = res.RefId;
-            //        ViewBag.IsSuccess = true;
-            //        wallet.IsPay = true;
-            //        _userService.UpdateWallet(wallet);
-            //    }
-
-            //}
-
-            //return View();
         }
     }
 }
