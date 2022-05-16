@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Data.Contracts
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository 
     {
         Task<bool> IsExistUserName(string userName, CancellationToken cancellationToken);
         Task<bool> IsExistEmail(string email, CancellationToken cancellationToken);
@@ -25,8 +25,11 @@ namespace Data.Contracts
         Task<User> GetUserByUserId(int userId, CancellationToken cancellationToken);
         Task<List<User>> GetAllUsers(CancellationToken cancellationToken);
         Task DeleteUser(int userId,CancellationToken cancellationToken);
-
-
+        Task UpdateUser(User user,CancellationToken cancellationToken);
+        Task<int> AddUser(User user,CancellationToken cancellationToken);
+        Task<User> ExistActiveCode(string token);
+        Task<User> ExistPassword(string password);
+       
         #region User Panel
 
         Task<InformationUserViewModel> GetUserInformation(string userName, CancellationToken cancellationToken);
@@ -46,6 +49,17 @@ namespace Data.Contracts
         Task AddUserFromAdmin(CreateUserViewModel user, CancellationToken cancellationToken);
         Task<EditUserViewModel> GetUserForShowInEditMode(int userId, CancellationToken cancellationToken);
         Task EditUserFromAdmin(EditUserViewModel editUser, CancellationToken cancellationToken);
+
+        #endregion
+
+        #region Wallet
+
+        Task<int> BalanceUserWallet(string userName, CancellationToken cancellationToken);
+        Task<List<WalletViewModel>> GetWalletUser(string userName, CancellationToken cancellationToken);
+        Task<int> ChargeWallet(string userName, int amount, string description, CancellationToken cancellationToken, bool isPay = false);
+        Task<int> AddWallet(Wallet wallet, CancellationToken cancellationToken);
+        Task<Wallet> GetWalletByWalletId(int walletId, CancellationToken cancellationToken);
+        void UpdateWallet(Wallet wallet,CancellationToken cancellationToken);
 
         #endregion
     }

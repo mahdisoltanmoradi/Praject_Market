@@ -3,13 +3,11 @@ using Entities.Common;
 using Entities.Product;
 using Entities.Role;
 using Entities.User;
+using Entities.Wallet;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,6 +20,7 @@ namespace Data
         {
 
         }
+        public DbSet<Wallet> Wallets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

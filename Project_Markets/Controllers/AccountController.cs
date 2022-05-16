@@ -29,6 +29,7 @@ namespace Project_Markets.Controllers
             //this._viewRender = viewRender;
         }
 
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
@@ -55,7 +56,7 @@ namespace Project_Markets.Controllers
                 SecurityStamp = Guid.NewGuid().ToString("D")
             };
             user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, register.Password);
-            await _userRepository.AddAsync(user, cancellationToken);
+            await _userRepository.AddUser(user, cancellationToken);
 
             await _userManager.AddToRoleAsync(user, "person");
             //await _userRepository.AddAsync(user, cancellationToken);
@@ -83,7 +84,7 @@ namespace Project_Markets.Controllers
                 ModelState.AddModelError("Email", "کاربری با این مشخصات یافت نشد");
                 return View(login);
             }
-            var password = await _userRepository.TableNoTracking.FirstOrDefaultAsync(p => p.PasswordHash == login.Password);
+            var password = await _userRepository.ExistPassword(login.Password);
             //if (password ==)
             //{
             //    ModelState.AddModelError("Email", "حساب کاربری شما فعال نمیباشد");
@@ -159,13 +160,13 @@ namespace Project_Markets.Controllers
                 return View(reset);
             }
 
-            var user = await _userRepository.TableNoTracking.SingleOrDefaultAsync(u => u.ActiveCode == token);
+            var user = await _userRepository.ExistActiveCode(token);
             string hashedpass = _userManager.PasswordHasher.HashPassword(user, reset.Password);
 
             user.PasswordHash = reset.Password;
 
             user.PasswordHash = hashedpass;
-            await _userRepository.UpdateAsync(user, cancellationToken);
+            await _userRepository.UpdateUser(user, cancellationToken);
             ViewBag.IsSuccess = true;
             return RedirectToAction(nameof(Login));
         }

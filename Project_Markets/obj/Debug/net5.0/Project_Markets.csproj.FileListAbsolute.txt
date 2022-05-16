@@ -747,3 +747,4 @@ D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\Blog\Details.cshtml.g.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\DefaultBlog\Index.cshtml.g.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\DefaultBlog\GetBlogInformation.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\Basket\Index.cshtml.g.cs

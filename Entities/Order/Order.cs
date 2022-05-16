@@ -2,13 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Entities.Order
 {
-    public class Order:BaseEntity<int>
+    public class Order : BaseEntity<int>
     {
         [Required]
         public int UserId { get; set; }

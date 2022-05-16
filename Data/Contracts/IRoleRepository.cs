@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Data.Contracts
 {
-    public interface IRoleRepository
+    public interface IRoleRepository : IRepository<Role>
     {
-        Task AddAsync(RoleViewModel role,CancellationToken cancellationToken);
-        Task DeleteAsync(int id,CancellationToken cancellationToken);
+        Task AddAsync(RoleViewModel role, CancellationToken cancellationToken);
+        Task DeleteAsync(int id, CancellationToken cancellationToken);
         Task<List<Role>> GetAllAsync(CancellationToken cancellationToken);
-        Task<Role> GetByIdIncludePermissionsAsync(int id,CancellationToken cancellationToken);
+        Task<Role> GetByIdIncludePermissionsAsync(int id, CancellationToken cancellationToken);
     }
 }

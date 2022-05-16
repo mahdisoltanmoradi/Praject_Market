@@ -1,5 +1,6 @@
 ﻿using Data.Contracts;
 using Entities.Blog;
+using Entities.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,13 +14,13 @@ namespace Project_Markets.Controllers
     public class HomeController : Controller
     {
         private IProductRepository _productRepository;
-        private readonly IWalletRepository _walletRepository;
         private readonly IRepository<Blogs> _blogrepository;
-        public HomeController(IProductRepository productRepository, IWalletRepository walletRepository,IRepository<Blogs> repository)
+        private readonly IUserRepository _userRepository;
+        public HomeController(IProductRepository productRepository, IRepository<Blogs> repository, IUserRepository userRepository)
         {
             this._productRepository = productRepository;
-            this._walletRepository = walletRepository;
             this._blogrepository = repository;
+            _userRepository = userRepository;
         }
 
         public async Task<IActionResult> Index(CancellationToken cancellationToken)
@@ -39,21 +40,42 @@ namespace Project_Markets.Controllers
             {
                 string authority = HttpContext.Request.Query["Authority"];
 
-                var wallet = _walletRepository.GetWalletByWalletId(id, cancellationToken);
+                var wallet = _userRepository.GetWalletByWalletId(id, cancellationToken);
 
-                var payment = new ZarinpalSandbox.Payment(wallet.Id);
+                var payment = new ZarinpalSandbox.Payment(wallet.Result.Amount);
                 var res = payment.Verification(authority).Result;
                 if (res.Status == 100)
                 {
                     ViewBag.code = res.RefId;
                     ViewBag.IsSuccess = true;
                     wallet.Result.IsPay = true;
-                    _walletRepository.UpdateAsync(wallet.Result, cancellationToken);
+                    _userRepository.UpdateWallet(wallet.Result, cancellationToken);
                 }
 
             }
-
             return View();
+
+            //if (HttpContext.Request.Query["Status"] != "" &&
+            //   HttpContext.Request.Query["Status"].ToString().ToLower() == "ok"
+            //   && HttpContext.Request.Query["Authority"] != "")
+            //{
+            //    string authority = HttpContext.Request.Query["Authority"];
+
+            //    var wallet = _userRepository.GetWalletByWalletId(id,cancellationToken);
+
+            //    var payment = new ZarinpalSandbox.Payment(wallet.Amount);
+            //    var res = payment.Verification(authority).Result;
+            //    if (res.Status == 100)
+            //    {
+            //        ViewBag.code = res.RefId;
+            //        ViewBag.IsSuccess = true;
+            //        wallet.IsPay = true;
+            //        _userService.UpdateWallet(wallet);
+            //    }
+
+            //}
+
+            //return View();
         }
     }
 }
