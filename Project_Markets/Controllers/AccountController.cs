@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,19 +76,18 @@ namespace Project_Markets.Controllers
             {
                 return View(login);
             }
-            //var user1 = await _userRepository.TableNoTracking.FirstOrDefaultAsync(p => p.Email == login.Email);
             var user = await _userManager.FindByEmailAsync(login.Email);
             if (user == null)
             {
                 ModelState.AddModelError("Email", "کاربری با این مشخصات یافت نشد");
                 return View(login);
             }
-            var password = await _userRepository.ExistPassword(login.Password);
-            //if (password ==)
+            //string PasswordHash = _userManager.PasswordHasher.HashPassword(user, login.Password);
+            //var password = await _userRepository.ExistPassword(PasswordHash);
+            //if (password ==null)
             //{
-            //    ModelState.AddModelError("Email", "حساب کاربری شما فعال نمیباشد");
+            //    ModelState.AddModelError("Password", "کلمه عبور صحیح نمیباشد");
             //    return View(login);
-
             //}
 
             var roles = await _userManager.GetRolesAsync(user);

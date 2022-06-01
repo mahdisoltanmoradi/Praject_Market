@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220315094533_Update_Tables")]
-    partial class Update_Tables
+    [Migration("20220520155526_modify_user_favorite")]
+    partial class modify_user_favorite
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -160,15 +160,15 @@ namespace Data.Migrations
                     b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("Entities.Chat.ChatMessage", b =>
+            modelBuilder.Entity("Entities.Chat.ClientChatMessage", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWSEQUENTIALID()");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("ChatRoomId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("ChatRoomId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
@@ -183,22 +183,25 @@ namespace Data.Migrations
 
                     b.HasIndex("ChatRoomId");
 
-                    b.ToTable("ChatMessages");
+                    b.ToTable("ClientChatMessages");
                 });
 
-            modelBuilder.Entity("Entities.Chat.ChatRoom", b =>
+            modelBuilder.Entity("Entities.Chat.ClientChatRoom", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWSEQUENTIALID()");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConnectionId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("IPAddress")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("ChatRooms");
+                    b.ToTable("ClientChatRooms");
                 });
 
             modelBuilder.Entity("Entities.Order.Order", b =>
@@ -438,7 +441,7 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("FavoriteId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -591,21 +594,6 @@ namespace Data.Migrations
                     b.ToTable("WalletTypes");
                 });
 
-            modelBuilder.Entity("FavoriteUserUser", b =>
-                {
-                    b.Property<int>("FavoriteUsersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("FavoriteUsersId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("FavoriteUserUsers");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -754,9 +742,9 @@ namespace Data.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Entities.Chat.ChatMessage", b =>
+            modelBuilder.Entity("Entities.Chat.ClientChatMessage", b =>
                 {
-                    b.HasOne("Entities.Chat.ChatRoom", "ChatRoom")
+                    b.HasOne("Entities.Chat.ClientChatRoom", "ChatRoom")
                         .WithMany("ChatMessages")
                         .HasForeignKey("ChatRoomId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -851,21 +839,6 @@ namespace Data.Migrations
                     b.Navigation("WalletType");
                 });
 
-            modelBuilder.Entity("FavoriteUserUser", b =>
-                {
-                    b.HasOne("Entities.User.FavoriteUser", null)
-                        .WithMany()
-                        .HasForeignKey("FavoriteUsersId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Entities.User.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("Entities.Role.Role", null)
@@ -932,7 +905,7 @@ namespace Data.Migrations
                     b.Navigation("BlogComments");
                 });
 
-            modelBuilder.Entity("Entities.Chat.ChatRoom", b =>
+            modelBuilder.Entity("Entities.Chat.ClientChatRoom", b =>
                 {
                     b.Navigation("ChatMessages");
                 });

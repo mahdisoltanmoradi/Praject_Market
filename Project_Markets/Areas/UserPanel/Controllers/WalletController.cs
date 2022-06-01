@@ -1,11 +1,13 @@
 ﻿using Data.Contracts;
 using Data.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Project_Markets.Areas.UserPanel.Controllers
 {
+    [Authorize]
     [Area("UserPanel")]
     public class WalletController : Controller
     {

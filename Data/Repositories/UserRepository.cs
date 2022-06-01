@@ -94,7 +94,7 @@ namespace Data.Repositories
             information.Email = user.Email;
             information.RegisterDate = user.RegisterDate;
             information.UserAvatar = user.UserAvatar;
-            information.Wallet =await BalanceUserWallet(user.UserName,cancellationToken);
+            information.Wallet = await BalanceUserWallet(user.UserName, cancellationToken);
 
             return information;
         }
@@ -107,7 +107,7 @@ namespace Data.Repositories
             information.Email = user.Email;
             information.RegisterDate = user.RegisterDate;
             information.UserAvatar = user.UserAvatar;
-            information.Wallet = await BalanceUserWallet(user.UserName,cancellationToken);
+            information.Wallet = await BalanceUserWallet(user.UserName, cancellationToken);
 
             return information;
         }
@@ -360,7 +360,7 @@ namespace Data.Repositories
 
         public async Task<Wallet> GetWalletByWalletId(int walletId, CancellationToken cancellationToken)
         {
-            var model= _dbContext.Wallets.Find(walletId);
+            var model = _dbContext.Wallets.Find(walletId);
             return model;
         }
 
@@ -390,7 +390,16 @@ namespace Data.Repositories
 
         public async Task<User> ExistPassword(string password)
         {
-            return await _dbContext.Users.SingleOrDefaultAsync(p => p.PasswordHash == password);
+            var result = await _dbContext.Users.SingleOrDefaultAsync(p => p.PasswordHash == password);
+            var ttt = await _dbContext.Users.AnyAsync(p => p.PasswordHash == password);
+            var model = await _dbContext.Users.FirstOrDefaultAsync(p => p.PasswordHash == password);
+            return model;
+        }
+
+        public Task<List<FavoriteUser>> GetFavoriteUsers(User user)
+        {
+            //var model= _dbContext.Users.Include(p => p.FavoriteUsers).Where(p => p.Id == user.Id);
+            return null;
         }
     }
 }

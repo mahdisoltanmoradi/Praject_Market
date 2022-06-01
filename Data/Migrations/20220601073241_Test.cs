@@ -2,7 +2,7 @@
 
 namespace Data.Migrations
 {
-    public partial class Update_Tables : Migration
+    public partial class Test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

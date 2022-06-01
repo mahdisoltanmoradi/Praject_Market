@@ -411,7 +411,6 @@ D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Mark
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Markets.AssemblyInfoInputs.cache
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Markets.AssemblyInfo.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Markets.csproj.CoreCompileInputs.cache
-D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Markets.MvcApplicationPartsAssemblyInfo.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Markets.MvcApplicationPartsAssemblyInfo.cache
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Markets.RazorAssemblyInfo.cache
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Markets.RazorAssemblyInfo.cs
@@ -748,3 +747,13 @@ D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\DefaultBlog\Index.cshtml.g.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\DefaultBlog\GetBlogInformation.cshtml.g.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\Basket\Index.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Markets.MvcApplicationPartsAssemblyInfo.cs
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\RestSharp.dll
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\UAParser.dll
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\Dto.dll
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\Service.dll
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\ZarinPal.dll
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\UserPanel\Views\Address\Index.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\UserPanel\Views\Address\AddNewAddress.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\Basket\ShippingPayment.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\UserPanel\Views\Address\Edit.cshtml.g.cs

@@ -1,16 +1,17 @@
 ﻿using Entities.Common;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.Baskets
 {
-    public class Basket:BaseEntity<int>
+    public class Basket : BaseEntity<int>
     {
         public string BuyerId { get; private set; }
         private readonly List<BasketItem> _items = new List<BasketItem>();
+
+        public int DiscountAmount { get; private set; } = 0;
+        public Discount.Discount AppliedDiscount { get; private set; }
+        public int? AppliedDiscountId { get; private set; }
 
         public ICollection<BasketItem> Items => _items.AsReadOnly();
         public Basket(string buyerId)
@@ -28,30 +29,32 @@ namespace Entities.Baskets
             var existingItem = Items.FirstOrDefault(p => p.ProductId == productId);
             existingItem.AddQuantity(quantity);
         }
-    }
 
-    public class BasketItem:BaseEntity<int>
-    {
-        public int UnitPrice { get; private set; }
-        public int Quantity { get; private set; }
-        public int ProductId { get; private set; }
-        public Product.Product Product { get; private set; }
-        public int BasketId { get; private set; }
-        public BasketItem(int productId, int quantity, int unitPrice)
+        public int TotalPrice()
         {
-            ProductId = productId;
-            UnitPrice = unitPrice;
-            SetQuantity(quantity);
+            int totalPrice = _items.Sum(p => p.UnitPrice * p.Quantity);
+            totalPrice -= AppliedDiscount.GetDiscountAmount(totalPrice);
+            return totalPrice;
         }
 
-        public void AddQuantity(int quantity)
+        public int TotalPriceWithOutDiescount()
         {
-            Quantity += quantity;
+            int totalPrice = _items.Sum(p => p.UnitPrice * p.Quantity);
+            return totalPrice;
         }
 
-        public void SetQuantity(int quantity)
+        public void ApplyDiscountCode(Discount.Discount discount)
         {
-            Quantity = quantity;
+            this.AppliedDiscount = discount;
+            this.AppliedDiscountId = discount.Id;
+            this.DiscountAmount = discount.GetDiscountAmount(TotalPriceWithOutDiescount());
+        }
+
+        public void RemoveDescount()
+        {
+            AppliedDiscount = null;
+            AppliedDiscountId = null;
+            DiscountAmount = 0;
         }
     }
 }

@@ -62,5 +62,9 @@ namespace Data.Contracts
         void UpdateWallet(Wallet wallet,CancellationToken cancellationToken);
 
         #endregion
+
+        #region Favorite
+        Task<List<FavoriteUser>> GetFavoriteUsers(User user);
+        #endregion
     }
 }

@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class MessageService : Repository<ChatMessage>,IMessageService, IScopedDependency
+    public class MessageService : Repository<ClientChatMessage>, IMessageService, IScopedDependency
     {
+        private ApplicationDbContext _dbContext;
         public MessageService(ApplicationDbContext context)
-            :base(context)
+            : base(context)
         {
-
+            _dbContext = context ?? throw new ArgumentNullException(nameof(context));
         }
 
 
-        public Task<List<MessageDto>> GetChatMessage(Guid RoomId)
+        public Task<List<MessageDto>> GetChatMessage(long RoomId)
         {
             var messages = TableNoTracking.Where(p => p.ChatRoomId == RoomId)
                 .Select(p => new MessageDto
@@ -30,10 +31,10 @@ namespace Data.Repositories
             return Task.FromResult(messages);
         }
 
-        public Task SaveChatMessage(Guid RoomId, MessageDto message)
+        public Task SaveChatMessage(long RoomId, MessageDto message)
         {
-            var room = TableNoTracking.SingleOrDefault(p => p.Id == RoomId).ChatRoom;
-            ChatMessage chatMessage = new ChatMessage()
+            var room = DbContext.ClientChatRooms.FirstOrDefault(a => a.Id == RoomId);
+            ClientChatMessage chatMessage = new ClientChatMessage()
             {
                 ChatRoom = room,
                 Message = message.Message,

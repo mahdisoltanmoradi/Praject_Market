@@ -3,7 +3,7 @@
 
 //اتصال با هاب کانکشن پشتیبانی
 var supportConnection = new signalR.HubConnectionBuilder()
-    .withUrl('/supporthub')
+    .withUrl('/suphub')
     .build();
 
 // ایجاد یک کانکشن با سرور سیگنال ار
@@ -11,14 +11,20 @@ var chatConnection = new signalR.HubConnectionBuilder()
     .withUrl('/chatHub')
     .build();
 
+supportConnection.start();
+chatConnection.start();
 
 
-function Init() {
-    supportConnection.start();
-    chatConnection.start();
+$(document).ready(function () {
+    Initial();
+});
 
+function Initial() {
+
+    
     //هر زمان دکمه "ارسال" در فرم چت باکس زده شد این کد برای سابمیت فرم اجرا می شود
     var answerForm = $("#answerForm");
+    console.log(answerForm)
 
     answerForm.on('submit', function (e) {
         e.preventDefault();
@@ -32,6 +38,7 @@ function Init() {
 
 function sendMessage(text) {
     if (text && text.length) {
+        console.log(activeRoomId)
         supportConnection.invoke('SendMessage', activeRoomId, text);
     }
 
@@ -41,12 +48,7 @@ function sendMessage(text) {
 chatConnection.on('getNewMessage', showMessage);
 
 
-// بعد از این که صفحه کامل بارگذاری شد  این بخش اجرا می شود
-$(document).ready(function () {
-    console.log("ready!");
-    //متد راه اندازی اجرا می شود
-    Init();
-});
+
 
 
 supportConnection.on('getNewMessage', addMessages);
@@ -122,6 +124,8 @@ function switchActiveRoomTo(id) {
 
 
     activeRoomId = id;
+
+    console.log(activeRoomId)
 
     chatConnection.invoke('JoinRoom', activeRoomId);
     supportConnection.invoke('LoadMessage', activeRoomId);

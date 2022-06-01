@@ -3,10 +3,12 @@
     z-index: 10;
     bottom: 20px;
     right: 20px;
-    background-color: white;
+    background-color: #0C153B;
     height: 400px;
     width: 300px;
     display: none;
+    margin-bottom:1.5rem;
+
 }
 
     #ChatBox.show {

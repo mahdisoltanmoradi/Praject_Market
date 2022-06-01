@@ -37,7 +37,7 @@ function sendMessage(text) {
     connection.invoke('SendNewMessage', " بازدید کننده ", text);
 }
 
-//درسافت پیام از سرور
+//دریافت پیام از سرور
 connection.on('getNewMessage', getMessage);
 
 function getMessage(sender, message, time) {
@@ -45,6 +45,13 @@ function getMessage(sender, message, time) {
     $("#Messages").append("<li><div><span class='name'>"+sender+"</span><span class='time'>"+time+"</span></div><div class='message'>"+message+"</div></li>")
 };
 
+
+connection.on("GetOlderMessages", function (data) {
+    console.log(data)
+    data.map(function (val, i) {
+        $("#Messages").append("<li><div><span class='name' style='color:#fff'>بازدید کننده</span></div><div class='message'>" + val + "</div></li>")
+    })
+})
 
 $(document).ready(function () {
     Init();

@@ -1,5 +1,11 @@
 ﻿using Common.Utilities;
+using Data.Contracts;
+using Entities.Baskets;
+using Entities.Chat;
 using Entities.Common;
+using Entities.Discount;
+using Entities.Order;
+using Entities.Payments;
 using Entities.Product;
 using Entities.Role;
 using Entities.User;
@@ -21,7 +27,18 @@ namespace Data
 
         }
         public DbSet<Wallet> Wallets { get; set; }
-
+        public DbSet<ClientChatMessage> ClientChatMessages { get; set; }
+        public DbSet<ClientChatRoom> ClientChatRooms { get; set; }
+        public DbSet<FavoriteUser> FavoriteUsers { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<UserAddress> UserAddresses { get; set; }
+        public DbSet<DiscountUsageHistory> DiscountUsageHistories { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var cascadeFKs = modelBuilder.Model.GetEntityTypes()
@@ -41,6 +58,7 @@ namespace Data
             modelBuilder.Entity<ProductCategory>()
                 .HasQueryFilter(g => !g.IsDelete);
 
+            modelBuilder.Entity<Order>().OwnsOne(p=>p.Address);
 
             base.OnModelCreating(modelBuilder);
 

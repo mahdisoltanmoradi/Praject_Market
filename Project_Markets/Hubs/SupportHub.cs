@@ -1,14 +1,13 @@
 ﻿using Data.Contracts;
 using Data.DTOs.Message;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Threading.Tasks;
 
 namespace SignalR.Bugeto.Hubs
 {
-    [Authorize]
-    public class SupportHub:Hub
+    //[Authorize]
+    public class SupportHub : Hub
     {
         private readonly IChatRoomService _chatRoomService;
         private readonly IMessageService _messageService;
@@ -26,17 +25,17 @@ namespace SignalR.Bugeto.Hubs
         {
             var rooms = await _chatRoomService.GetAllrooms();
             await Clients.Caller.SendAsync("GetRooms", rooms);
-            await base.OnConnectedAsync(); 
+            await base.OnConnectedAsync();
         }
 
 
-        public async Task LoadMessage(Guid roomId)
+        public async Task LoadMessage(string roomId)
         {
-            var message = await _messageService.GetChatMessage(roomId);
+            var message = await _messageService.GetChatMessage(Convert.ToInt64(roomId));
             await Clients.Caller.SendAsync("getNewMessage", message);
         }
 
-        public async Task SendMessage(Guid roomId,string text)
+        public async Task SendMessage(string roomId, string text)
         {
             var message = new MessageDto
             {
@@ -45,11 +44,11 @@ namespace SignalR.Bugeto.Hubs
                 Time = DateTime.Now,
             };
 
-            await _messageService.SaveChatMessage(roomId, message);
+            await _messageService.SaveChatMessage(Convert.ToInt64(roomId), message);
 
             await _siteChathub.Clients.Group(roomId.ToString())
                 .SendAsync("getNewMessage", message.Sender, message.Message, message.Time.ToShortTimeString());
-                
+
         }
     }
 }

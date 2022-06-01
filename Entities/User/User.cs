@@ -37,7 +37,6 @@ namespace Entities.User
         public bool IsDelete { get; set; }
 
         #region Relation
-        public List<FavoriteUser> FavoriteUsers { get; set; }
         public List<ProductComment> ProductComment { get; set; }
         public List<BlogComments> BlogComments { get; set; }
         public virtual List<Wallet.Wallet> Wallets { get; set; }

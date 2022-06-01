@@ -6,26 +6,26 @@ namespace Entities.Order
 {
     public class OrderDetail : BaseEntity<int>
     {
-        [Required]
-        public int OrderId { get; set; }
+        public int CatalogItemId { get; private set; }
+        public string ProductName { get; private set; }
+        public string PictureUri { get; private set; }
+        public int UnitPrice { get; private set; }
+        public int Units { get; private set; }
+        public OrderDetail(int catalogItemId, string productName, string pictureUri, int unitPrice, int units)
+        {
+            CatalogItemId = catalogItemId;
+            ProductName = productName;
+            PictureUri = pictureUri;
+            UnitPrice = unitPrice;
+            Units = units;
+        }
 
-        [Required]
-        public int ProductId { get; set; }
 
-        [Required]
-        public int Count { get; set; }
+        //ef core
+        public OrderDetail()
+        {
 
-        [Required]
-        public int Price { get; set; }
-
-        #region Relation
-
-        [ForeignKey("OrderId")]
-        public virtual Order Order { get; set; }
-
-        [ForeignKey("ProductId")]
-        public virtual Product.Product Product { get; set; }
-        #endregion
+        }
 
     }
 }

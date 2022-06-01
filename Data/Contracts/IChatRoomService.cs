@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Data.Contracts
 {
-    public interface IChatRoomService:IRepository<ChatRoom>
+    public interface IChatRoomService:IRepository<ClientChatRoom>
     {
-        Task<Guid> CreateChatRoom(string ConnectionId);
-        Task<Guid> GetChatRoomForConnection(string CoonectionId);
-        Task<List<Guid>> GetAllrooms();
+        Task<long> CreateChatRoom(string ipAddress, string connectionId);
+        Task<long> GetChatRoomForConnection(string ipAddress);
+        Task<List<long>> GetAllrooms();
+        Task<IList<string>> GetClientMessages(string ipAddress);
     }
 
 }

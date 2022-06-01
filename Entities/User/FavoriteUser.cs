@@ -5,15 +5,10 @@ using System.Collections.Generic;
 
 namespace Entities.User
 {
-    public class FavoriteUser:BaseEntity<int>
+    public class FavoriteUser : BaseEntity<int>
     {
-        public int FavoriteId { get; set; }
+        public int ProductId { get; set; }
         public int UserId { get; set; }
-        
-
-        #region Relation
-        public List<User> Users { get; set; }
-        #endregion
     }
     public class ProductConfiguration : IEntityTypeConfiguration<FavoriteUser>
     {

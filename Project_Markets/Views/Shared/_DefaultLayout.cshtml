@@ -9,6 +9,7 @@
     <meta name="theme-color" content="#100DD1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
     <!-- The above tags *must* come first in the head, any other head content must come *after* these tags-->
     <!-- Title-->
     <title>فروشگاه سوها</title>
@@ -20,7 +21,8 @@
     <link rel="apple-touch-icon" sizes="167x167" href="/img/icons/icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/icon-180x180.png">
     <!-- Stylesheet-->
-    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="/css/ChatBox.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
     <!-- Web App Manifest-->
     @*<link rel="manifest" href="/manifest.json">*@
 </head>
@@ -100,6 +102,7 @@
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/SignalRService.js"></script>
 
+    <script src="~/js/site.js"></script>
     @await RenderSectionAsync("Scripts", required: false);
 </body>
 </html>

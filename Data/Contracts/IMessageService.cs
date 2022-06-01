@@ -1,16 +1,14 @@
-﻿using Data.Contracts;
-using Data.DTOs.Message;
+﻿using Data.DTOs.Message;
 using Entities.Chat;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Data.Contracts
 {
-    public interface IMessageService:IRepository<ChatMessage>
+    public interface IMessageService : IRepository<ClientChatMessage>
     {
-        Task SaveChatMessage(Guid RoomId, MessageDto message);
-        Task<List<MessageDto>> GetChatMessage(Guid RoomId);
+        Task SaveChatMessage(long RoomId, MessageDto message);
+        Task<List<MessageDto>> GetChatMessage(long RoomId);
     }
 
 }

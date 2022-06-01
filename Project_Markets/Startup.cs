@@ -1,6 +1,7 @@
 using Autofac;
 using Common;
 using Data;
+using Data.MappingProfile;
 using infrastructure.WebFramework.Configuration;
 using infrastructure.WebFramework.CustomMapping;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -55,7 +56,7 @@ namespace Project_Markets
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
             });
             #endregion
-
+            services.AddAutoMapper(typeof(UserMappingProfile));
             services.AddRazorPages();
             services.AddSignalR();
         }
@@ -99,13 +100,11 @@ namespace Project_Markets
                     pattern: "Admin/{controller=Home}/{action=Index}/{id?}"),
 
                  endpoints.MapHub<SiteChatHub>("/chathub"),
-                 endpoints.MapHub<SupportHub>("/supporthub")
+                 endpoints.MapHub<SupportHub>("/suphub")
             );
                 endpoints.MapRazorPages();
 
             });
-
-
         }
     }
 }

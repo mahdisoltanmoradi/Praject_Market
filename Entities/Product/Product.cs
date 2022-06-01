@@ -1,5 +1,6 @@
 ﻿using Entities.Common;
 using Entities.Order;
+using Entities.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -67,11 +68,9 @@ namespace Entities.Product
         #region Relation
 
         public ProductCategory ProductCategories { get; set; }
-
         public List<OrderDetail> OrderDetails { get; set; }
         public List<ProductComment> ProductComment { get; set; }
-
-
+        public ICollection<Discount.Discount> Discounts { get; set; }
         #endregion
     }
     public class ProductConfiguration : IEntityTypeConfiguration<Product>

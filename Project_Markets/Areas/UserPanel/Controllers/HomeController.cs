@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Services.Utilities;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,12 +15,15 @@ namespace Project_Markets.Areas.UserPanel.Controllers
     public class HomeController : Controller
     {
         private readonly IUserRepository _userRepository;
-        public HomeController(IUserRepository userRepository)
+        private readonly IUserAddressRepository _userAddressRepository;
+        public HomeController(IUserRepository userRepository, IUserAddressRepository userAddressRepository)
         {
             this._userRepository = userRepository;
+            _userAddressRepository = userAddressRepository;
         }
         public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
+            ViewData["UserAddress"] = _userAddressRepository.GetAddress(ClaimUtility.GetUserId(User));
             return View(await _userRepository.GetUserInformation(User.Identity.Name,cancellationToken));
         }
 

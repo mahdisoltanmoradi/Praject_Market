@@ -117,21 +117,23 @@
         </div>
     </div>
 
-    <div class="card" id="ChatBox">
+    <div class="card mb-4" id="ChatBox">
         <div class="card-header">
             <b>پشتیبانی آنلاین</b>
+            <button onclick="hideChatPanel()" class="ml-3 close text-danger" type="button" data-dismiss="toast" aria-label="نزدیک">
+                <span aria-hidden="true">×</span>
+            </button>
         </div>
+
         <div id="MessagePanel">
-            <ul id="Messages">
+            <ul id="Messages" class="py-2 px-3">
             </ul>
-
-
             <div id="SendNewMessage">
-                <form id="NewMessageForm" class="row">
+                <form id="NewMessageForm" class=" d-flex ml-0 pb-2 pl-0 justify-content-between align-times-center w-100  ">
                     <input id="MessageInput"
-                           class="form-control col-md-8 col-sm-8"
+                           class="rounded py-1 px-3 ml-2 mr-1"
                            placeholder="پیام خود را وارد کنید..." />
-                    <button class="btn btn-success col-md-4 col-md-4">
+                    <button class="btn btn-success mr-1">
                         ارسال
                     </button>
 

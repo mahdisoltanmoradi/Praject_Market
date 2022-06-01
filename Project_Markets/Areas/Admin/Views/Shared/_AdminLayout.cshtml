@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>پنل مدیریت تاپ لرن</title>
+    <title>پنل مدیریت فروشگاه</title>
 
     <!-- Core CSS - Include with every page -->
     <link href="/AdminContent/css/bootstrap-rtl.css" rel="stylesheet">
@@ -117,20 +117,28 @@
     </div>
     <!-- /#wrapper -->
     <!-- Core Scripts - Include with every page -->
-    <script src="/AdminContent/js/jquery-1.10.2.js"></script>
-    <script src="/AdminContent/js/bootstrap.min.js"></script>
-    <script src="/AdminContent/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/AdminContent/js/jquery-1.10.2.js"></script>
+
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    @RenderSection("Scripts", false)
+
+
+
+    <script src="~/AdminContent/js/bootstrap.min.js"></script>
+    <script src="~/AdminContent/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
     <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="/AdminContent/js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="/AdminContent/js/plugins/morris/morris.js"></script>
+    <script src="~/AdminContent/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    @*<script src="/AdminContent/js/plugins/morris/morris.js"></script>*@
 
     <!-- SB Admin Scripts - Include with every page -->
-    <script src="/AdminContent/js/sb-admin.js"></script>
+    <script src="~/AdminContent/js/sb-admin.js"></script>
+
+
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-    <script src="/AdminContent/js/demo/dashboard-demo.js"></script>
-    @RenderSection("Scripts", false)
+    <script src="~/AdminContent/js/demo/dashboard-demo.js"></script>
+
 </body>
 
 </html>

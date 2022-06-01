@@ -308,6 +308,22 @@
               "target": "Package",
               "version": "[5.0.2, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.11.7, )"
+            },
+            "UAParser": {
+              "target": "Package",
+              "version": "[3.1.46, )"
+            },
+            "Zarinpal": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
             "ZarinpalSandbox": {
               "target": "Package",
               "version": "[2.0.4, )"

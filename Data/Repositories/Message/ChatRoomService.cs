@@ -2,41 +2,39 @@
 using Data.Contracts;
 using Entities.Chat;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Data.Repositories.Message
 {
-    public class ChatRoomService : Repository<ChatRoom>, IChatRoomService, IScopedDependency
+    public class ChatRoomService : Repository<ClientChatRoom>, IChatRoomService, IScopedDependency
     {
         public ChatRoomService(ApplicationDbContext context)
-            :base(context)
+            : base(context)
         {
 
         }
 
-        public async Task<Guid> CreateChatRoom(string ConnectionId)
+        public async Task<long> CreateChatRoom(string ipAddress, string connectionId)
         {
-            var existChatRoom = TableNoTracking.SingleOrDefault(p => p.ConnectionId == ConnectionId);
+            var existChatRoom = TableNoTracking.SingleOrDefault(p => p.IPAddress == ipAddress);
             if (existChatRoom != null)
             {
                 return await Task.FromResult(existChatRoom.Id);
             }
 
-            ChatRoom chatRoom = new ChatRoom()
+            ClientChatRoom chatRoom = new ClientChatRoom()
             {
-                ConnectionId = ConnectionId,
-                Id = Guid.NewGuid(),
+                IPAddress = ipAddress,
+                ConnectionId = connectionId
             };
             DbContext.Add(chatRoom);
             DbContext.SaveChanges();
             return await Task.FromResult(chatRoom.Id);
         }
 
-        public async Task<List<Guid>> GetAllrooms()
+        public async Task<List<long>> GetAllrooms()
         {
             var rooms = Table
                 .Include(p => p.ChatMessages)
@@ -46,10 +44,17 @@ namespace Data.Repositories.Message
             return await Task.FromResult(rooms);
         }
 
-        public async Task<Guid> GetChatRoomForConnection(string CoonectionId)
+        public async Task<long> GetChatRoomForConnection(string ipAddress)
         {
-            var chatRoom = TableNoTracking.SingleOrDefault(p => p.ConnectionId == CoonectionId);
+            var chatRoom = TableNoTracking.SingleOrDefault(p => p.IPAddress == ipAddress);
             return await Task.FromResult(chatRoom.Id);
+        }
+
+        public async Task<IList<string>> GetClientMessages(string ipAddress)
+        {
+            var messages = await TableNoTracking.Include(a => a.ChatMessages).FirstOrDefaultAsync(a => a.IPAddress == ipAddress);
+
+            return messages.ChatMessages.Select(g=>g.Message).ToList();
         }
     }
 }

@@ -2,6 +2,7 @@
 @model Data.DTOs.InformationUserViewModel
 @{
     ViewData["Title"] = "Index";
+    List<Data.DTOs.Address.UserAddressDto> userAddresses = ViewData["UserAddress"] as List<Data.DTOs.Address.UserAddressDto>;
 }
 
 <div class="preloader" id="preloader">
@@ -93,8 +94,43 @@
                         <div class="data-content">@Model.RegisterDate.ToShamsi()</div>
                     </div>
                     <div class="single-profile-data d-flex align-items-center justify-content-between">
-                        <div class="title d-flex align-items-center"><i class="lni lni-star"></i><span>سفارش من</span></div>
-                        <div class="data-content"><a class="btn btn-danger btn-sm" href="">نمایش</a></div>
+                        <div class="title d-flex align-items-center"><i class="lni lni-star"></i><span>آدرس ها</span></div>
+                        <div class="data-content"><a class="btn btn-danger btn-sm" href="UserPanel/Address/Index">نمایش همه</a></div>
+                    </div>
+                    <div class="row">
+
+                        @foreach (var item in userAddresses.OrderByDescending(p=>p.Id).Take(3))
+                        {
+                            <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                    <label class="custom-control-label address-select" for="customRadio2">
+                                        <span class="head-address-select">به این آدرس ارسال شود</span>
+                                        <span> @item.PostalAddress </span>
+                                        <span>
+                                            <i class="fa fa-user"></i>
+                                            @item.ReciverName
+                                        </span>
+                                        <a href="/UserPanel/Address/Edit/@item.Id" style="color:aqua" class="link--with-border-bottom edit-address-btn" data-toggle="modal" data-target="#editAddressModal">
+                                            
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                               <span style="width:10px"> </span> 
+                                        <a href="/UserPanel/Address/Delete/@item.Id" style="color:red" class="link--with-border-bottom Delete-address-btn" data-toggle="modal" data-target="#editAddressModal">
+                                            
+                                            <i class="fa fa-remove"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                            <div class="custom-control custom-radio">
+                                <a class="add-address" asp-area="UserPanel" asp-controller="Address" asp-action="AddNewAddress">
+                                    <i class="fa fa-plus"> افزودن ادرس جدید </i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <!-- Edit Profile-->
                     <div class="edit-profile-btn mt-3"><a class="btn btn-info w-100" href="/UserPanel/EditProfile"><i class="lni lni-pencil mr-2"></i>ویرایش اطلاعات</a></div>
