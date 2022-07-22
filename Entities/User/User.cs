@@ -1,5 +1,6 @@
 ﻿using Entities.Blog;
 using Entities.Common;
+using Entities.Notification;
 using Entities.Product;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,7 @@ namespace Entities.User
         public List<ProductComment> ProductComment { get; set; }
         public List<BlogComments> BlogComments { get; set; }
         public virtual List<Wallet.Wallet> Wallets { get; set; }
+        public ICollection<UserNotification> UserNotifications { get; set; }
         #endregion
     }
 

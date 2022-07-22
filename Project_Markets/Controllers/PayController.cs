@@ -45,7 +45,7 @@ namespace Project_Markets.Controllers
                 return NotFound();
             }
             string userId = ClaimUtility.GetUserId(User);
-            if (userId != payment.Userid)
+            if (userId != payment.UserId)
             {
                 return BadRequest();
             }

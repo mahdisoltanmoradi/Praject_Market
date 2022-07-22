@@ -198,60 +198,46 @@
             </div>
             <div class="row g-3">
                 <!-- Single Top Product Card-->
-               
-                    @foreach (var product in Model)
-                    {
-                        <div class="col-6 col-md-4 col-lg-3">
-                            <div class="card top-product-card">
-                                <div class="card-body mb-3 mt-3 text-left">
-                                    <span class="badge badge-success">فروش</span>
-                                    <a id="@("get-product-link-"+product.Id)" class="wishlist-btn" onclick="setFavorite(@product.Id)">
-                                        @if (favirotes.Any(a => a.ProductId == product.Id))
-                                        {
-                                            <i class="lni lni-heart-filled"></i>
-                                        }
-                                        else
-                                        {
-                                            <i class="lni lni-heart"></i>
-                                        }
 
-                                    </a>
-                                    <p></p>
-                                    <a class="product-thumbnail d-block" href="/Product/ProductInformation/@product.Id">
-                                        <img class="mb-2" style="border-radius:20px" src="/ImageProductCategory/@product.ProductImageName" alt="">
-                                    </a>
-                                    <a class="product-title d-block" href="/Product/ProductInformation/@product.Id">@product.ProductTitle</a>
-                                    <p class="sale-price">@product.ProductPrice تومان <span class="real-price"> @product.DeleteProductPrice تومان</span></p>
-                                    <form asp-action="Index" asp-controller="Basket" method="post">
-                                        <button type="submit" value="@product.Id" name="ProductId" class="btn btn-success btn-sm add2cart-notify" href="#">
-                                            <i class="lni lni-plus"></i>
-                                        </button>
-                                    </form>
-                                </div>
+                @foreach (var product in Model)
+                {
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card top-product-card">
+                            <div class="card-body mb-3 mt-3 text-left">
+                                <span class="badge badge-success">فروش</span>
+                                <a id="@("get-product-link-"+product.Id)" class="wishlist-btn" onclick="setFavorite(@product.Id)">
+                                    @if (favirotes.Any(a => a.ProductId == product.Id))
+                                    {
+                                        <i class="lni lni-heart-filled"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="lni lni-heart"></i>
+                                    }
+
+                                </a>
+                                <p></p>
+                                <a class="product-thumbnail d-block" href="/Product/ProductInformation/@product.Id">
+                                    <img class="mb-2" style="border-radius:20px" src="/ImageProductCategory/@product.ProductImageName" alt="">
+                                </a>
+                                <a class="product-title d-block" href="/Product/ProductInformation/@product.Id">@product.ProductTitle</a>
+                                <p class="sale-price">@product.ProductPrice تومان <span class="real-price"> @product.DeleteProductPrice تومان</span></p>
+                                <form asp-action="Index" asp-controller="Basket" method="post">
+                                    <button type="submit" value="@product.Id" name="ProductId" class="btn btn-success btn-sm add2cart-notify" href="#">
+                                        <i class="lni lni-plus"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                    }
+                }
             </div>
         </div>
     </div>
 </div>
-<!-- Internet Connection Status-->
-<div class="internet-connection-status" id="internetStatus"></div>
 <!-- Footer Nav-->
-<div class="footer-nav-area" id="footerNav">
-    <div class="container h-100 px-0">
-        <div class="suha-footer-nav h-100">
-            <ul class="h-100 d-flex align-items-center justify-content-between pl-0">
-                <li class="active"><a href="home.html"><i class="lni lni-home"></i>خانه</a></li>
-                <li><a href="message.html"><i class="lni lni-life-ring"></i>حمایت کردن</a></li>
-                <li><a href="cart.html"><i class="lni lni-shopping-basket"></i>سبد خرید</a></li>
-                <li><a href="pages.html"><i class="lni lni-heart"></i>صفحات</a></li>
-                <li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<partial name="_Footer" />
 
 @section Scripts{
     <script type="text/javascript">

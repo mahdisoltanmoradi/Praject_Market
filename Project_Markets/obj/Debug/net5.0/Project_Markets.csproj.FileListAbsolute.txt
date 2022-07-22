@@ -747,7 +747,6 @@ D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\DefaultBlog\Index.cshtml.g.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\DefaultBlog\GetBlogInformation.cshtml.g.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\Basket\Index.cshtml.g.cs
-D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Project_Markets.MvcApplicationPartsAssemblyInfo.cs
 D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\RestSharp.dll
 D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\UAParser.dll
 D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\Dto.dll
@@ -757,3 +756,14 @@ D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\UserPanel\Views\Address\AddNewAddress.cshtml.g.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\Basket\ShippingPayment.cshtml.g.cs
 D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\UserPanel\Views\Address\Edit.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\Discount\Create.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\Discount\Index.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\libman.json
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\ABluePersianDateTimePicker.dll
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\UserPanel\Views\Notification\Index.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\FluentValidation.dll
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\programing\Core\Project_Markets\Project_Markets\obj\Debug\net5.0\Razor\Areas\UserPanel\Views\MyFavourite\Index.cshtml.g.cs
+D:\programing\Core\Project_Markets\Project_Markets\bin\Debug\net5.0\MediatR.dll

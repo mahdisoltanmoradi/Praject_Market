@@ -26,7 +26,6 @@ namespace Data.DTOs.Discount
         public int DiscountTypeId { get; set; }
         [Display(Name = "محدودیت تخفیف")]
         public int DiscountLimitationId { get; set; }
-
         [Display(Name = "تعداد کد تخفیف")]
         public int LimitationTimes { get; set; } = 0;
         [Display(Name = "اعمال برای محصول")]

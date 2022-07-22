@@ -37,9 +37,12 @@
                             {
                                 <tr>
                                     <th scope="row">
-                                        <a class="remove-product" name="ItemId" href="/Basket/RemoveItemFromBasket/@item.Id">
-                                            <i class="lni lni-close"></i>
-                                        </a>
+                                        <form asp-action="RemoveItemFromBasket" method="post">
+                                            <input type="hidden" class="remove-product" name="ItemId" value="@item.ProductId">
+                                            <button class="ml-3 close text-danger" type="submit">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </form>
                                     </th>
                                     <td><img src="/ImageProductCategory/@item.ImageUrl" alt=""></td>
                                     <td><a href="single-product.html"> @item.ProductName<span>@item.UnitPrice   تومان ×  @item.Quantity </span> </a> </td>
@@ -61,19 +64,26 @@
                         <h6 class="mb-0">تخفیف دارید؟</h6>
                         <p class="mb-2">کد تخفیف خود را اینجا وارد کنید و از تخفیف های عالی استفاده کنید!</p>
                         <div class="coupon-form">
-                            <form action="#">
-                                <input class="form-control" type="text" placeholder="SUHA30">
-                                <button class="btn btn-primary" type="submit">درخواست دادن</button>
+                            <form asp-action="ApplyDiscount" method="post">
+                                <input type="hidden" value="@Model.Id" name="BasketId" />
+                                <input class="form-control" type="text" name="CouponCode" placeholder="کد را وارد کنید...">
+                                <button class="btn btn-primary" type="submit">ثبت کد تخفیف</button>
                             </form>
                         </div>
                     </div>
+                    @if (TempData["InvalidMessage"] != null)
+                    {
+                        <div class="alert alert-warning">
+                            <b> @TempData["InvalidMessage"]  </b><br />
+                        </div>
+                    }
                 </div>
             </div>
             <!-- Cart Amount Area-->
             <div class="card cart-amount-area">
                 <div class="card-body d-flex align-items-center justify-content-between">
                     <h5 class="total-price mb-0"><span class="counter">  @Model.Items.Sum(p => p.UnitPrice * p.Quantity).ToString("n0")</span> تومان</h5>
-                    <a href="/Basket/ShippingPayment"  class="btn btn-warning">پرداخت </a>
+                    <a href="/Basket/ShippingPayment" class="btn btn-warning">پرداخت </a>
                 </div>
             </div>
         </div>

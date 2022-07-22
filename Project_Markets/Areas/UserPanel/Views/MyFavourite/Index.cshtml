@@ -1,0 +1,77 @@
+﻿@model Data.DTOs.PaginatedItemsDto<Data.Contracts.Catalogs.CatalogItems.FavouriteCatalogItemDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Preloader-->
+<div class="preloader" id="preloader">
+    <div class="spinner-grow text-secondary" role="status">
+        <div class="sr-only">بارگذاری...</div>
+    </div>
+</div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+    <div class="container h-100 d-flex align-items-center justify-content-between">
+        <!-- Back Button-->
+        <div class="back-button"><a href="home.html"><i class="lni lni-arrow-right"></i></a></div>
+        <!-- Page Title-->
+        <div class="page-heading">
+            <h6 class="mb-0">لیست علاقه مندیها</h6>
+        </div>
+        <!-- Navbar Toggler-->
+        <div class="suha-navbar-toggler d-flex justify-content-between flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>
+    </div>
+</div>
+<div class="page-content-wrapper">
+    <!-- Top Products-->
+    <div class="top-products-area py-3">
+        <div class="container">
+            <div class="section-heading d-flex align-items-center justify-content-between">
+                <h6 class="ml-1">لیست دلخواه شما (6)</h6>
+                <!-- Layout Options-->
+                <div class="layout-options"><a class="active" href="wishlist-grid.html"><i class="lni lni-grid-alt"></i></a><a href="wishlist-list.html"><i class="lni lni-radio-button"></i></a></div>
+            </div>
+            <div class="row g-3">
+                <!-- Single Top Product Card-->
+                @foreach (var item in Model.Data)
+                {
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card top-product-card">
+                            <div class="card-body">
+                                <span class="badge badge-success">فروش</span>
+                                <a class="wishlist-btn" href="#">
+                                    <i class="lni lni-heart">
+                                    </i>
+                                </a>
+                                <a class="product-thumbnail d-block" asp-controller="Product" asp-action="ProductInformation">
+                                    <img class="mb-2" src="@item.Image" alt="@item.Name">
+                                </a>
+                                <a class="product-title d-block" href="single-product.html"></a>
+                                <p> <span class="real-price"> @item.Price تومان</span></p>
+                                <div class="product-rating">
+                                    <i class="lni lni-star-filled">
+                                    </i>
+                                    <i class="lni lni-star-filled">
+                                    </i>
+                                    <i class="lni lni-star-filled">
+                                    </i>
+                                    <i class="lni lni-star-filled">
+                                    </i>
+                                    <i class="lni lni-star-filled">
+                                    </i>
+                                </div>
+                                <form asp-action="Index" asp-controller="Basket" method="post">
+                                    <button type="submit" value="@item.Id" name="ProductId" class="btn btn-success btn-sm add2cart-notify">
+                                        <i class="lni lni-plus"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Nav-->
+<partial name="_Footer" />

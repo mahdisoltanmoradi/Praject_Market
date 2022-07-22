@@ -2,6 +2,37 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "ABluePersianDateTimePicker/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ABluePersianDateTimePicker.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ABluePersianDateTimePicker.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/netstandard2.0/wwwroot/ABlueDateTimePicker/css/ABluePersianDateTimePicker.css": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netstandard2.0/wwwroot/ABlueDateTimePicker/css/bootstrap-datetimepicker.css": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netstandard2.0/wwwroot/ABlueDateTimePicker/js/ABluePersianDateTimePicker.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netstandard2.0/wwwroot/ABlueDateTimePicker/sample/page.html": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
       "Autofac/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -54,6 +85,44 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "FluentValidation/10.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/FluentValidation.dll": {}
+        }
+      },
+      "FluentValidation.AspNetCore/10.1.0": {
+        "type": "package",
+        "dependencies": {
+          "FluentValidation": "10.1.0",
+          "FluentValidation.DependencyInjectionExtensions": "10.1.0"
+        },
+        "compile": {
+          "lib/net5.0/FluentValidation.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/FluentValidation.AspNetCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "FluentValidation.DependencyInjectionExtensions/10.1.0": {
+        "type": "package",
+        "dependencies": {
+          "FluentValidation": "10.1.0",
+          "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -101,6 +170,15 @@
             "assetType": "native",
             "rid": "win7-x86"
           }
+        }
+      },
+      "MediatR/9.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/MediatR.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/MediatR.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -4074,6 +4152,8 @@
           "AutoMapper": "10.1.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "Entities": "1.0.0",
+          "FluentValidation.AspNetCore": "10.1.0",
+          "MediatR": "9.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.8",
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0"
@@ -4147,6 +4227,26 @@
     }
   },
   "libraries": {
+    "ABluePersianDateTimePicker/2.0.1": {
+      "sha512": "K0jCID+6sRlH9gFDV6PJNGNYJ9IqmA3IwtmQhyfgwLWbAsrSTs7gK2U8p0gPjcBBa5tt4sJ0Jnq2ylPQgpM2hA==",
+      "type": "package",
+      "path": "abluepersiandatetimepicker/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "abluepersiandatetimepicker.2.0.1.nupkg.sha512",
+        "abluepersiandatetimepicker.nuspec",
+        "content/wwwroot/ABlueDateTimePicker/css/ABluePersianDateTimePicker.css",
+        "content/wwwroot/ABlueDateTimePicker/css/bootstrap-datetimepicker.css",
+        "content/wwwroot/ABlueDateTimePicker/js/ABluePersianDateTimePicker.js",
+        "content/wwwroot/ABlueDateTimePicker/sample/page.html",
+        "contentFiles/any/netstandard2.0/wwwroot/ABlueDateTimePicker/css/ABluePersianDateTimePicker.css",
+        "contentFiles/any/netstandard2.0/wwwroot/ABlueDateTimePicker/css/bootstrap-datetimepicker.css",
+        "contentFiles/any/netstandard2.0/wwwroot/ABlueDateTimePicker/js/ABluePersianDateTimePicker.js",
+        "contentFiles/any/netstandard2.0/wwwroot/ABlueDateTimePicker/sample/page.html",
+        "lib/netstandard2.0/ABluePersianDateTimePicker.dll"
+      ]
+    },
     "Autofac/6.0.0": {
       "sha512": "tRVRXGxwXbQmPy1ZGso115O55ffVW4mWtufjOy7hduQ1BNVR1j7RQQjxpYuB6tJw5OrgqRWYVJLJ8RwYNz/j+A==",
       "type": "package",
@@ -4212,6 +4312,56 @@
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
       ]
     },
+    "FluentValidation/10.1.0": {
+      "sha512": "RxhhfY9IcEY2qUMYjoUxegInbuE5Bwll7dVLsXpiJf25g0ztmzUK+HHqtPcub1caPemhMJsC+NwjHei+NgAkvA==",
+      "type": "package",
+      "path": "fluentvalidation/10.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluent-validation-icon.png",
+        "fluentvalidation.10.1.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
+      ]
+    },
+    "FluentValidation.AspNetCore/10.1.0": {
+      "sha512": "0BnEZ7z/zQ6r+jGbe9s4EcjsgXF+EyrVBcbRIVkdN+fN06RxqsByeF7PC6IcE56pYdVZePb+KANnS1z09vn2Jg==",
+      "type": "package",
+      "path": "fluentvalidation.aspnetcore/10.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluent-validation-icon.png",
+        "fluentvalidation.aspnetcore.10.1.0.nupkg.sha512",
+        "fluentvalidation.aspnetcore.nuspec",
+        "lib/net5.0/FluentValidation.AspNetCore.dll",
+        "lib/net5.0/FluentValidation.AspNetCore.xml",
+        "lib/netcoreapp3.1/FluentValidation.AspNetCore.dll",
+        "lib/netcoreapp3.1/FluentValidation.AspNetCore.xml"
+      ]
+    },
+    "FluentValidation.DependencyInjectionExtensions/10.1.0": {
+      "sha512": "1aVcf59z7lzeGxoZEYTLwGATKN5BxPESCEWpnma5r38BEb+LtalxnVkaM6JepWdcWrUIJVnRhOeUY6CjdK9YbA==",
+      "type": "package",
+      "path": "fluentvalidation.dependencyinjectionextensions/10.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluent-validation-icon.png",
+        "fluentvalidation.dependencyinjectionextensions.10.1.0.nupkg.sha512",
+        "fluentvalidation.dependencyinjectionextensions.nuspec",
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -4246,6 +4396,24 @@
         "runtimes/win7-arm/native/libuv.dll",
         "runtimes/win7-x64/native/libuv.dll",
         "runtimes/win7-x86/native/libuv.dll"
+      ]
+    },
+    "MediatR/9.0.0": {
+      "sha512": "8b3UYNxegHVYcJMG2zH8wn+YqxLvXG+eMfj0cMCq/jTW72p6O3PCKMkrIv0mqyxdW7bA4gblsocw7n+/9Akg5g==",
+      "type": "package",
+      "path": "mediatr/9.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gradient_128x128.png",
+        "lib/net461/MediatR.dll",
+        "lib/net461/MediatR.xml",
+        "lib/netstandard2.0/MediatR.dll",
+        "lib/netstandard2.0/MediatR.xml",
+        "lib/netstandard2.1/MediatR.dll",
+        "lib/netstandard2.1/MediatR.xml",
+        "mediatr.9.0.0.nupkg.sha512",
+        "mediatr.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -12426,6 +12594,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "ABluePersianDateTimePicker >= 2.0.1",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.8",
       "Microsoft.AspNetCore.Identity.UI >= 5.0.8",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 5.0.11",
@@ -12490,6 +12659,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "ABluePersianDateTimePicker": {
+            "target": "Package",
+            "version": "[2.0.1, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.8, )"

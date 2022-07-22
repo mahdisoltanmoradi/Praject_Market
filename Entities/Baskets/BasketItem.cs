@@ -9,8 +9,10 @@ namespace Entities.Baskets
         public int ProductId { get; private set; }
         public Product.Product Product { get; private set; }
         public int BasketId { get; private set; }
+        public bool IsRemoved { get; set; }
         public BasketItem(int productId, int quantity, int unitPrice)
         {
+            IsRemoved = false;
             ProductId = productId;
             UnitPrice = unitPrice;
             SetQuantity(quantity);

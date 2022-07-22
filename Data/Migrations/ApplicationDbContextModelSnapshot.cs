@@ -50,6 +50,9 @@ namespace Data.Migrations
                     b.Property<int>("DiscountAmount")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppliedDiscountId");
@@ -66,6 +69,9 @@ namespace Data.Migrations
 
                     b.Property<int>("BasketId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -181,6 +187,165 @@ namespace Data.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("Entities.Catalogs.CatalogBrand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Brand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CatalogBrands");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AvailableStock")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CatalogBrandId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CatalogTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MaxStockThreshold")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OldPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PercentDiscount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RestockThreshold")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatalogBrandId");
+
+                    b.HasIndex("CatalogTypeId");
+
+                    b.ToTable("CatalogItems");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogItemFavourite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CatalogItemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatalogItemId");
+
+                    b.ToTable("CatalogItemFavourites");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogItemFeature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CatalogItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CatlogItemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Group")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatalogItemId");
+
+                    b.ToTable("CatalogItemFeatures");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogItemImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CatalogItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CatlogItemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Src")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatalogItemId");
+
+                    b.ToTable("CatalogItemImages");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ParentCatalogTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentCatalogTypeId");
+
+                    b.ToTable("CatalogTypes");
+                });
+
             modelBuilder.Entity("Entities.Chat.ClientChatMessage", b =>
                 {
                     b.Property<long>("Id")
@@ -232,6 +397,9 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CatalogItemId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CouponCode")
                         .HasColumnType("nvarchar(max)");
 
@@ -267,6 +435,8 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CatalogItemId");
+
                     b.ToTable("Discounts");
                 });
 
@@ -295,12 +465,82 @@ namespace Data.Migrations
                     b.ToTable("DiscountUsageHistories");
                 });
 
+            modelBuilder.Entity("Entities.Notification.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FromUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FromUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NotiBody")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NotiHeader")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ToUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ToUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("Entities.Notification.UserNotification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("NotificationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NotificationId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserNotifications");
+                });
+
             modelBuilder.Entity("Entities.Order.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AppliedDiscountId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("DiscountAmount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
@@ -318,6 +558,8 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppliedDiscountId");
 
                     b.ToTable("Orders");
                 });
@@ -351,6 +593,8 @@ namespace Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CatalogItemId");
 
                     b.HasIndex("OrderId");
 
@@ -929,6 +1173,63 @@ namespace Data.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Entities.Catalogs.CatalogItem", b =>
+                {
+                    b.HasOne("Entities.Catalogs.CatalogBrand", "CatalogBrand")
+                        .WithMany()
+                        .HasForeignKey("CatalogBrandId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Catalogs.CatalogType", "CatalogType")
+                        .WithMany()
+                        .HasForeignKey("CatalogTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CatalogBrand");
+
+                    b.Navigation("CatalogType");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogItemFavourite", b =>
+                {
+                    b.HasOne("Entities.Catalogs.CatalogItem", "CatalogItem")
+                        .WithMany("CatalogItemFavourites")
+                        .HasForeignKey("CatalogItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CatalogItem");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogItemFeature", b =>
+                {
+                    b.HasOne("Entities.Catalogs.CatalogItem", "CatalogItem")
+                        .WithMany("CatalogItemFeatures")
+                        .HasForeignKey("CatalogItemId");
+
+                    b.Navigation("CatalogItem");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogItemImage", b =>
+                {
+                    b.HasOne("Entities.Catalogs.CatalogItem", "CatalogItem")
+                        .WithMany("CatalogItemImages")
+                        .HasForeignKey("CatalogItemId");
+
+                    b.Navigation("CatalogItem");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogType", b =>
+                {
+                    b.HasOne("Entities.Catalogs.CatalogType", "ParentCatalogType")
+                        .WithMany("SubType")
+                        .HasForeignKey("ParentCatalogTypeId");
+
+                    b.Navigation("ParentCatalogType");
+                });
+
             modelBuilder.Entity("Entities.Chat.ClientChatMessage", b =>
                 {
                     b.HasOne("Entities.Chat.ClientChatRoom", "ChatRoom")
@@ -938,6 +1239,13 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("ChatRoom");
+                });
+
+            modelBuilder.Entity("Entities.Discount.Discount", b =>
+                {
+                    b.HasOne("Entities.Catalogs.CatalogItem", null)
+                        .WithMany("Discounts")
+                        .HasForeignKey("CatalogItemId");
                 });
 
             modelBuilder.Entity("Entities.Discount.DiscountUsageHistory", b =>
@@ -959,8 +1267,31 @@ namespace Data.Migrations
                     b.Navigation("Order");
                 });
 
+            modelBuilder.Entity("Entities.Notification.UserNotification", b =>
+                {
+                    b.HasOne("Entities.Notification.Notification", "Notification")
+                        .WithMany("UserNotifications")
+                        .HasForeignKey("NotificationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Entities.User.User", "User")
+                        .WithMany("UserNotifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Notification");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Entities.Order.Order", b =>
                 {
+                    b.HasOne("Entities.Discount.Discount", "AppliedDiscount")
+                        .WithMany()
+                        .HasForeignKey("AppliedDiscountId");
+
                     b.OwnsOne("Entities.Order.Address", "Address", b1 =>
                         {
                             b1.Property<int>("OrderId")
@@ -992,10 +1323,18 @@ namespace Data.Migrations
                         });
 
                     b.Navigation("Address");
+
+                    b.Navigation("AppliedDiscount");
                 });
 
             modelBuilder.Entity("Entities.Order.OrderDetail", b =>
                 {
+                    b.HasOne("Entities.Catalogs.CatalogItem", "CatalogItem")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("CatalogItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Entities.Order.Order", null)
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId");
@@ -1003,6 +1342,8 @@ namespace Data.Migrations
                     b.HasOne("Entities.Product.Product", null)
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductId");
+
+                    b.Navigation("CatalogItem");
                 });
 
             modelBuilder.Entity("Entities.Payments.Payment", b =>
@@ -1138,9 +1479,32 @@ namespace Data.Migrations
                     b.Navigation("BlogComments");
                 });
 
+            modelBuilder.Entity("Entities.Catalogs.CatalogItem", b =>
+                {
+                    b.Navigation("CatalogItemFavourites");
+
+                    b.Navigation("CatalogItemFeatures");
+
+                    b.Navigation("CatalogItemImages");
+
+                    b.Navigation("Discounts");
+
+                    b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("Entities.Catalogs.CatalogType", b =>
+                {
+                    b.Navigation("SubType");
+                });
+
             modelBuilder.Entity("Entities.Chat.ClientChatRoom", b =>
                 {
                     b.Navigation("ChatMessages");
+                });
+
+            modelBuilder.Entity("Entities.Notification.Notification", b =>
+                {
+                    b.Navigation("UserNotifications");
                 });
 
             modelBuilder.Entity("Entities.Order.Order", b =>
@@ -1170,6 +1534,8 @@ namespace Data.Migrations
                     b.Navigation("BlogComments");
 
                     b.Navigation("ProductComment");
+
+                    b.Navigation("UserNotifications");
 
                     b.Navigation("Wallets");
                 });

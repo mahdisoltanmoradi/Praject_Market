@@ -58,6 +58,7 @@ namespace Project_Markets
             #endregion
             services.AddAutoMapper(typeof(UserMappingProfile));
             services.AddRazorPages();
+            services.AddControllers();
             services.AddSignalR();
         }
 
@@ -103,7 +104,7 @@ namespace Project_Markets
                  endpoints.MapHub<SupportHub>("/suphub")
             );
                 endpoints.MapRazorPages();
-
+                endpoints.MapControllers();
             });
         }
     }

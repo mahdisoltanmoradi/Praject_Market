@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Common;
+﻿using Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
@@ -9,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
+using System;
+using System.IO;
 
 namespace Services.SendEmails
 {
@@ -16,7 +16,7 @@ namespace Services.SendEmails
     {
         string RenderToStringAsync(string viewName, object model);
     }
-    public class RenderViewToString : IViewRenderService
+    public class RenderViewToString : IViewRenderService, IScopedDependency
     {
         private readonly IRazorViewEngine _razorViewEngine;
         private readonly ITempDataProvider _tempDataProvider;
@@ -31,7 +31,7 @@ namespace Services.SendEmails
             _serviceProvider = serviceProvider;
         }
 
-        public  string RenderToStringAsync(string viewName, object model)
+        public string RenderToStringAsync(string viewName, object model)
         {
             var httpContext = new DefaultHttpContext { RequestServices = _serviceProvider };
             var actionContext = new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
@@ -59,7 +59,7 @@ namespace Services.SendEmails
                     new HtmlHelperOptions()
                 );
 
-                 viewResult.View.RenderAsync(viewContext);
+                viewResult.View.RenderAsync(viewContext);
                 return sw.ToString();
             }
         }

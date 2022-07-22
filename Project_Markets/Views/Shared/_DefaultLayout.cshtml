@@ -23,6 +23,7 @@
     <!-- Stylesheet-->
     <link href="/css/ChatBox.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" />
+    <link href="~/notification/ikr.notification.css" rel="stylesheet" />
     <!-- Web App Manifest-->
     @*<link rel="manifest" href="/manifest.json">*@
 </head>
@@ -33,24 +34,19 @@
     <div class="suha-sidenav-wrapper" id="sidenavWrapper">
         <!-- Sidenav Profile-->
         <div class="sidenav-profile">
-            <div class="user-profile"><img src="/img/bg-img/9.jpg" alt=""></div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="clientarea">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div class="loggein ">
-                            <i class="zmdi zmdi-account"></i><a href="" type="">@User.Identity.Name</a>
-                        </div>
-                    }
-                    else
-                    {
-                        <div>
-                            <i class="zmdi zmdi-account"></i><h4>کاربر مهمان</h4>
-                        </div>
-                    }
-                </div>
+            <div class="user-profile"><img src="img/bg-img/9.jpg" alt=""></div>
+            <div class="user-info">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <h6 class="user-name mb-0">@User.Identity.Name</h6>
+                }
+                else
+                {
+                    <h6 class="user-name mb-0">کاربر مهمان</h6>
+                }
             </div>
         </div>
+
         <!-- Sidenav Nav-->
         <ul class="sidenav-nav pl-0">
             <li><a href="profile.html"><i class="lni lni-user"></i>پروفایل من</a></li>
@@ -101,6 +97,7 @@
     <script src="~/js/pwa.js"></script>
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/SignalRService.js"></script>
+    <script src="~/notification/ikr.notificationPlugin.js"></script>
 
     <script src="~/js/site.js"></script>
     @await RenderSectionAsync("Scripts", required: false);

@@ -22,8 +22,10 @@ namespace Data.DTOs
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "مرا به خاطر بسپار")]
-        public bool RememberMe { get; set; }
+        [Display(Name = "Remember Me")]
+        public bool IsPersistent { get; set; } = false;
+
+        public string ReturnUrl { get; set; }
     }
     #endregion
 

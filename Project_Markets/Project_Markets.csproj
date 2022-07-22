@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\Mahdi\.nuget\packages\abluepersiandatetimepicker\2.0.1\contentFiles\any\netstandard2.0\wwwroot\ABlueDateTimePicker\css\ABluePersianDateTimePicker.css" />
+    <Content Remove="C:\Users\Mahdi\.nuget\packages\abluepersiandatetimepicker\2.0.1\contentFiles\any\netstandard2.0\wwwroot\ABlueDateTimePicker\css\bootstrap-datetimepicker.css" />
+    <Content Remove="C:\Users\Mahdi\.nuget\packages\abluepersiandatetimepicker\2.0.1\contentFiles\any\netstandard2.0\wwwroot\ABlueDateTimePicker\js\ABluePersianDateTimePicker.js" />
+    <Content Remove="C:\Users\Mahdi\.nuget\packages\abluepersiandatetimepicker\2.0.1\contentFiles\any\netstandard2.0\wwwroot\ABlueDateTimePicker\sample\page.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
@@ -13,6 +20,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="ABluePersianDateTimePicker" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.11" />

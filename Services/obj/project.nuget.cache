@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "6cbOUTRnmT5JsZLRbedLp7LpHjGXuUFE1pANolLKDXYbyEUBU5Y30L0+vUq0FXg/ln899HfmH09RjNVP0A9uTw==",
+  "dgSpecHash": "o7jiPopO4+yuAINcxh/vCIojhPBZhGUr3inbCg2ZSmfhGC6b0esPvzKtht/ylHaG9ZVn7IJR/Ge1R/YCLAPU4w==",
   "success": true,
   "projectFilePath": "D:\\programing\\Core\\Project_Markets\\Services\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mahdi\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Mahdi\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\fluentvalidation\\10.1.0\\fluentvalidation.10.1.0.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.1.0\\fluentvalidation.aspnetcore.10.1.0.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.1.0\\fluentvalidation.dependencyinjectionextensions.10.1.0.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\Mahdi\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Mahdi\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Mahdi\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Project_Markets.Models.ViewModels;
 using Services.Utilities;
 using System;
+using System.Linq;
 using System.Threading;
 
 namespace Project_Markets.Controllers
@@ -16,21 +17,32 @@ namespace Project_Markets.Controllers
     public class BasketController : Controller
     {
         private readonly IBasketRepository _basketRepository;
-        private readonly SignInManager<User> signInManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly IUserAddressRepository _userAddressRepository;
         private readonly IOrderRepository _orderRepository;
         private readonly IPaymentRepository _paymentRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IDiscountRepository _discountRepository;
+        private readonly UserManager<User> _userManager;
         private string userId = null;
 
-        public BasketController(IBasketRepository basketRepository, SignInManager<User> signInManager, IUserAddressRepository userAddressRepository = null, IOrderRepository orderRepository = null, IPaymentRepository paymentRepository = null, IUserRepository userRepository = null)
+        public BasketController(IBasketRepository basketRepository
+            , SignInManager<User> signInManager
+            , IUserAddressRepository userAddressRepository = null
+            , IOrderRepository orderRepository = null
+            , IPaymentRepository paymentRepository = null
+            , IUserRepository userRepository = null
+            , IDiscountRepository discountRepository = null
+            , UserManager<User> userManager = null)
         {
             this._basketRepository = basketRepository;
-            this.signInManager = signInManager;
+            this._signInManager = signInManager;
             _userAddressRepository = userAddressRepository;
             _orderRepository = orderRepository;
             _paymentRepository = paymentRepository;
             _userRepository = userRepository;
+            this._discountRepository = discountRepository;
+            _userManager = userManager;
         }
         [HttpGet]
         public IActionResult Index()
@@ -63,12 +75,6 @@ namespace Project_Markets.Controllers
             return Json(_basketRepository.SetQuantities(basketItemId, quantity));
         }
 
-        [AllowAnonymous]
-        public IActionResult RemoveDiscount(int id)
-        {
-            _basketRepository.RemoveDiscountFromBasket(id);
-            return RedirectToAction(nameof(Index));
-        }
 
         [HttpGet]
         public IActionResult ShippingPayment(CancellationToken cancellationToken)
@@ -76,6 +82,11 @@ namespace Project_Markets.Controllers
             ShippingPaymentViewModel model = new ShippingPaymentViewModel();
             string userId = ClaimUtility.GetUserId(User);
             model.Basket = _basketRepository.GetBasketForUser(userId);
+            if (model.Basket==null)
+            {
+                throw new Exception("سبدی برای این کاربر وجود ندارد");
+                return View(model);
+            }
             model.UserAddresses = _userAddressRepository.GetAddress(userId);
             return View(model);
         }
@@ -96,13 +107,44 @@ namespace Project_Markets.Controllers
             else
             {
                 //برو به صفحه سفارشات من
-                return RedirectToAction("Index", "Orders", new { area = "products" });
+               // return RedirectToAction("Index", "Orders", new { area = "UserPanel" });
+                return RedirectToAction("UserPanel/Order/Index");
             }
         }
 
+
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult ApplyDiscount(string CouponCode, int BasketId)
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+            var valisDiscount = _discountRepository.IsDiscountValid(CouponCode, user);
+
+
+            if (valisDiscount.IsSuccess)
+            {
+                _discountRepository.ApplyDiscountInBasket(CouponCode, BasketId);
+            }
+            else
+            {
+                TempData["InvalidMessage"] = String.Join(Environment.NewLine, valisDiscount.Message.Select(a => String.Join(", ", a)));
+
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [AllowAnonymous]
+        public IActionResult RemoveDiscount(int Id)
+        {
+            _discountRepository.RemoveDiscountFromBasket(Id);
+            return RedirectToAction(nameof(Index));
+        }
+
+
         private BasketDto GetOrSetBasket()
         {
-            if (signInManager.IsSignedIn(User))
+            if (_signInManager.IsSignedIn(User))
             {
                 userId = ClaimUtility.GetUserId(User);
                 return _basketRepository.GetOrCreateBasketForUser(userId);

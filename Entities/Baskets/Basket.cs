@@ -12,10 +12,11 @@ namespace Entities.Baskets
         public int DiscountAmount { get; private set; } = 0;
         public Discount.Discount AppliedDiscount { get; private set; }
         public int? AppliedDiscountId { get; private set; }
-
+        public bool IsRemoved { get; set; }
         public ICollection<BasketItem> Items => _items.AsReadOnly();
         public Basket(string buyerId)
         {
+            IsRemoved = false;
             this.BuyerId = buyerId;
         }
 

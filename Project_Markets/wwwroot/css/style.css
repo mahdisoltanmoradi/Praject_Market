@@ -2741,6 +2741,10 @@ li.suha-dropdown-menu {
     .blog-details-post-thumbnail {
         height: 450px;
     }
+        .single-product-slide  img {
+            width: 300px;
+            height: 300px;
+        }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2748,6 +2752,10 @@ li.suha-dropdown-menu {
     .blog-details-post-thumbnail {
         height: 500px;
     }
+        .single-product-slide  img {
+            width: 500px;
+            height: 500px;
+        }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {

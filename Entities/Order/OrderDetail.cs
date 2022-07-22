@@ -1,11 +1,11 @@
-﻿using Entities.Common;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Entities.Catalogs;
+using Entities.Common;
 
 namespace Entities.Order
 {
     public class OrderDetail : BaseEntity<int>
     {
+        public CatalogItem CatalogItem { get; set; }
         public int CatalogItemId { get; private set; }
         public string ProductName { get; private set; }
         public string PictureUri { get; private set; }

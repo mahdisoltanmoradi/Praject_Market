@@ -66,8 +66,11 @@
     <!-- Product Slides-->
     <div class="product-slides owl-carousel text-center align-items-center">
         <!-- Single Hero Slide-->
-        <div class="single-product-slide mb-5 mt-1" style="border-radius:50%;background-position:center;background-size:cover;background-repeat:no-repeat;position:relative;margin-left:30%;height:400px!important;width:40%; background-image: url('/ImageProductCategory/@Model.ProductImageName')"></div>
+        <div class="single-product-slide mb-5 w-100 d-flex justify-content-center align-items-center">
+            <img src="/ImageProductCategory/@Model.ProductImageName" class=" rounded-circle img-element" />
+        </div>
     </div>
+   
     <div class="product-description pb-3">
         <!-- Product Title & Meta Data-->
         <div class="product-title-meta-data bg-white mb-3 py-3">
@@ -179,7 +182,7 @@
                         <input class="form-control cart-quantity-input" type="text" step="1" name="quantity" value="3">
                         <div class="quantity-button-handler">+</div>
                     </div>
-                    <button href="/Cart/@Model.CategoryId" class="btn btn-danger ml-3" type="submit">افزودن به سبد خرید</button>
+                    <button href="/Basket/Index/@Model.Id" class="btn btn-danger ml-3" type="submit">افزودن به سبد خرید</button>
                 </form>
             </div>
         </div>

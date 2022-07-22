@@ -18,12 +18,20 @@ namespace Entities.Order
         private readonly List<OrderDetail> _orderItems = new List<OrderDetail>();
         public IReadOnlyCollection<OrderDetail> OrderItems => _orderItems.AsReadOnly();
 
-        public Order(string userId, Address address, List<OrderDetail> orderItems, PaymentMethod paymentMethod)
+        public decimal DiscountAmount { get; private set; }
+        public Discount.Discount AppliedDiscount { get; private set; }
+        public int? AppliedDiscountId { get; private set; }
+
+        public Order(string userId, Address address, List<OrderDetail> orderItems, PaymentMethod paymentMethod, Discount.Discount discount)
         {
             UserId = userId;
             Address = address;
             _orderItems = orderItems;
             PaymentMethod = paymentMethod;
+            if (discount != null)
+            {
+                ApplyDiscountCode(discount);
+            }
         }
 
         public Order()
@@ -68,6 +76,13 @@ namespace Entities.Order
         public int TotalPrice()
         {
             return _orderItems.Sum(p => p.UnitPrice * p.Units);
+        }
+
+        public void ApplyDiscountCode(Discount.Discount discount)
+        {
+            this.AppliedDiscount = discount;
+            this.AppliedDiscountId = discount.Id;
+            this.DiscountAmount = discount.GetDiscountAmount(TotalPrice());
         }
     }
 }

@@ -9,6 +9,6 @@ namespace Data.DTOs.Payment
         public string Description { get; set; }
         public string Email { get; set; }
         public int Amount { get; set; }
-        public string Userid { get; set; }
+        public string UserId { get; set; }
     }
 }

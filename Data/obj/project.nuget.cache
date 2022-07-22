@@ -1,12 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "cI7+9/Dy8ahPdaBIVGNNHhKKCJ9pviXIiZnb/GDM7JfpiqrZhij9VY1b7Q73lNV9wHdxBEOeMEg3+nkGTNakhw==",
+  "dgSpecHash": "jxryzq55JVYxtDhMsqcB82liI2d1DUnxV4nP6/3swiheUpNoHp4Qx/R1yAMx/kkMPfLrscvDmDxKaGTR3zM+SQ==",
   "success": true,
   "projectFilePath": "D:\\programing\\Core\\Project_Markets\\Data\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mahdi\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Mahdi\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\fluentvalidation\\10.1.0\\fluentvalidation.10.1.0.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.1.0\\fluentvalidation.aspnetcore.10.1.0.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.1.0\\fluentvalidation.dependencyinjectionextensions.10.1.0.nupkg.sha512",
     "C:\\Users\\Mahdi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\Mahdi\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Mahdi\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Mahdi\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

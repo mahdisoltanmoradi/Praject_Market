@@ -28,9 +28,11 @@
                                 <i class="lni lni-star-filled"></i>
                                 <i class="lni lni-star-filled"></i>
                             </div>
-                            <a class="btn btn-success btn-sm add2cart-notify" href="/Product/ProductInformation/@item.Id">
-                                <i class="lni lni-plus"></i>
-                            </a>
+                            <form asp-action="Index" asp-controller="Basket" method="post">
+                                <button type="submit" value="@item.Id" name="ProductId" class="btn btn-success btn-sm add2cart-notify">
+                                    <i class="lni lni-plus"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

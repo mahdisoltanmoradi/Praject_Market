@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "m6XXV9RUFiDPyZ5rXthKRv/cwzNPdrdDUlpGh9rrjF4QBvq2yTBiL4iww+eVQo+yG9zP2C2HoFLAR1xtTDzthA==",
+  "success": true,
+  "projectFilePath": "D:\\programing\\Core\\Project_Markets\\StaticFile_Markets\\StaticFile_Markets.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mahdi\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Mahdi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}

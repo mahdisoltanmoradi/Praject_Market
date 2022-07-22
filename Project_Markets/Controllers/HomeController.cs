@@ -27,7 +27,8 @@ namespace Project_Markets.Controllers
         {
             ViewData["Blogs"] = await _blogrepository.TableNoTracking.OrderByDescending(b => b.BlogVisit).Take(3).ToListAsync();
             ViewData["Slider"] = await _productRepository.GetProductInSlider(cancellationToken);
-            return View(await _productRepository.GetTopProduct(cancellationToken));
+            var topProduct = await _productRepository.GetTopProduct(cancellationToken);
+            return View(topProduct);
         }
 
 

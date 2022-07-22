@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebFramework", "WebFramework\WebFramework.csproj", "{380A89A1-17F5-4B0D-BE57-C75FFADE19FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticFile_Markets", "StaticFile_Markets\StaticFile_Markets.csproj", "{D08424E1-44DE-4814-AD8B-50D2E3BC8496}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{380A89A1-17F5-4B0D-BE57-C75FFADE19FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{380A89A1-17F5-4B0D-BE57-C75FFADE19FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{380A89A1-17F5-4B0D-BE57-C75FFADE19FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D08424E1-44DE-4814-AD8B-50D2E3BC8496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D08424E1-44DE-4814-AD8B-50D2E3BC8496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D08424E1-44DE-4814-AD8B-50D2E3BC8496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D08424E1-44DE-4814-AD8B-50D2E3BC8496}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

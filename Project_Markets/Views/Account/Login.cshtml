@@ -38,6 +38,7 @@
                 <!-- Register Form-->
                 <div class="register-form mt-5 px-4">
                     <form asp-action="login" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group text-left mb-4">
                             <span>ایمیل کاربری</span>
                             <label asp-for="Email"><i class="lni lni-user"></i></label>
@@ -52,12 +53,12 @@
                         </div>
                         <div class="form-group text-left mb-4">
                             <div class="checkbox">
-                                <label asp-for="RememberMe"><i class="lni lni-user"></i></label>
-                                <input asp-for="RememberMe" />
-                                @Html.DisplayNameFor(m => m.RememberMe)
+                                <label asp-for="IsPersistent"><i class="lni lni-user"></i></label>
+                                <input asp-for="IsPersistent" />
+                                @Html.DisplayNameFor(m => m.IsPersistent)
                             </div>
                         </div>
-
+                        <input type="hidden" asp-for="ReturnUrl" />
                         <button class="btn btn-success btn-lg w-100" type="submit"> ورود</button>
                     </form>
                 </div>

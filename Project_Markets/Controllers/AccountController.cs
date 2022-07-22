@@ -1,6 +1,7 @@
 ﻿using Common.Utilities.Convertors;
 using Data.Contracts;
 using Data.DTOs;
+using Entities.Role;
 using Entities.User;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -19,12 +20,21 @@ namespace Project_Markets.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<Role> _roleManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly IBasketRepository _basketRepository;
         //private readonly IViewRenderService _viewRender;
 
-        public AccountController(IUserRepository userRepository, UserManager<User> userManager/*, IViewRenderService viewRender*/)
+        public AccountController(IUserRepository userRepository
+            , UserManager<User> userManager/*, IViewRenderService viewRender*/
+            , SignInManager<User> signInManager = null
+            , IBasketRepository basketRepository = null, RoleManager<Role> roleManager = null)
         {
             this._userRepository = userRepository;
             this._userManager = userManager;
+            _signInManager = signInManager;
+            _basketRepository = basketRepository;
+            _roleManager = roleManager;
             //this._viewRender = viewRender;
         }
 
@@ -54,12 +64,18 @@ namespace Project_Markets.Controllers
                 lifeLocation = "There is no place",
                 SecurityStamp = Guid.NewGuid().ToString("D")
             };
-            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, register.Password);
-            await _userRepository.AddUser(user, cancellationToken);
 
-            await _userManager.AddToRoleAsync(user, "person");
-            //await _userRepository.AddAsync(user, cancellationToken);
-            return View();
+            var result = _userManager.CreateAsync(user, register.Password).Result;
+            await _userManager.AddToRoleAsync(user, "Person");
+            if (result.Succeeded)
+            {
+                var userName = _userManager.FindByNameAsync(user.UserName).Result;
+                TransferBasketForuser(user.Id.ToString());
+                _signInManager.SignInAsync(user, true).Wait();
+                return RedirectToAction(nameof(Login));
+            }
+
+            return View(register);
         }
 
         [HttpGet]
@@ -76,19 +92,22 @@ namespace Project_Markets.Controllers
             {
                 return View(login);
             }
-            var user = await _userManager.FindByEmailAsync(login.Email);
+            var user = _userManager.FindByEmailAsync(login.Email).Result;
             if (user == null)
             {
-                ModelState.AddModelError("Email", "کاربری با این مشخصات یافت نشد");
+                ModelState.AddModelError("", "کاربر یافت نشد");
                 return View(login);
             }
-            //string PasswordHash = _userManager.PasswordHasher.HashPassword(user, login.Password);
-            //var password = await _userRepository.ExistPassword(PasswordHash);
-            //if (password ==null)
-            //{
-            //    ModelState.AddModelError("Password", "کلمه عبور صحیح نمیباشد");
-            //    return View(login);
-            //}
+            var hashPassword = _userManager.PasswordHasher.HashPassword(user, login.Password);
+            _signInManager.SignOutAsync();
+            var result = _signInManager.PasswordSignInAsync(user, hashPassword
+                , login.IsPersistent, true).Result;
+
+            if (result.Succeeded)
+            {
+                TransferBasketForuser(user.Id.ToString());
+                return Redirect(login?.ReturnUrl ?? "/");
+            }
 
             var roles = await _userManager.GetRolesAsync(user);
             var claims = new List<Claim>
@@ -114,6 +133,17 @@ namespace Project_Markets.Controllers
             ViewBag.IsSuccess = true;
             return View();
 
+        }
+
+        private void TransferBasketForuser(string userId)
+        {
+            string cookieName = "BasketId";
+            if (Request.Cookies.ContainsKey(cookieName))
+            {
+                var anonymousId = Request.Cookies[cookieName];
+                _basketRepository.TransferBasket(anonymousId, userId);
+                Response.Cookies.Delete(cookieName);
+            }
         }
 
         public IActionResult ForgotPassword()
@@ -173,8 +203,8 @@ namespace Project_Markets.Controllers
         [Route("Logout")]
         public IActionResult Logout()
         {
-            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return Redirect("/Account/Login");
+            _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
         #endregion
     }

@@ -1,6 +1,8 @@
 ﻿using Data.Contracts;
+using Data.Contracts.Catalogs.CatalogItems;
 using Entities.Product;
 using Entities.User;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -15,6 +17,10 @@ namespace Project_Markets.Controllers
         private readonly IProductCommentRepository _productCommentRepository;
         private readonly IRepository<Entities.User.FavoriteUser> _favorite;
         private readonly IUserRepository _userRepository;
+        private readonly IMediator mediator;
+        private readonly IGetCatalogIItemPLPRepository getCatalogIItemPLPRepository;
+        private readonly IGetCatalogItemPDPRepository getCatalogItemPDPRepository;
+
         public ProductController(IProductRepository productRepository
             , IProductCommentRepository productCommentRepository
             , IRepository<Entities.User.FavoriteUser> favorite

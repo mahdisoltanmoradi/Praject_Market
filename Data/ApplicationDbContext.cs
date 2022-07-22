@@ -1,9 +1,11 @@
 ﻿using Common.Utilities;
 using Data.Contracts;
 using Entities.Baskets;
+using Entities.Catalogs;
 using Entities.Chat;
 using Entities.Common;
 using Entities.Discount;
+using Entities.Notification;
 using Entities.Order;
 using Entities.Payments;
 using Entities.Product;
@@ -33,12 +35,19 @@ namespace Data
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<CatalogItem> CatalogItems { get; set; }
+        public DbSet<CatalogType> CatalogTypes { get; set; }
+        public DbSet<CatalogBrand> CatalogBrands { get; set; }
+        public DbSet<CatalogItemFeature> CatalogItemFeatures { get; set; }
+        public DbSet<CatalogItemImage> CatalogItemImages { get; set; }
+        public DbSet<CatalogItemFavourite> CatalogItemFavourites { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<UserAddress> UserAddresses { get; set; }
         public DbSet<DiscountUsageHistory> DiscountUsageHistories { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var cascadeFKs = modelBuilder.Model.GetEntityTypes()
@@ -57,6 +66,11 @@ namespace Data
 
             modelBuilder.Entity<ProductCategory>()
                 .HasQueryFilter(g => !g.IsDelete);
+
+            modelBuilder.Entity<BasketItem>()
+            .HasQueryFilter(m => EF.Property<bool>(m, "IsRemoved") == false);
+            modelBuilder.Entity<Basket>()
+                .HasQueryFilter(m => EF.Property<bool>(m, "IsRemoved") == false);
 
             modelBuilder.Entity<Order>().OwnsOne(p=>p.Address);
 
