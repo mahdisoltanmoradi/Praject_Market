@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\programing\\Core\\Project_Markets\\StaticFile_Markets\\StaticFile_Markets.csproj": {}
+    "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\StaticFile_Markets\\StaticFile_Markets.csproj": {}
   },
   "projects": {
-    "D:\\programing\\Core\\Project_Markets\\StaticFile_Markets\\StaticFile_Markets.csproj": {
+    "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\StaticFile_Markets\\StaticFile_Markets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\programing\\Core\\Project_Markets\\StaticFile_Markets\\StaticFile_Markets.csproj",
+        "projectUniqueName": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\StaticFile_Markets\\StaticFile_Markets.csproj",
         "projectName": "StaticFile_Markets",
-        "projectPath": "D:\\programing\\Core\\Project_Markets\\StaticFile_Markets\\StaticFile_Markets.csproj",
-        "packagesPath": "C:\\Users\\Mahdi\\.nuget\\packages\\",
-        "outputPath": "D:\\programing\\Core\\Project_Markets\\StaticFile_Markets\\obj\\",
+        "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\StaticFile_Markets\\StaticFile_Markets.csproj",
+        "packagesPath": "C:\\Users\\soltanmoradi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\StaticFile_Markets\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Mahdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\soltanmoradi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\soltanmoradi\\.nuget\\local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,6 +56,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.15, 5.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -68,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

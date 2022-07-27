@@ -1,6 +1,5 @@
 ﻿using Common;
 using Data.Contracts;
-using Entities.Blog;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class BlogRepository:Repository<Blogs>,IBlogRepository, IScopedDependency
+    public class BlogRepository : Repository<Entities.Blog.Blogs>, IBlogRepository, IScopedDependency
     {
         public BlogRepository(ApplicationDbContext context)
-            :base(context)
+            : base(context)
         {
 
         }

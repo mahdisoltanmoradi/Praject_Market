@@ -6160,11 +6160,12 @@
       ]
     },
     "System.Net.NameResolution/4.3.0": {
-      "sha512": "DPvMSdd32CbEOCTtOpO4nY9UvbP6LJe375F1yEQjy667WT5LEh1Ek2T4DSVw1STR0K3LSawWfBFwoeSG0TXFeA==",
+      "sha512": "AFYl08R7MrsrEjqpQWTZWBadqXyTzNDaWpMqyxhb0d6sGhV6xMDKueuBXlLL30gz+DIRY6MpdgnHWlCh5wmq9w==",
       "type": "package",
       "path": "system.net.nameresolution/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8814,26 +8815,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mahdi\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\soltanmoradi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\programing\\Core\\Project_Markets\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "D:\\programing\\Core\\Project_Markets\\Data\\Data.csproj",
-      "packagesPath": "C:\\Users\\Mahdi\\.nuget\\packages\\",
-      "outputPath": "D:\\programing\\Core\\Project_Markets\\Data\\obj\\",
+      "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Data\\Data.csproj",
+      "packagesPath": "C:\\Users\\soltanmoradi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Data\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Mahdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\soltanmoradi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8841,14 +8835,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\soltanmoradi\\.nuget\\local": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\programing\\Core\\Project_Markets\\Entities\\Entities.csproj": {
-              "projectPath": "D:\\programing\\Core\\Project_Markets\\Entities\\Entities.csproj"
+            "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Entities\\Entities.csproj"
             }
           }
         }
@@ -8913,7 +8908,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

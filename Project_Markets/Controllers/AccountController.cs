@@ -92,14 +92,14 @@ namespace Project_Markets.Controllers
             {
                 return View(login);
             }
-            var user = _userManager.FindByEmailAsync(login.Email).Result;
+            var user = _userRepository.GetUserByEmail(login.Email, cancellationToken).Result;
             if (user == null)
             {
                 ModelState.AddModelError("", "کاربر یافت نشد");
                 return View(login);
             }
             var hashPassword = _userManager.PasswordHasher.HashPassword(user, login.Password);
-            _signInManager.SignOutAsync();
+           // await _signInManager.SignOutAsync();
             var result = _signInManager.PasswordSignInAsync(user, hashPassword
                 , login.IsPersistent, true).Result;
 

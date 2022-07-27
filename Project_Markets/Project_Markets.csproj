@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Admin\Views\BlogCategory\Create.cshtml" />
+    <None Include="Areas\Admin\Views\BlogCategory\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\BlogCategory\Index.cshtml" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
