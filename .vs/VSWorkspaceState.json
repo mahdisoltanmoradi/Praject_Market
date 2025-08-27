@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Project_Markets",
+    "\\Project_Markets\\Controllers"
   ],
-  "SelectedNode": "\\Project_Markets.sln",
+  "SelectedNode": "\\Project_Markets\\Controllers\\BasketController.cs",
   "PreviewInSolutionExplorer": false
 }

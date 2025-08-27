@@ -1,5 +1,6 @@
-﻿using infrastructure.WebFramework.BaseModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using infrastructure.WebFramework.BaseModel;
+using Microsoft.AspNetCore.Http;
 
 namespace Project_Markets.DTOs.Product
 {
@@ -12,5 +13,6 @@ namespace Project_Markets.DTOs.Product
 
         [Display(Name = "تصویر گروه محصول")]
         public string ImageProduct { get; set; }
+        public IFormFile ImageFile{ get; set; }
     }
 }

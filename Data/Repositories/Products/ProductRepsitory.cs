@@ -20,13 +20,6 @@ namespace Data.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<Product> DeleteProduct(int productId, CancellationToken cancellationToken)
-        {
-            var product = await GetByIdAsync(cancellationToken, productId);
-            await DeleteAsync(product, cancellationToken);
-            return product;
-        }
-
         public async Task<Product> GetProductInformation(int productId, CancellationToken cancellationToken)
         {
             var product = await TableNoTracking.FirstOrDefaultAsync(p => p.Id == productId, cancellationToken);
@@ -64,6 +57,13 @@ namespace Data.Repositories
         public async Task UpdateProduct(Product product, CancellationToken cancellationToken)
         {
             await UpdateAsync(product, cancellationToken);
+        }
+
+        public async Task<Product> DeleteProduct(int productId, CancellationToken cancellationToken)
+        {
+            var product = await GetByIdAsync(cancellationToken, productId);
+            await DeleteAsync(product, cancellationToken);
+            return product;
         }
     }
 }

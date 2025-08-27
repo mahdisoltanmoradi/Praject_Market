@@ -1,14 +1,16 @@
-﻿using Data.Contracts;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Data.Contracts;
 using Data.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
-using System.Threading.Tasks;
+using Services.Attributes;
 
 namespace Project_Markets.Areas.UserPanel.Controllers
 {
     [Authorize]
     [Area("UserPanel")]
+    [ControllerInfo("کیف پول", "پنل کاربری")]
     public class WalletController : Controller
     {
         private readonly IUserRepository _userRepository;

@@ -1,16 +1,18 @@
-﻿using Data.Contracts;
+﻿using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Data.Contracts;
 using Data.Contracts.Catalogs.CatalogItems;
 using Entities.Product;
 using Entities.User;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using Services.Attributes;
 
 namespace Project_Markets.Controllers
 {
+    [ControllerInfo("محصولات", "عمومی")]
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;

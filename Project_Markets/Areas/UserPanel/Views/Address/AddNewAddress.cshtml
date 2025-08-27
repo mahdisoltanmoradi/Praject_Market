@@ -1,61 +1,137 @@
 ﻿@model Data.DTOs.Address.AddUserAddressDto
 @{
-    ViewData["Title"] = "افزودن ادرس جدید";
+	ViewData["Title"] = "افزودن ادرس جدید";
 }
 
-<div class="checkout-section shadow-around">
-    <div class="checkout-section-content">
-        <form method="post" asp-route="UserPanel/Address/AddNewAddress"  data-select2-id="select2-data-18-nzre">
-            <div class="row" data-select2-id="select2-data-17-414m">
-                <div class="col-lg-6 mb-3">
-                    <div class="text-sm text-muted mb-1">استان:</div>
-                    <div class="text-dark font-weight-bold">
-                        <div class="form-element-row mb-0">
-                            <input type="text" class="input-element" asp-for="State">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 mb-3">
-                    <div class="text-sm text-muted mb-1">شهر:</div>
-                    <div class="text-dark font-weight-bold">
-                        <div class="form-element-row mb-0">
-                            <input type="text" class="input-element" asp-for="City">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-6 mb-3">
-                    <div class="text-sm text-muted mb-1">کد پستی:</div>
-                    <div class="text-dark font-weight-bold">
-                        <div class="form-element-row mb-0">
-                            <input type="text" class="input-element" asp-for="ZipCode">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 mb-3">
-                    <div class="text-sm text-muted mb-1"> نام گیرنده:</div>
-                    <div class="text-dark font-weight-bold">
-                        <div class="form-element-row mb-0">
-                            <input type="text" class="input-element" asp-for="ReciverName">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 mb-3">
-                    <div class="text-sm text-muted mb-1">آدرس کامل:</div>
-                    <div class="text-dark font-weight-bold">
-                        <div class="form-element-row mb-0">
-                            <textarea asp-for="PostalAddress" cols="30" rows="10" class="input-element"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 mb-3">
-                    <button type="submit" class="btn btn-primary">ذخیره تغییرات <i class="fad fa-money-check-edit"></i></button>
-                </div>
-            </div>
-        </form>
-
-    </div>
+<div class="preloader" id="preloader">
+	<div class="spinner-grow text-secondary" role="status">
+		<div class="sr-only">بارگذاری...</div>
+	</div>
 </div>
+<!-- Header Area-->
+<div class="header-area" id="headerArea">
+	<div class="container h-100 d-flex align-items-center justify-content-between">
+		<!-- Logo Wrapper-->
+		<div class="logo-wrapper"><a href="home.html"><img src="img/core-img/logo-small.png" alt=""></a></div>
+		<!-- Search Form-->
+		<div class="top-search-form">
+			<p>همه آدرس ها</p>
+		</div>
+		<!-- Navbar Toggler-->
+		<div class="suha-navbar-toggler d-flex flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>
+	</div>
+</div>
+<!-- Sidenav Black Overlay-->
+<div class="sidenav-black-overlay"></div>
+<!-- Side Nav Wrapper-->
+<div class="suha-sidenav-wrapper" id="sidenavWrapper">
+	<!-- Sidenav Profile-->
+	<div class="sidenav-profile">
+		<div class="user-profile"><img src="img/bg-img/9.jpg" alt=""></div>
+		<div class="user-info">
+			<h6 class="user-name mb-0">نیلوفر</h6>
+			<p class="available-balance">حساب شما <span><span class="counter">350000</span></span><span> تومان</span></p>
+		</div>
+	</div>
+	<!-- Sidenav Nav-->
+	<ul class="sidenav-nav pl-0">
+		<li><a href="/UserPanel/Index"><i class="lni lni-user"></i>پروفایل من</a></li>
+		<li><a href="notifications.html"><i class="lni lni-alarm lni-tada-effect"></i>اطلاعیه ها <span class="ml-3 badge badge-warning">3</span></a></li>
+		<li class="suha-dropdown-menu">
+			<a href="#"><i class="lni lni-cart"></i>صفحات خرید</a>
+			<ul>
+				<li><a href="shop-grid.html">- فروشگاه شبکه</a></li>
+				<li><a href="shop-list.html">- لیست فروشگاه</a></li>
+				<li><a href="single-product.html">- مشخصات محصول</a></li>
+				<li><a href="featured-products.html">- محصولات برجسته</a></li>
+				<li><a href="flash-sale.html">- فروش فلش</a></li>
+			</ul>
+		</li>
+		<li><a href="pages.html"><i class="lni lni-empty-file"></i>تمام صفحات</a></li>
+		<li class="suha-dropdown-menu">
+			<a href="wishlist-grid.html"><i class="lni lni-heart"></i>علاقه مندی های من</a>
+			<ul>
+				<li><a href="wishlist-grid.html">- شبکه مورد علاقه</a></li>
+				<li><a href="wishlist-list.html">- لیست دلخواه</a></li>
+			</ul>
+		</li>
+		<li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
+		<li><a href="intro.html"><i class="lni lni-power-switch"></i>خروج از سیستم</a></li>
+	</ul>
+	<!-- Go Back Button-->
+	<div class="go-home-btn" id="goHomeBtn"><i class="lni lni-arrow-right"></i></div>
+</div>
+
+<div class="container-fluid mt-5 mt-lg-7 px-3 px-lg-5" style="margin:0px,200px">
+	<div class="checkout-section shadow-sm rounded bg-white p-4 p-lg-5">
+		<div class="checkout-section-content">
+			<form method="post" asp-route="UserPanel/Address/AddNewAddress">
+				<div class="row g-3">
+					<!-- g-3 = فاصله بین فیلدها -->
+
+					<div class="col-lg-6">
+						<label class="form-label small text-muted">استان</label>
+						<input type="text" class="form-control rounded-pill" asp-for="State" placeholder="مثال: تهران">
+					</div>
+
+					<div class="col-lg-6">
+						<label class="form-label small text-muted">شهر</label>
+						<input type="text" class="form-control rounded-pill" asp-for="City" placeholder="مثال: کرج">
+					</div>
+
+					<div class="col-lg-6">
+						<label class="form-label small text-muted">کد پستی</label>
+						<input type="text" class="form-control rounded-pill" asp-for="ZipCode" placeholder="مثال: 1234567890">
+					</div>
+
+					<div class="col-lg-6">
+						<label class="form-label small text-muted">نام گیرنده</label>
+						<input type="text" class="form-control rounded-pill" asp-for="ReciverName" placeholder="مثال: علی رضایی">
+					</div>
+
+					<div class="col-12">
+						<label class="form-label small text-muted">آدرس کامل</label>
+						<textarea asp-for="PostalAddress"
+								  class="form-control rounded big-textarea"
+								  placeholder="آدرس دقیق خود را وارد کنید..."></textarea>
+					</div>
+
+
+					<div class="col-12 text-center mt-3">
+						<button type="submit" class="btn btn-primary px-4 rounded-pill shadow-sm">
+							ذخیره تغییرات <i class="fa fa-save ms-1"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- Internet Connection Status-->
+<div class="internet-connection-status" id="internetStatus"></div>
+<!-- Footer Nav-->
+<div class="footer-nav-area" id="footerNav">
+	<div class="container h-100 px-0">
+		<div class="suha-footer-nav h-100">
+			<ul class="h-100 d-flex align-items-center justify-content-between pl-0">
+				<li class="active"><a href="/"><i class="lni lni-home"></i>خانه</a></li>
+				<li><a href="#"><i class="lni lni-life-ring"></i>ارتباط با ما</a></li>
+				<li><a href="/UserPanel/Wallet"><i class="lni lni-shopping-basket"></i>سبد خرید</a></li>
+				<li><a href="pages.html"><i class="lni lni-heart"></i>درباره ما</a></li>
+				<li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<style>
+	.big-textarea {
+		min-height: 180px;
+		resize: none;
+		font-size: 1rem;
+		padding: 12px;
+		line-height: 1.6;
+	}
+</style>

@@ -1,14 +1,14 @@
 ﻿using Data.Contracts;
-using Entities.Notification;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Services.Attributes;
 using Services.Utilities;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Project_Markets.Areas.UserPanel.Controllers
 {
     [Area("UserPanel")]
     [Authorize]
+    [ControllerInfo("اعلان ها", "پنل کاربری")]
     public class NotificationController : Controller
     {
         private readonly INotificationRepository _notificationRepository;
@@ -23,7 +23,7 @@ namespace Project_Markets.Areas.UserPanel.Controllers
         {
             string nToUserId = ClaimUtility.GetUserId(User);
             var model = _notificationRepository.GetNotifications(nToUserId, bIsGetOnlyUnread);
-            if (model==null)
+            if (model == null)
             {
                 ModelState.AddModelError("Message", "Null");
                 return null;
@@ -34,7 +34,7 @@ namespace Project_Markets.Areas.UserPanel.Controllers
         public JsonResult GetNotification(bool bIsGetOnlyUnread = false)
         {
             string nToUserId = ClaimUtility.GetUserId(User);
-            var model= _notificationRepository.GetNotifications(nToUserId, bIsGetOnlyUnread);
+            var model = _notificationRepository.GetNotifications(nToUserId, bIsGetOnlyUnread);
             return Json(model);
         }
     }

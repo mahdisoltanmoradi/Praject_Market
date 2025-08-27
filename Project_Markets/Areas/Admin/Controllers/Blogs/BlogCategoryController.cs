@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
 using Data.Contracts;
 using Data.Contracts.Blogs;
 using Entities.Blog;
@@ -7,16 +12,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project_Markets.DTOs.Blog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using Services.Attributes;
 
 namespace Project_Markets.Areas.Admin.Controllers.Blogs
 {
     [Area("Admin")]
     [Authorize]
+    [ControllerInfo("دسته های وبلاگ", "پنل ادمین")]
     public class BlogCategoryController : Controller
     {
         private readonly IBlogCategoryRepository _blogCategoryRepository;

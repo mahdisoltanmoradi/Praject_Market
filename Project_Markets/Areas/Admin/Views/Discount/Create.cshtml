@@ -1,6 +1,6 @@
 ﻿@model Data.DTOs.Discount.AddNewDiscountDto
 @{
-    ViewData["Title"] = "افزودن تخفیف";
+	ViewData["Title"] = "افزودن تخفیف";
 }
 @using Common.Enums;
 <link href="~/css/persian-datepicker.css" rel="stylesheet" />
@@ -8,108 +8,127 @@
 <link href="~/lib/select2/css/select2.css" rel="stylesheet" />
 <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
 
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">تخفیف جدید  ثبت کنید</h1>
+	</div>
+	<!-- /.col-lg-12 -->
+</div>
 
 <div class="col-lg-12 col-12 layout-spacing">
-    <div class="statbox widget box box-shadow">
-        <div class="widget-header">
-            <div class="row">
-                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                    <h4> تخفیف جدید  ثبت کنید  </h4>
-                </div>
-            </div>
-        </div>
-        <div class="widget-content widget-content-area">
-            <form action="Create" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="row">
-                    <div class="form-group  col-md-4">
-                        <label asp-for="@Model.Name"> </label>
-                        <input type="text" class="form-control" asp-for="@Model.Name">
-                        <span asp-validation-for="@Model.Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label asp-for="@Model.RequiresCouponCode"> </label>
-                        <input type="checkbox" class="form-control" asp-for="@Model.RequiresCouponCode">
-                        <span asp-validation-for="@Model.RequiresCouponCode" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label asp-for="@Model.CouponCode"> </label>
-                        <input type="text" class="form-control" asp-for="@Model.CouponCode">
-                        <span asp-validation-for="@Model.CouponCode" class="text-danger"></span>
-                    </div>
-                </div>
+	<div class="statbox widget box box-shadow">
+		<div class="widget-content widget-content-area">
+			<form action="Create" method="post">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="row">
-                    <div class="form-group  col-md-6">
-                        <label asp-for="@Model.StartDate"> </label>
-                        <input type="text" class="form-control" asp-for="@Model.StartDate">
-                        <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label asp-for="@Model.EndDate"> </label>
-                        <input type="text" class="form-control" asp-for="@Model.EndDate">
-                        <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
-                    </div>
-                </div>
+				<!-- کادر دور همه اینپوت‌ها -->
+				<div class="form-border p-3">
+					<div class="row">
+						<div class="form-group  col-md-4">
+							<label asp-for="@Model.Name"> </label>
+							<input type="text" class="form-control" asp-for="@Model.Name">
+							<span asp-validation-for="@Model.Name" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-1">
+							<label asp-for="@Model.RequiresCouponCode"> </label>
+							<input type="checkbox" class="form-control" asp-for="@Model.RequiresCouponCode">
+							<span asp-validation-for="@Model.RequiresCouponCode" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-4">
+							<label asp-for="@Model.CouponCode"> </label>
+							<input type="text" class="form-control" asp-for="@Model.CouponCode">
+							<span asp-validation-for="@Model.CouponCode" class="text-danger"></span>
+						</div>
+					</div>
 
-                <div class="row">
-                    <div class="form-group col-md-2">
-                        <label asp-for="@Model.UsePercentage"> </label>
-                        <input class="form-control" asp-for="@Model.UsePercentage">
-                        <span asp-validation-for="@Model.UsePercentage" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label asp-for="@Model.DiscountPercentage"> </label>
-                        <input type="text" class="form-control" asp-for="@Model.DiscountPercentage">
-                        <span asp-validation-for="@Model.DiscountPercentage" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label asp-for="@Model.DiscountAmount"> </label>
-                        <input type="text" class="form-control" asp-for="@Model.DiscountAmount">
-                        <span asp-validation-for="@Model.DiscountAmount" class="text-danger"></span>
-                    </div>
-                </div>
+					<div class="row">
+						<div class="form-group  col-md-6">
+							<label asp-for="@Model.StartDate"> </label>
+							<input type="text" class="form-control" asp-for="@Model.StartDate">
+							<span asp-validation-for="@Model.StartDate" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label asp-for="@Model.EndDate"> </label>
+							<input type="text" class="form-control" asp-for="@Model.EndDate">
+							<span asp-validation-for="@Model.EndDate" class="text-danger"></span>
+						</div>
+					</div>
 
-                <div class="row">
-                    <div class="form-group  col-md-4">
-                        <label asp-for="@Model.DiscountTypeId"> </label>
-                        <select asp-for="@Model.DiscountTypeId" class="form-control" asp-items="@Html.GetEnumSelectList<DiscountType>()"></select>
-                        <span asp-validation-for="@Model.DiscountTypeId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label asp-for="@Model.DiscountLimitationId"> </label>
-                        <select asp-for="@Model.DiscountLimitationId" class="form-control" asp-items="@Html.GetEnumSelectList<DiscountLimitationType>()"></select>
+					<div class="row">
+						<div class="form-group col-md-1">
+							<label asp-for="@Model.UsePercentage"> </label>
+							<input type="checkbox" class="form-control" asp-for="@Model.UsePercentage">
+							<span asp-validation-for="@Model.UsePercentage" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-4">
+							<label asp-for="@Model.DiscountPercentage"> </label>
+							<input type="text" class="form-control" asp-for="@Model.DiscountPercentage">
+							<span asp-validation-for="@Model.DiscountPercentage" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-4">
+							<label asp-for="@Model.DiscountAmount"> </label>
+							<input type="text" class="form-control" asp-for="@Model.DiscountAmount">
+							<span asp-validation-for="@Model.DiscountAmount" class="text-danger"></span>
+						</div>
+					</div>
 
-                        <span asp-validation-for="@Model.DiscountLimitationId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label asp-for="@Model.LimitationTimes"> </label>
-                        <input type="text" class="form-control" asp-for="@Model.LimitationTimes">
-                        <span asp-validation-for="@Model.LimitationTimes" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group  col-md-4">
-                        <label> محصولات را انتخاب کنید</label>
-                        <select class="form-control" asp-for="@Model.appliedToCatalogItem">
-                        </select>
-                    </div>
-                </div>
+					<div class="row">
+						<div class="form-group  col-md-4">
+							<label asp-for="@Model.DiscountTypeId"> </label>
+							<select asp-for="@Model.DiscountTypeId" class="form-control" asp-items="@Html.GetEnumSelectList<DiscountType>()"></select>
+							<span asp-validation-for="@Model.DiscountTypeId" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-4">
+							<label asp-for="@Model.DiscountLimitationId"> </label>
+							<select asp-for="@Model.DiscountLimitationId" class="form-control" asp-items="@Html.GetEnumSelectList<DiscountLimitationType>()"></select>
 
-                <input type="submit" name="time" value="ثبت" class="btn btn-primary">
-                <a href="/Admin/Discount/Index" class="btn btn-info">برگشت به لیست</a>
+							<span asp-validation-for="@Model.DiscountLimitationId" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-4">
+							<label asp-for="@Model.LimitationTimes"> </label>
+							<input type="text" class="form-control" asp-for="@Model.LimitationTimes">
+							<span asp-validation-for="@Model.LimitationTimes" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group  col-md-4">
+							<label> محصولات را انتخاب کنید</label>
+							<select class="form-control" asp-for="@Model.appliedToCatalogItem">
+							</select>
+						</div>
+					</div>
+				</div>
+				<p></p>
+				<input  type="submit" name="time" value="ثبت" class="btn btn-primary mt-4">
+				<a href="/Admin/Discount/Index" class="btn btn-info">برگشت به لیست</a>
 
-            </form>
-        </div>
-    </div>
+			</form>
+		</div>
+	</div>
 </div>
+
+<style>
+	.form-border {
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		padding: 20px;
+		background-color: whitesmoke;
+		font-size:16px;
+	}
+
+	.form-border .form-group {
+		margin-bottom: 15px;
+	}
+</style>
 
 
 @section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-    <script src="~/js/persian-datepicker.js"></script>
-    @*<script src="~/MdPersianDateTimePicker/jquery.md.bootstrap.datetimepicker.js"></script>*@
-    @*<script>
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	<script src="~/js/persian-datepicker.js"></script>
+	@*<script src="~/MdPersianDateTimePicker/jquery.md.bootstrap.datetimepicker.js"></script>*@
+	@*<script>
 
             $('#StartDate').MdPersianDateTimePicker({
                 targetTextSelector: '#StartDate',
@@ -136,50 +155,50 @@
 
         </script>*@
 
-    <script>
-        $('#StartDate').datepicker({
-            showWeek: true,
-            dateFormat: 'mm/dd/yy'
-        });
+	<script>
+		$('#StartDate').datepicker({
+			showWeek: true,
+			dateFormat: 'mm/dd/yy'
+		});
 
-        $('#EndDate').datepicker({
-            showWeek: true,
-            dateFormat: 'mm/dd/yy'
-        });
-    </script>
+		$('#EndDate').datepicker({
+			showWeek: true,
+			dateFormat: 'mm/dd/yy'
+		});
+	</script>
 
-    <script src="~/lib/select2/js/select2.js"></script>
-    <script>
-        $("#appliedToCatalogItem").select2({
-            placeholder: "محصول را جستجو وانتخاب کنید",
-            allowClear: true,
-            multiple: true,
-            tags: true,
-            tokenSeparators: [',', ' '],
-            theme: "bootstrap4",
-            ajax: {
-                url: "/api/DiscountApi/SearchCatalogItem",
-                contentType: "application/json; charset=utf-8",
-                data: function (params) {
-                    var query =
-                    {
-                        term: params.term,
-                    };
-                    return query;
-                },
-                processResults: function (result) {
-                    return {
-                        results: $.map(result, function (item) {
-                            return {
-                                id: item.id,
-                                text: item.name
-                            };
-                        }),
-                    };
-                }
-            }
-        });
-    </script>
+	<script src="~/lib/select2/js/select2.js"></script>
+	<script>
+		$("#appliedToCatalogItem").select2({
+			placeholder: "محصول را جستجو وانتخاب کنید",
+			allowClear: true,
+			multiple: true,
+			tags: true,
+			tokenSeparators: [',', ' '],
+			theme: "bootstrap4",
+			ajax: {
+				url: "/api/DiscountApi/SearchCatalogItem",
+				contentType: "application/json; charset=utf-8",
+				data: function (params) {
+					var query =
+					{
+						term: params.term,
+					};
+					return query;
+				},
+				processResults: function (result) {
+					return {
+						results: $.map(result, function (item) {
+							return {
+								id: item.id,
+								text: item.name
+							};
+						}),
+					};
+				}
+			}
+		});
+	</script>
 
 }
 

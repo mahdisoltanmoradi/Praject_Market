@@ -1,17 +1,19 @@
-﻿using Data.Contracts;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Data.Contracts;
 using Data.DTOs;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Services.Attributes;
 using Services.Utilities;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Project_Markets.Areas.UserPanel.Controllers
 {
     [Area("UserPanel")]
     [Authorize]
+    [ControllerInfo("صفحه داشبورد کاربر", "پنل کاربری")]
     public class HomeController : Controller
     {
         private readonly IUserRepository _userRepository;

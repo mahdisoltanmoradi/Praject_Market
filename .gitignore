@@ -1,0 +1,24 @@
+﻿# پوشه‌های مخصوص ویژوال استودیو
+.vs/
+*.user
+*.suo
+
+# پوشه‌های خروجی پروژه
+bin/
+obj/
+out/
+
+# پوشه‌های مربوط به تست و لاگ
+TestResults/
+*.log
+
+# فایل‌های موقت
+*.tmp
+*.temp
+
+# پوشه‌های Publish
+wwwroot/
+publish/
+
+# لاک NuGet
+project.lock.json

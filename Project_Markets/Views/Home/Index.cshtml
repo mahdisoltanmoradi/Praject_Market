@@ -13,7 +13,10 @@
 <div class="header-area" id="headerArea">
     <div class="container h-100 d-flex align-items-center justify-content-between">
         <!-- Logo Wrapper-->
-        <div class="logo-wrapper"><a href="home.html"><img src="/img/core-img/logo-small.png" alt=""></a></div>
+        @* <div class="logo-wrapper"><a href="home.html"><img src="/img/core-img/logo-small.png" alt=""></a></div> *@
+        <!-- Navbar Toggler-->
+        <div class="suha-navbar-toggler d-flex flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>
+
 
 
         <!-- Search Form-->
@@ -23,14 +26,38 @@
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
-        <!-- Navbar Toggler-->
-        <div class="suha-navbar-toggler d-flex flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>
+        <!-- Night Mode View Card-->
+        <!-- Night Mode Card کوچکتر -->
+        <div class="night-mode-view-card-header">
+            <div class="card settings-card">
+                <div class="card-body p-2">
+                    <!-- padding کمتر -->
+                    <div class="single-settings d-flex align-items-center justify-content-between">
+                        <div class="title" style="font-size: 0.9rem;">
+                            <i class="lni lni-night"></i>
+                            <span>حالت شب</span>
+                        </div>
+                        <div class="data-content">
+                            <div class="toggle-button-cover">
+                                <div class="button r" style="transform: scale(0.8);">
+                                    <!-- کوچکتر کردن سوئیچ -->
+                                    <input class="checkbox" id="darkSwitch" type="checkbox">
+                                    <div class="knobs"></div>
+                                    <div class="layer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <!-- Sidenav Black Overlay-->
 <div class="sidenav-black-overlay"></div>
 
-<!-- PWA Install Alert-->
+@* <!-- PWA Install Alert-->
 <div class="toast pwa-install-alert shadow" id="pwaInstallToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="8000" data-autohide="true">
     <div class="toast-body">
         <button class="ml-3 close" type="button" data-dismiss="toast" aria-label="نزدیک"><span aria-hidden="true">×</span></button>
@@ -39,7 +66,7 @@
             <h6 class="mb-0 text-white">افزودن Url صفحه اصلی</h6>
         </div><span class="mb-0 d-block text-white">سوهارا در صفحه اصلی تلفن همراه خود اضافه کنید. بر روی دکمه <strong class="mx-1">"افزودن به صفحه اصلی"</strong> کلیک کنید و مانند یک برنامه معمولی از آن لذت ببرید.</span>
     </div>
-</div>
+</div> *@
 <div class="page-content-wrapper">
     <!-- Hero Slides-->
     <partial name="_MainSlider" />

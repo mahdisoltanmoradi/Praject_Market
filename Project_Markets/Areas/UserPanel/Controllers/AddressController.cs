@@ -1,17 +1,19 @@
-﻿using AutoMapper;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
 using Data.Contracts;
 using Data.DTOs.Address;
 using Entities.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Services.Attributes;
 using Services.Utilities;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Project_Markets.Areas.UserPanel.Controllers
 {
     [Authorize]
     [Area("UserPanel")]
+    [ControllerInfo("آدرس ها", "پنل کاربری")]
     public class AddressController : Controller
     {
         private readonly IUserAddressRepository _userAddressRepository;

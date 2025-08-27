@@ -1637,7 +1637,10 @@
           "Pluralize.NET": "1.0.2"
         },
         "runtime": {
-          "Common.dll": {}
+          "Common.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Data/1.0.0": {
@@ -1652,7 +1655,10 @@
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0"
         },
         "runtime": {
-          "Data.dll": {}
+          "Data.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Entities/1.0.0": {
@@ -1661,7 +1667,10 @@
           "Microsoft.Extensions.Identity.Stores": "5.0.8"
         },
         "runtime": {
-          "Entities.dll": {}
+          "Entities.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\WebFramework\\WebFramework.csproj": {}
+    "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\WebFramework\\WebFramework.csproj": {}
   },
   "projects": {
-    "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Common\\Common.csproj": {
+    "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Common\\Common.csproj",
+        "projectUniqueName": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Common\\Common.csproj",
-        "packagesPath": "C:\\Users\\soltanmoradi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Common\\obj\\",
+        "projectPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\soltanmoradi.m\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\soltanmoradi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\soltanmoradi.m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\soltanmoradi\\.nuget\\local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,7 +38,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net5.0": {
@@ -60,7 +69,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -69,21 +79,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Data\\Data.csproj": {
+    "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\soltanmoradi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Data\\obj\\",
+        "projectPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\soltanmoradi.m\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\soltanmoradi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\soltanmoradi.m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -91,15 +105,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\soltanmoradi\\.nuget\\local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Entities\\Entities.csproj"
+              "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Entities\\Entities.csproj"
               }
             }
           }
@@ -108,7 +121,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net5.0": {
@@ -155,7 +174,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -164,21 +184,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Entities\\Entities.csproj": {
+    "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Entities\\Entities.csproj",
-        "packagesPath": "C:\\Users\\soltanmoradi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Entities\\obj\\",
+        "projectPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\soltanmoradi.m\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Entities\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\soltanmoradi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\soltanmoradi.m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -186,15 +210,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\soltanmoradi\\.nuget\\local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Common\\Common.csproj": {
-                "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Common\\Common.csproj"
+              "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Common\\Common.csproj": {
+                "projectPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Common\\Common.csproj"
               }
             }
           }
@@ -203,7 +226,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net5.0": {
@@ -220,7 +249,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -229,21 +259,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Services\\Services.csproj": {
+    "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\soltanmoradi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Services\\obj\\",
+        "projectPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\soltanmoradi.m\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\soltanmoradi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\soltanmoradi.m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -251,15 +285,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\soltanmoradi\\.nuget\\local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Data\\Data.csproj"
+              "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Data\\Data.csproj"
               }
             }
           }
@@ -268,7 +301,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net5.0": {
@@ -297,7 +336,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -309,21 +349,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\WebFramework\\WebFramework.csproj": {
+    "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\WebFramework\\WebFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\WebFramework\\WebFramework.csproj",
+        "projectUniqueName": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\WebFramework\\WebFramework.csproj",
         "projectName": "WebFramework",
-        "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\WebFramework\\WebFramework.csproj",
-        "packagesPath": "C:\\Users\\soltanmoradi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\WebFramework\\obj\\",
+        "projectPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\WebFramework\\WebFramework.csproj",
+        "packagesPath": "C:\\Users\\soltanmoradi.m\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\WebFramework\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\soltanmoradi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\soltanmoradi.m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -331,15 +375,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\soltanmoradi\\.nuget\\local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Services\\Services.csproj": {
-                "projectPath": "C:\\Users\\soltanmoradi\\source\\repos\\Praject_Market\\Services\\Services.csproj"
+              "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\soltanmoradi.m\\source\\repos\\Praject_Market\\Services\\Services.csproj"
               }
             }
           }
@@ -348,7 +391,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net5.0": {
@@ -409,7 +458,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -418,7 +468,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

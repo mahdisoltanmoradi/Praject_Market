@@ -1,16 +1,18 @@
-﻿using Data.Contracts;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using ZarinPal.Class;
-using Microsoft.Extensions.Configuration;
-using Services.Utilities;
-using Newtonsoft.Json;
+using Data.Contracts;
 using Dto.Payment;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using RestSharp;
+using Services.Attributes;
+using Services.Utilities;
+using ZarinPal.Class;
 
 namespace Project_Markets.Controllers
 {
+    [ControllerInfo("پرداختی ها", "عمومی")]
     public class PayController : Controller
     {
         private readonly ZarinPal.Class.Payment _payment;
@@ -65,12 +67,12 @@ namespace Project_Markets.Controllers
         }
 
 
-        public IActionResult Verify(Guid Id, string Authority)
+        [HttpGet]
+        public async Task<IActionResult> Verify(Guid Id, string Authority)
         {
             string Status = HttpContext.Request.Query["Status"];
 
-            if (Status != "" && Status.ToString().ToLower() == "ok"
-                && Authority != "")
+            if (!string.IsNullOrEmpty(Status) && Status.ToLower() == "ok" && !string.IsNullOrEmpty(Authority))
             {
                 var payment = _paymentRepository.GetPayment(Id);
                 if (payment == null)
@@ -78,24 +80,40 @@ namespace Project_Markets.Controllers
                     return NotFound();
                 }
 
-                //var verification = _payment.Verification(new DtoVerification
-                //{
-                //    Amount = payment.Amount,
-                //    Authority = Authority,
-                //    MerchantId = merchendId,
-                //}, Payment.Mode.zarinpal).Result;
+                // ساختن کلاینت با Option
+                var options = new RestClientOptions("https://www.zarinpal.com/pg/rest/WebGate/PaymentVerification.json")
+                {
+                    MaxTimeout = -1 // می‌تونی زمان دلخواه بدی
+                };
+                var client = new RestClient(options);
 
-                var client = new RestClient("https://www.zarinpal.com/pg/rest/WebGate/PaymentVerification.json");
-                client.Timeout = -1;
-                var request = new RestRequest(Method.POST);
+                // درخواست POST
+                var request = new RestRequest("", Method.Post);
                 request.AddHeader("Content-Type", "application/json");
-                request.AddParameter("application/json", $"{{\"MerchantID\" :\"{merchendId}\",\"Authority\":\"{Authority}\",\"Amount\":\"{payment.Amount}\"}}", ParameterType.RequestBody);
-                var response = client.Execute(request);
 
-                VerificationPayResultDto verification =
-                    JsonConvert.DeserializeObject<VerificationPayResultDto>(response.Content);
+                // بدنه‌ی JSON
+                var body = new
+                {
+                    MerchantID = merchendId,
+                    Authority = Authority,
+                    Amount = payment.Amount
+                };
+                request.AddJsonBody(body);
 
-                if (verification.Status == 100)
+                // اجرای درخواست
+                var response = await client.ExecuteAsync(request);
+
+                // بررسی نتیجه
+                if (!response.IsSuccessful || string.IsNullOrEmpty(response.Content))
+                {
+                    TempData["message"] = "خطا در برقراری ارتباط با درگاه پرداخت.";
+                    return RedirectToAction("checkout", "basket");
+                }
+
+                // تبدیل JSON به مدل
+                var verification = JsonConvert.DeserializeObject<VerificationPayResultDto>(response.Content);
+
+                if (verification != null && verification.Status == 100)
                 {
                     bool verifyResult = _paymentRepository.VerifyPayment(Id, Authority, verification.RefID);
                     if (verifyResult)
@@ -104,20 +122,21 @@ namespace Project_Markets.Controllers
                     }
                     else
                     {
-                        TempData["message"] = "پرداخت انجام شد اما ثبت نشد";
+                        TempData["message"] = "پرداخت انجام شد اما در سیستم ثبت نشد.";
                         return RedirectToAction("checkout", "basket");
                     }
                 }
                 else
                 {
-                    TempData["message"] = "پرداخت شما ناموفق بوده است . لطفا مجددا تلاش نمایید یا در صورت بروز مشکل با مدیریت سایت تماس بگیرید .";
+                    TempData["message"] = "پرداخت شما ناموفق بوده است. لطفا مجدداً تلاش نمایید یا با مدیریت سایت تماس بگیرید.";
                     return RedirectToAction("checkout", "basket");
                 }
-
             }
-            TempData["message"] = "پرداخت شما ناموفق بوده است .";
+
+            TempData["message"] = "پرداخت شما ناموفق بوده است.";
             return RedirectToAction("checkout", "basket");
         }
+
     }
 
 

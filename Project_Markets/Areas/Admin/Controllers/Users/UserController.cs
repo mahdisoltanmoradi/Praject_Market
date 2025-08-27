@@ -1,18 +1,16 @@
-﻿using Data.Contracts;
-using Data.DTOs;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Data.Contracts;
 using Data.DTOs.AdminViewModel;
 using Entities.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using Services.Attributes;
 
 namespace Project_Markets.Areas.Admin.Controllers.Users
 {
     [Area("Admin")]
+    [ControllerInfo("لیست کاربران سایت", "پنل ادمین")]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -75,9 +73,9 @@ namespace Project_Markets.Areas.Admin.Controllers.Users
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int userId,User user,CancellationToken cancellationToken)
+        public async Task<IActionResult> Delete(int userId, User user, CancellationToken cancellationToken)
         {
-            await _userRepository.DeleteUser(userId,cancellationToken);
+            await _userRepository.DeleteUser(userId, cancellationToken);
             return Redirect("/Admin/User/");
         }
 

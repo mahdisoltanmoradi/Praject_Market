@@ -1,4 +1,7 @@
-﻿using Common.Enums;
+﻿using System;
+using System.Linq;
+using System.Threading;
+using Common.Enums;
 using Data.Contracts;
 using Data.DTOs.Baskets;
 using Entities.User;
@@ -7,13 +10,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Project_Markets.Models.ViewModels;
+using Services.Attributes;
 using Services.Utilities;
-using System;
-using System.Linq;
-using System.Threading;
 
 namespace Project_Markets.Controllers
 {
+    [ControllerInfo("سبد خرید", "عمومی")]
     public class BasketController : Controller
     {
         private readonly IBasketRepository _basketRepository;
@@ -82,7 +84,7 @@ namespace Project_Markets.Controllers
             ShippingPaymentViewModel model = new ShippingPaymentViewModel();
             string userId = ClaimUtility.GetUserId(User);
             model.Basket = _basketRepository.GetBasketForUser(userId);
-            if (model.Basket==null)
+            if (model.Basket == null)
             {
                 throw new Exception("سبدی برای این کاربر وجود ندارد");
                 return View(model);
@@ -107,7 +109,7 @@ namespace Project_Markets.Controllers
             else
             {
                 //برو به صفحه سفارشات من
-               // return RedirectToAction("Index", "Orders", new { area = "UserPanel" });
+                // return RedirectToAction("Index", "Orders", new { area = "UserPanel" });
                 return RedirectToAction("UserPanel/Order/Index");
             }
         }

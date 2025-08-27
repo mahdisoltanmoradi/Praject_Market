@@ -1,16 +1,18 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
 using Data.Contracts;
 using Entities.Blog;
 using Entities.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project_Markets.DTOs.Blog;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using Services.Attributes;
 
 namespace Project_Markets.Controllers
 {
+    [ControllerInfo("وبلاگ ها", "عمومی")]
     public class DefaultBlogController : Controller
     {
         private readonly IRepository<Blogs> _blogRepository;

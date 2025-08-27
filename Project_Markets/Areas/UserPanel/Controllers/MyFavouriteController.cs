@@ -3,11 +3,13 @@ using Entities.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Services.Attributes;
 
 namespace Project_Markets.Areas.UserPanel.Controllers
 {
     [Authorize]
     [Area("UserPanel")]
+    [ControllerInfo("علاقه مندی ها", "پنل کاربری")]
     public class MyFavouriteController : Controller
     {
         private readonly ICatalogItemRepository _catalogItemRepository;

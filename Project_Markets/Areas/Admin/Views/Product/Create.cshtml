@@ -1,0 +1,145 @@
+﻿@using Entities.Product
+@model Project_Markets.DTOs.Products.ProductDto
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">افزودن محصول جدید</h1>
+    </div>
+</div>
+
+<form action="Create" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    اطلاعات محصول
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label asp-for="ProductTitle"></label>
+                            <input asp-for="ProductTitle" class="form-control" />
+                            <span asp-validation-for="ProductTitle" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label asp-for="CategoryId"></label>
+                            <select asp-for="CategoryId" asp-items="@(ViewData["GroupBlogs"] as SelectList)" class="form-control"></select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group col-md-4">
+                            <label asp-for="ProductPrice"></label>
+                            <input asp-for="ProductPrice" class="form-control" />
+                            <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label asp-for="DeleteProductPrice"></label>
+                            <input asp-for="DeleteProductPrice" class="form-control" />
+                            <span asp-validation-for="DeleteProductPrice" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label asp-for="ProductCount"></label>
+                            <input asp-for="ProductCount" class="form-control" />
+                            <span asp-validation-for="ProductCount" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label asp-for="ProductColor"></label>
+                            <select asp-for="ProductColor" asp-items="Html.GetEnumSelectList<Color>()" class="form-control"></select>
+                            <span asp-validation-for="ProductColor" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label asp-for="ProductSize"></label>
+                            <select asp-for="ProductSize" asp-items="Html.GetEnumSelectList<Size>()" class="form-control"></select>
+                            <span asp-validation-for="ProductSize" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check col-md-4">
+                            <input asp-for="Status" class="form-check-input" />
+                            <label asp-for="Status" class="form-check-label"></label>
+                        </div>
+
+                        <div class="form-check col-md-4">
+                            <input asp-for="ShowInSlider" class="form-check-input" />
+                            <label asp-for="ShowInSlider" class="form-check-label"></label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label asp-for="Tags"></label>
+                            <input asp-for="Tags" class="form-control" />
+                            <span asp-validation-for="Tags" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label asp-for="ProductDescription"></label>
+                            <textarea asp-for="ProductDescription" class="form-control" rows="6"></textarea>
+                            <span asp-validation-for="ProductDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="ذخیره اطلاعات" class="btn btn-success" />
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    تصویر محصول
+                </div>
+                <div class="panel-body">
+                    <img id="imgAvatar" class="thumbnail" src="/img/bg-img/" />
+
+                    <div class="form-group">
+                        <label asp-for="ProductImageName"></label>
+                        <input type="file" asp-for="ProductImageName" class="form-control" />
+                        <span asp-validation-for="ProductImageName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="DemoFileName"></label>
+                        <input type="file" asp-for="DemoFileName" class="form-control" />
+                        <span asp-validation-for="DemoFileName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#ProductImageName").change(function () {
+            readURL(this);
+        });
+    </script>
+}

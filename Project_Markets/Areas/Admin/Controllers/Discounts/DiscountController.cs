@@ -1,13 +1,15 @@
-﻿using Data.Contracts;
+﻿using System.Threading.Tasks;
+using Data.Contracts;
 using Data.DTOs.Discount;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using Services.Attributes;
 
 namespace Project_Markets.Areas.Admin.Controllers.Discounts
 {
     [Area("Admin")]
     [Authorize]
+    [ControllerInfo("تخفیف ها", "پنل ادمین")]
     public class DiscountController : Controller
     {
         private readonly IDiscountRepository _discountRepository;

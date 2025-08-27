@@ -1,16 +1,15 @@
-﻿using Data.Contracts;
-using Entities.Blog;
-using Entities.User;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Data.Contracts;
+using Entities.Blog;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Services.Attributes;
 
 namespace Project_Markets.Controllers
 {
+    [ControllerInfo("صفحه اصلی", "عمومی")]
     public class HomeController : Controller
     {
         private IProductRepository _productRepository;

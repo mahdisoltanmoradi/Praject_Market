@@ -1,4 +1,10 @@
-﻿using Common.Utilities.Convertors;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading;
+using System.Threading.Tasks;
+using Common.Utilities.Convertors;
 using Data.Contracts;
 using Data.DTOs;
 using Entities.Role;
@@ -7,15 +13,11 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading;
-using System.Threading.Tasks;
+using Services.Attributes;
 
 namespace Project_Markets.Controllers
 {
+    [ControllerInfo("حساب کاربری", "عمومی")]
     public class AccountController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -98,16 +100,16 @@ namespace Project_Markets.Controllers
                 ModelState.AddModelError("", "کاربر یافت نشد");
                 return View(login);
             }
-            var hashPassword = _userManager.PasswordHasher.HashPassword(user, login.Password);
-           // await _signInManager.SignOutAsync();
-            var result = _signInManager.PasswordSignInAsync(user, hashPassword
-                , login.IsPersistent, true).Result;
+            //var hashPassword = _userManager.PasswordHasher.HashPassword(user, login.Password);
+            //await _signInManager.SignOutAsync();
+            //var result = _signInManager.PasswordSignInAsync(user, login.Password
+            //    , login.IsPersistent, true).Result;
 
-            if (result.Succeeded)
-            {
-                TransferBasketForuser(user.Id.ToString());
-                return Redirect(login?.ReturnUrl ?? "/");
-            }
+            //if (result.Succeeded)
+            //{
+                //TransferBasketForuser(user.Id.ToString());
+                //return Redirect(login?.ReturnUrl ?? "/");
+            //}
 
             var roles = await _userManager.GetRolesAsync(user);
             var claims = new List<Claim>

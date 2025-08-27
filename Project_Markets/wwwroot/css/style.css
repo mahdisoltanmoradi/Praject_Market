@@ -4268,7 +4268,7 @@ li.suha-dropdown-menu {
     .form-control:focus {
         -webkit-box-shadow: none;
         box-shadow: none;
-        background-color: red;
+        background-color: whitesmoke;
     }
 
 /* Blog CSS */

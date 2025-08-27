@@ -34,3 +34,16 @@ C:\Users\soltanmoradi\Source\Repos\Praject_Market\Common\obj\Debug\net5.0\Common
 C:\Users\soltanmoradi\Source\Repos\Praject_Market\Common\obj\Debug\net5.0\refint\Common.dll
 C:\Users\soltanmoradi\Source\Repos\Praject_Market\Common\obj\Debug\net5.0\Common.pdb
 C:\Users\soltanmoradi\Source\Repos\Praject_Market\Common\obj\Debug\net5.0\ref\Common.dll
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\bin\Debug\net5.0\Common.deps.json
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\bin\Debug\net5.0\Common.dll
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\bin\Debug\net5.0\Common.pdb
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\Common.csproj.AssemblyReference.cache
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\Common.AssemblyInfoInputs.cache
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\Common.AssemblyInfo.cs
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\Common.csproj.CoreCompileInputs.cache
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\Common.sourcelink.json
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\Common.dll
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\refint\Common.dll
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\Common.pdb
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Common\obj\Debug\net5.0\ref\Common.dll
