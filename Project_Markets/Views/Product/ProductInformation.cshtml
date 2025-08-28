@@ -63,13 +63,17 @@
     <div class="go-home-btn" id="goHomeBtn"><i class="lni lni-arrow-right"></i></div>
 </div>
 <div class="page-content-wrapper">
-    <!-- Product Slides-->
     <div class="product-slides owl-carousel text-center align-items-center">
         <!-- Single Hero Slide-->
         <div class="single-product-slide mb-5 w-100 d-flex justify-content-center align-items-center">
-            <img src="/ImageProductCategory/@Model.ProductImageName" class=" rounded-circle img-element" />
+            <img src="@(string.IsNullOrEmpty(Model?.ProductImageName) ? "/img/default.png" : $"/img/bg-img/{Model.ProductImageName}")"
+                 class="img-fluid shadow"
+                 style="max-width: 800px; height: auto; border-radius: 20px; object-fit: cover;" />
         </div>
     </div>
+
+
+
    
     <div class="product-description pb-3">
         <!-- Product Title & Meta Data-->

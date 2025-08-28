@@ -1,7 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using Entities.Product;
 using infrastructure.WebFramework.BaseModel;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace Project_Markets.DTOs.Products
 {
@@ -53,14 +55,14 @@ namespace Project_Markets.DTOs.Products
         [MaxLength(600)]
         public string Tags { get; set; }
 
-        [Display(Name = "تصویر محصول")]
-        [MaxLength(50)]
-        public string ProductImageName { get; set; }
-
         [Display(Name = "فایل ازمایشی")]
         [MaxLength(100)]
         public string DemoFileName { get; set; }
 
+        [Display(Name = "تصویر محصول")]
+        [MaxLength(50)]
+        public string ProductImageName { get; set; }
+        public List<IFormFile> ImageFile { get; set; } // فایل آپلودی
     }
 
     public class SelectProductDto : BaseDto<SelectProductDto,Entities.Product.Product, int>

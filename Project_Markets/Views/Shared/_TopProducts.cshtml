@@ -17,7 +17,9 @@
                                 <i class="lni lni-heart"></i>
                             </a>
                             <a class="product-thumbnail d-block" href="/Product/ProductInformation/@item.Id">
-                                <img class="mb-2" style="border-radius:10px" src="/ImageProductCategory/@item.ProductImageName" alt="">
+                                @* <img class="mb-2" style="border-radius:10px" src="/img/bg-imh/@item.ProductImageName" alt=""> *@
+                                <img src="@(string.IsNullOrEmpty(@item.ProductImageName) ? "/img/default.png" : $"/img/bg-img/{item.ProductImageName}")"
+                                     class="img-fluid w-100 rounded" />
                             </a>
                             <a class="product-title d-block text-left" href="/Product/ProductInformation/@item.Id">@item.ProductTitle</a>
                             <p class="sale-price text-left">36 تومان <span class="real-price"> @item.ProductPrice تومان</span></p>

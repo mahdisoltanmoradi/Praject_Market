@@ -1,16 +1,17 @@
 ﻿@using Entities.Product
 @model Project_Markets.DTOs.Products.ProductDto
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">افزودن محصول جدید</h1>
+        <h1 class="page-header">ویرایش محصول</h1>
     </div>
 </div>
 
-<form action="Create" method="post" enctype="multipart/form-data">
+<form action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-primary">
@@ -31,7 +32,6 @@
                             <select asp-for="CategoryId" asp-items="@(ViewData["GroupBlogs"] as SelectList)" class="form-control"></select>
                             <span asp-validation-for="CategoryId" class="text-danger"></span>
                         </div>
-
 
                         <div class="form-group col-md-4">
                             <label asp-for="ProductPrice"></label>
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <input type="submit" value="ذخیره اطلاعات" class="btn btn-success" />
+                    <input type="submit" value="ویرایش اطلاعات" class="btn btn-success" />
 
                 </div>
             </div>
@@ -106,14 +106,24 @@
                     تصاویر محصول
                 </div>
                 <div class="panel-body">
-                    <!-- پیش‌نمایش تصویر -->
+                    <!-- پیش‌نمایش تصاویر قبلی -->
                     <div id="previewImages" class="mb-2">
-                        <img id="imgAvatar" class="img-thumbnail w-100 mb-2" src="/img/default.png" style="object-fit: cover; max-height: 200px;" />
+                        @if (Model.ProductImageName != null)
+                        {
+                            foreach (var img in Model.ProductImageName.Split(','))
+                            {
+                                <img src="/img/bg-img/@img" class="img-thumbnail mb-2" style="object-fit: cover; max-height: 200px; margin-right:5px;" />
+                            }
+                        }
+                        else
+                        {
+                            <img id="imgAvatar" class="img-thumbnail w-100 mb-2" src="/img/default.png" style="object-fit: cover; max-height: 200px;" />
+                        }
                     </div>
 
-                    <!-- آپلود چند فایل -->
+                    <!-- آپلود چند فایل جدید -->
                     <div class="form-group">
-                        <label>انتخاب تصاویر محصول</label>
+                        <label>انتخاب تصاویر جدید محصول</label>
                         <input type="file" asp-for="ImageFile" class="form-control" multiple>
                     </div>
                 </div>
@@ -129,10 +139,10 @@
             const preview = document.getElementById('previewImages');
             preview.innerHTML = ""; // پاک کردن پیش‌نمایش قبلی
 
-            if (input.files) {
+            if (input.files && input.files.length > 0) {
                 Array.from(input.files).forEach(file => {
                     const reader = new FileReader();
-                    reader.onload = function(e) {
+                    reader.onload = function (e) {
                         const img = document.createElement("img");
                         img.src = e.target.result;
                         img.className = "img-thumbnail mb-2";
@@ -143,11 +153,39 @@
                     }
                     reader.readAsDataURL(file);
                 });
+            } else {
+                // اگر فایل جدید انتخاب نشد، تصاویر قبلی را نمایش بده
+                @if (Model.ProductImageName != null)
+                {
+                        foreach (var img in Model.ProductImageName.Split(','))
+                        {
+                                <text>
+                                const oldImg = document.createElement("img");
+                                oldImg.src = "/img/bg-img/@img";
+                                oldImg.className = "img-thumbnail mb-2";
+                                oldImg.style.maxHeight = "200px";
+                                oldImg.style.objectFit = "cover";
+                                oldImg.style.marginRight = "5px";
+                                preview.appendChild(oldImg);
+                                </text>
+                        }
+                }
+                else
+                {
+                        <text>
+                        const defaultImg = document.createElement("img");
+                        defaultImg.src = "/img/default.png";
+                        defaultImg.className = "img-thumbnail mb-2";
+                        defaultImg.style.maxHeight = "200px";
+                        defaultImg.style.objectFit = "cover";
+                        preview.appendChild(defaultImg);
+                        </text>
+                }
             }
         }
 
         const fileInput = document.querySelector('input[asp-for="ImageFile"]');
-        fileInput.addEventListener('change', function() {
+        fileInput.addEventListener('change', function () {
             previewImages(this);
         });
     </script>

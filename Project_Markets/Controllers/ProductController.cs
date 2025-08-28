@@ -83,15 +83,19 @@ namespace Project_Markets.Controllers
         public async Task<IActionResult> ProductInformation(int id, CancellationToken cancellationToken)
         {
             var product = await _productRepository.GetProductInformation(id, cancellationToken);
-            if (product != null)
+
+            if (product == null)
             {
-                product.ProductVisit += 1;
-                ViewData["Comment"] = await _productCommentRepository.GetAllProductComments(id, cancellationToken);
-                return View(product);
+                return NotFound(); // یا return RedirectToAction("Index");
             }
+
+            product.ProductVisit += 1;
+
+            ViewData["Comment"] = await _productCommentRepository.GetAllProductComments(id, cancellationToken);
 
             return View(product);
         }
+
 
 
         [HttpPost]

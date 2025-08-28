@@ -12,7 +12,8 @@ namespace Project_Markets.DTOs.Product
         public string GroupTitle { get; set; }
 
         [Display(Name = "تصویر گروه محصول")]
-        public string ImageProduct { get; set; }
-        public IFormFile ImageFile{ get; set; }
+        public string ImageProduct { get; set; } // اسم فایل ذخیره شده
+        public IFormFile ImageFile { get; set; } // فایل آپلودی
+
     }
 }

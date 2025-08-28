@@ -8,25 +8,59 @@
         <div class="section-heading">
             <h6 class="ml-1">دسته بندی محصولات</h6>
         </div>
-        <div class="product-catagory-wrap">
-            <div class="row g-3">
-                <!-- Single Catagory Card-->
-                @foreach (var product in Model)
-                {
-                    <div class="col-4">
-                        <div class="cards-Wrapper h-100">
-                            <div class="card h-100">
-                                <div class="card-overlay text-center h-25">
-                                    <h5 class="card-overlay-heading">@product.GroupTitle</h5>
-                                </div>
-                                <a href="/Product/index/@product.Id" class="h-100">
-                                    <img src="/ImageProductCategory/@product.ImageProduct" class="card-img h-100 position-relative" />
-                                </a>
+        <div class="row g-3">
+            @foreach (var product in Model)
+            {
+                <div class="col-4">
+                    <div class="category-card position-relative overflow-hidden rounded">
+                        <a href="/Product/index/@product.Id">
+                            <img src="@(string.IsNullOrEmpty(product.ImageProduct) ? "/img/default.png" : $"/img/bg-img/{product.ImageProduct}")"
+                                 class="img-fluid w-100 rounded" />
+                            <div class="overlay d-flex justify-content-center align-items-center rounded">
+                                <h5 class="text-white">@product.GroupTitle</h5>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
     </div>
 </div>
+
+<style>
+    .category-card {
+        cursor: pointer;
+        border-radius: 12px; /* حاشیه گرد */
+        overflow: hidden;
+    }
+
+        .category-card img {
+            transition: 0.3s ease;
+            display: block;
+        }
+
+        .category-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            opacity: 0;
+            transition: 0.3s ease;
+            border-radius: 12px; /* مطابقت با کارت */
+        }
+
+        .category-card:hover img {
+            filter: blur(3px);
+        }
+
+        .category-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .category-card .overlay h5 {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+</style>
