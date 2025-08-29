@@ -30,14 +30,14 @@ namespace Project_Markets.Areas.Admin.Controllers.Roles
             return View(roleList);
         }
 
-        public async Task<IActionResult> CreateRole(CancellationToken cancellationToken)
+        public async Task<IActionResult> Create(CancellationToken cancellationToken)
         {
             ViewData["Permission"] = await _permissionRepository.GetAllPermission(cancellationToken);
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRole(Role role, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create(Role role, CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid)
             {
@@ -48,7 +48,7 @@ namespace Project_Markets.Areas.Admin.Controllers.Roles
             return Redirect("/Admin/Role/Index");
         }
 
-        public async Task<IActionResult> DeleteRole(int roleId, CancellationToken cancellationToken)
+        public async Task<IActionResult> Delete(int roleId, CancellationToken cancellationToken)
         {
             if (roleId == null)
             {
@@ -59,7 +59,7 @@ namespace Project_Markets.Areas.Admin.Controllers.Roles
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteRole(Role role, CancellationToken cancellationToken)
+        public async Task<IActionResult> Delete(Role role, CancellationToken cancellationToken)
         {
             await _roleRepository.DeleteAsync(role, cancellationToken);
             return RedirectToAction(nameof(Index));

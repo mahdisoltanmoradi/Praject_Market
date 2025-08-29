@@ -22,16 +22,16 @@
                     <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                         <div class="col-md-12" style="margin: 10px 0;">
 
-                            <a href="/Admin/Blog/Create" class="btn btn-outline btn-success">افزودن وبلاگ جدید</a>
+                            <a href="/Admin/Blog/Create" class="btn btn-outline btn-success" style="color:black">افزودن وبلاگ جدید</a>
 
                         </div>
-                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
-                            <thead>
+                        <table class="table table-striped table-bordered table-hover text-center" id="dataTables-example">
+                            <thead style="font-size:16px">
                                 <tr>
-                                    <th>تصویر</th>
-                                    <th>عنوان</th>
-                                    <th>دسته بندی</th>
-                                    <th>دستورات</th>
+                                    <th class="text-center">تصویر</th>
+                                    <th class="text-center">عنوان</th>
+                                    <th class="text-center">دسته بندی</th>
+                                    <th class="text-center">دستورات</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,20 +39,24 @@
                                 {
                                     <tr>
                                         <td>
-                                            <img src="/img/bg-img/@item.ImageName" class="thumbnail" style="width:300px;height:200px" />
+                                            <img src="/img/bg-img/@item.ImageName"
+                                                 class="img-thumbnail shadow-sm rounded"
+                                                 style="width:150px; height:100px; object-fit:cover;" />
                                         </td>
-                                        <td>@item.BlogTitle</td>
-                                        <td>@item.BlogCategoryTitle</td>
-                                        <td>
-                                            <a href="/Admin/Blog/Edit/@item.Id" class="btn btn-outline-warning btn-sm">
-                                                ویرایش
-                                            </a>
-                                            <a href="/Admin/Blog/Delete/@item.Id" class="btn btn-outline-danger btn-sm">
-                                                حذف
-                                            </a>
-                                            <a href="/Admin/Blog/Details/@item.Id" class="btn btn-outline-info btn-sm">
-                                               جزئیات
-                                            </a>
+                                        <td class="align-middle">@item.BlogTitle</td>
+                                        <td class ="align-middle">@item.BlogCategoryTitle</td>
+                                        <td class="align-middle">
+                                            <div class="d-flex justify-content-center">
+                                                <a href="/Admin/Blog/Edit/@item.Id" class="btn btn-warning btn-sm mx-1" style="color:black">
+                                                    <i class="bi bi-pencil-square"></i> ویرایش
+                                                </a>
+                                                <a href="/Admin/Blog/Delete/@item.Id" class="btn btn-danger btn-sm mx-1" style="color:black">
+                                                    <i class="bi bi-trash"></i> حذف
+                                                </a>
+                                                <a href="/Admin/Blog/Details/@item.Id" class="btn btn-info btn-sm mx-1" style="color:black">
+                                                    <i class="bi bi-eye"></i> جزئیات
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
                                 }
@@ -84,3 +88,9 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
+<style>
+    #dataTables-example th {
+        text-align: center !important;
+        vertical-align: middle;
+    }
+</style>

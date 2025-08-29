@@ -21,25 +21,31 @@
 
 
                         <div class="col-md-6" style="margin:10px 0;">
-                            <a href="/Admin/Role/CreateRole" class="btn btn-outline btn-success">افزودن نقش جدید</a>
+                            <a href="/Admin/Role/CreateRole" class="btn btn-outline btn-success" style="color:black">افزودن نقش جدید</a>
                         </div>
 
 
-                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
-                            <thead>
+                        <table class="table table-striped table-bordered table-hover text-center" id="dataTables-example">
+                            <thead style="font-size:16px">
                                 <tr>
-                                    <th>عنوان نقش</th>
-                                    <th>دستورات</th>
+                                    <th class="text-center">عنوان نقش</th>
+                                    <th class="text-center">دستورات</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var role in Model)
                                 {
                                     <tr>
-                                        <td>@role.Name</td>
-                                        <td>
-                                            <a href="/Admin/Role/EditRole/@role.Id" class="btn btn-warning btn-sm">ویرایش</a>
-                                            <a href="/Admin/Role/DeleteRole/@role.Id" class="btn btn-danger btn-sm">حذف</a>
+                                        <td class="align-middle">@role.Name</td>
+                                        <td class="align-middle">
+                                            <div class="d-flex justify-content-center">
+                                                <a href="/Admin/Role/Edit/@role.Id" class="btn btn-warning btn-sm mx-1" style="color:black">
+                                                    <i class="bi bi-pencil-square"></i> ویرایش
+                                                </a>
+                                                <a href="/Admin/Role/Delete/@role.Id" class="btn btn-danger btn-sm mx-1" style="color:black">
+                                                    <i class="bi bi-trash"></i> حذف
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
                                 }

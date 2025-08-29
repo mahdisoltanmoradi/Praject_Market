@@ -11,7 +11,7 @@ namespace Data.Contracts
     {
         Task<long> CreateChatRoom(string ipAddress, string connectionId);
         Task<long> GetChatRoomForConnection(string ipAddress);
-        Task<List<long>> GetAllrooms();
+        Task<List<ClientChatRoom>> GetAllRooms();
         Task<IList<string>> GetClientMessages(string ipAddress);
     }
 

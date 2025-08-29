@@ -9,6 +9,7 @@ namespace Entities.Chat
     {
         public string ConnectionId { get; set; }
         public string IPAddress { get; set; }
+        public string Name { get; set; } // اضافه شد
         public ICollection<ClientChatMessage> ChatMessages { get; set; }
     }
 

@@ -34,15 +34,24 @@ namespace Data.Repositories.Message
             return await Task.FromResult(chatRoom.Id);
         }
 
-        public async Task<List<long>> GetAllrooms()
+        public async Task<List<ClientChatRoom>> GetAllRooms()
         {
             var rooms = Table
                 .Include(p => p.ChatMessages)
                 .Where(p => p.ChatMessages.Any())
-                .Select(p =>
-              p.Id).ToList();
+                .Select(p => new ClientChatRoom
+                {
+                    Id = p.Id,
+                    ConnectionId = p.ConnectionId,
+                    IPAddress = p.IPAddress,
+                    Name = p.Name, // اگر Name در مدل دارید
+                    ChatMessages = p.ChatMessages
+                })
+                .ToList();
+
             return await Task.FromResult(rooms);
         }
+
 
         public async Task<long> GetChatRoomForConnection(string ipAddress)
         {

@@ -1,44 +1,75 @@
 ﻿@using Project_Markets.DTOs.Blog
 @model BlogCategoryDto
 @{
-    ViewData["Title"] = "افزودن دسته بندی مقالات";
+    ViewData["Title"] = "Create Blog Category";
 }
-
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">افزودن وبلاگ جدید</h1>
+        <h1 class="page-header">افزودن دسته بندی مقالات</h1>
     </div>
-    <!-- /.col-lg-12 -->
 </div>
 
 @if (ViewBag.IsExist == true)
 {
-    <div class="alert-warning">
-       <h3>این دسته بندی تکراری است...!</h3>
+    <div class="alert alert-warning">
+        <h4>این دسته بندی تکراری است!</h4>
     </div>
 }
 
-<div class="row">
-    <form action="Create" method="post">
-        <div class="col-md-12">
+<form action="Create" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-8">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    دسته بندی مقالات
+                    اطلاعات دسته بندی
                 </div>
-                <!-- /.panel-heading -->
                 <div class="panel-body">
+
                     <div class="form-group">
-                        <label>عنوان</label>
-                        <input type="text" asp-for="Title" class="form-control">
+                        <label asp-for="BlogCategoryTitle"></label>
+                        <input asp-for="BlogCategoryTitle" class="form-control" />
+                        <span asp-validation-for="BlogCategoryTitle" class="text-danger"></span>
                     </div>
 
                     <input type="submit" value="ذخیره اطلاعات" class="btn btn-success" />
+
                 </div>
-                <!-- /.panel-body -->
             </div>
         </div>
-    </form>
-</div>
 
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    تصویر دسته بندی
+                </div>
+                <div class="panel-body">
+                    <img id="imgAvatar" class="thumbnail" src="/img/bg-img/" />
+                    <div class="form-group">
+                        <label>انتخاب تصویر</label>
+                        <input type="file" asp-for="ImageFile" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#ImageFile").change(function () {
+            readURL(this);
+        });
+    </script>
+}

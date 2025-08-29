@@ -1,8 +1,8 @@
-/* Global Styles */
+﻿/* Global Styles */
 
 /* ------------------------------- */
 
-body {
+/*body {
     padding-top: 100px;
     background-color: #f8f8f8;
 }
@@ -11,13 +11,13 @@ body {
     body {
         padding-top: 50px;
     }
-}
+}*/
 
 /* Wrappers */
 
 /* ------------------------------- */
 
-#wrapper {
+/*#wrapper {
     width: 100%;
 }
 
@@ -35,7 +35,7 @@ body {
         min-height: 1300px;
         border-left: 1px solid #e7e7e7;
     }
-}
+}*/
 
 /* Navigation */
 
@@ -43,7 +43,7 @@ body {
 
 /* Top Right Navigation Dropdown Styles */
 
-.navbar-top-links li {
+/*.navbar-top-links li {
     display: inline-block;
 }
 
@@ -117,11 +117,11 @@ body {
 .navbar-top-links .dropdown-user {
     right: auto;
     left: 0px;
-}
+}*/
 
 /* Sidebar Menu Styles */
 
-.navbar-static-side ul li {
+/*.navbar-static-side ul li {
     border-bottom: 1px solid #e7e7e7;
 }
 
@@ -181,13 +181,13 @@ body {
         max-height: 200px;
         overflow-y: scroll;
     }
-}
+}*/
 
 /* Buttons */
 
 /* ------------------------------- */
 
-.btn-outline {
+/*.btn-outline {
     color: inherit;
     background-color: transparent;
     transition: all .5s;
@@ -219,7 +219,7 @@ body {
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
     color: #fff;
-}
+}*/
 
 /* Pages */
 
@@ -227,7 +227,7 @@ body {
 
 /* Dashboard Chat */
 
-.chat {
+/*.chat {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -260,17 +260,17 @@ body {
 .chat-panel .panel-body {
     height: 350px;
     overflow-y: scroll;
-}
+}*/
 
 /* Login Page */
 
-.login-panel {
+/*.login-panel {
     margin-top: 25%;
-}
+}*/
 
 /* Flot Chart Containers */
 
-.flot-chart {
+/*.flot-chart {
     display: block;
     height: 400px;
 }
@@ -278,11 +278,11 @@ body {
 .flot-chart-content {
     width: 100%;
     height: 100%;
-}
+}*/
 
 /* DataTables Overrides */
 
-table.dataTable thead .sorting,
+/*table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
 table.dataTable thead .sorting_asc_disabled,
@@ -307,11 +307,11 @@ table.dataTable thead .sorting:after {
     float: right;
     font-family: fontawesome;
     color: rgba(50,50,50,.5);
-}
+}*/
 
 /* Circle Buttons */
 
-.btn-circle {
+/*.btn-circle {
     width: 30px;
     height: 30px;
     padding: 6px 0;
@@ -348,4 +348,4 @@ table.dataTable thead .sorting:after {
 
 .show-grid {
     margin: 15px 0;
-}
+}*/

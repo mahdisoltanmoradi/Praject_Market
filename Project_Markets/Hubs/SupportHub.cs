@@ -2,6 +2,7 @@
 using Data.DTOs.Message;
 using Microsoft.AspNetCore.SignalR;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SignalR.Bugeto.Hubs
@@ -23,7 +24,8 @@ namespace SignalR.Bugeto.Hubs
         }
         public async override Task OnConnectedAsync()
         {
-            var rooms = await _chatRoomService.GetAllrooms();
+            var t = await _chatRoomService.GetAllRooms();
+            var rooms = t.Select(x=>x.Id).ToList();
             await Clients.Caller.SendAsync("GetRooms", rooms);
             await base.OnConnectedAsync();
         }

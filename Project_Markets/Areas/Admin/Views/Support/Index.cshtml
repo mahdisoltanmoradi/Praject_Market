@@ -1,29 +1,31 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "پیام‌های پشتیبانی";
     Layout = "_AdminLayout";
 }
 
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-3">
     <div class="row mb-3">
         <div class="col-12">
-            <h1 class="page-header">پیام‌های ارسالی</h1>
+            <h1 class="page-header mb-0">پیام‌های ارسالی</h1>
+            <hr class="mt-2 mb-4">
         </div>
     </div>
 
-    <div class="row">
+    <div class="row g-3">
         <!-- Chat Panel -->
-        <div class="col-lg-8 mb-3">
+        <div class="col-lg-8">
             <div class="card shadow-sm rounded">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-primary text-white fw-bold">
                     پشتیبانی سایت
                 </div>
-                <ul id="chatMessage" class="list-group list-group-flush card-body" style="height:400px; overflow-y:auto;">
+                <ul id="chatMessage" class="list-group list-group-flush p-3"
+                    style="height:400px; overflow-y:auto; background-color:#f8f9fa; border-radius:0 0 0.375rem 0.375rem;">
                     <!-- پیام‌ها اینجا نمایش داده می‌شوند -->
                 </ul>
                 <div class="card-footer bg-light">
                     <form id="answerForm" class="d-flex gap-2">
                         <input id="answerText" type="text" placeholder="پاسخ خود را بنویسید"
-                               class="form-control rounded-pill flex-grow-1" />
+                               class="form-control rounded-pill flex-grow-1 border-primary" />
                         <button type="submit" class="btn btn-success rounded-pill px-4">ارسال پاسخ</button>
                     </form>
                 </div>
@@ -31,18 +33,82 @@
         </div>
 
         <!-- Room List -->
-        <div class="col-lg-4 mb-3">
+        <div class="col-lg-4">
             <div class="card shadow-sm rounded">
-                <div class="card-header bg-secondary text-white">
+                <div class="card-header bg-secondary text-white fw-bold">
                     کاربران فعال
                 </div>
-                <div id="roomList" class="list-group list-group-flush" style="max-height:460px; overflow-y:auto;">
+                <div id="roomList" class="list-group list-group-flush p-2"
+                     style="max-height:460px; overflow-y:auto;">
                     <!-- لیست کاربران اینجا -->
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    /* راست‌چین کل چت */
+    #chatMessage {
+        direction: rtl;
+    }
+
+        /* پایه پیام‌ها */
+        #chatMessage li {
+            list-style: none;
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+    /* پیام‌های بازدیدکننده - سمت چپ */
+    .user-message {
+        justify-content: flex-start; /* سمت چپ */
+    }
+
+        .user-message .message-content {
+            background-color: #e9ecef; /* خاکستری */
+            color: #000;
+            border-radius: 12px;
+            padding: 8px 12px;
+            max-width: 70%;
+            text-align: right; /* متن فارسی راست‌چین */
+        }
+
+    /* پیام‌های ادمین - سمت راست */
+    .admin-message {
+        justify-content: flex-end; /* سمت راست */
+    }
+
+        .admin-message .message-content {
+            background-color: #0d6efd; /* آبی */
+            color: #fff;
+            border-radius: 12px;
+            padding: 8px 12px;
+            max-width: 70%;
+            text-align: right; /* متن فارسی راست‌چین */
+        }
+
+    /* نام و زمان */
+    .message-content .name {
+        font-weight: bold;
+        margin-bottom: 2px;
+        display: block;
+    }
+
+    .message-content .time {
+        font-size: 0.75rem;
+        color: #6c757d;
+        margin-top: 2px;
+    }
+
+    /* متن پیام */
+    .message-text {
+        margin-top: 4px;
+        word-wrap: break-word;
+    }
+
+
+</style>
 
 @section Scripts
 {

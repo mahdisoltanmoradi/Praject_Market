@@ -61,9 +61,25 @@ function addMessages(messages) {
 }
 
 function showMessage(sender, message, time) {
-    $("#chatMessage").append('<li><div><span class="name"> ' + sender + ' </span><span class="time">' + time + '</span></div><div class="message"> ' + message + ' </div></li>');
-}
+    var li = $('<li></li>');
 
+    if (sender.toLowerCase() === "admin") {
+        li.addClass('admin-message');
+    } else {
+        li.addClass('user-message');
+    }
+
+    li.html('<div class="message-content">' +
+                '<span class="name">' + sender + '</span>' +
+                '<div class="message-text">' + message + '</div>' +
+                '<span class="time">' + time + '</span>' +
+            '</div>');
+
+    $("#chatMessage").append(li);
+
+    // اسکرول خودکار
+    $("#chatMessage").scrollTop($("#chatMessage")[0].scrollHeight);
+}
 
 
 

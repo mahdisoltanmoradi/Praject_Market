@@ -1,44 +1,90 @@
-﻿@using Entities.Blog
-@model BlogCategories
+﻿@using Project_Markets.DTOs.Blog
+@model BlogCategoryDto
 @{
     ViewData["Title"] = "ویرایش دسته بندی";
 }
-
 
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">ویرایش دسته بندی</h1>
     </div>
-    <!-- /.col-lg-12 -->
 </div>
 
 @if (ViewBag.IsExist == true)
 {
-    <div class="alert-warning">
-       <h3>این دسته بندی تکراری است...!</h3>
+    <div class="alert alert-warning">
+        <h4>این دسته بندی تکراری است!</h4>
     </div>
 }
 
-<div class="row">
-    <form action="Edit" method="post" enctype="multipart/form-data">
-        <input type="hidden" asp-for="Id" />
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row">
+        <!-- بخش اطلاعات -->
         <div class="col-md-8">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    دسته بندی وبلاگ
+                    اطلاعات دسته بندی
                 </div>
-                <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="form-group">
-                        <label>عنوان</label>
-                        <label class="text-success">@Model.BlogCategoryTitle</label>
+                        <label asp-for="BlogCategoryTitle"></label>
+                        <input asp-for="BlogCategoryTitle" class="form-control" />
+                        <span asp-validation-for="BlogCategoryTitle" class="text-danger"></span>
                     </div>
-                    <input type="submit" value="ویرایش اطلاعات" class="btn btn-success" />
+
+                    <div class="form-group">
+                        <label asp-for="IsActive"></label>
+                        <input asp-for="IsActive" type="checkbox" />
+                    </div>
+
+                    <input type="submit" value="ذخیره تغییرات" class="btn btn-success" />
                 </div>
-                <!-- /.panel-body -->
             </div>
         </div>
-    </form>
-</div>
 
+        <!-- بخش تصویر -->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    تصویر دسته بندی
+                </div>
+                <div class="panel-body">
+                    @if (!string.IsNullOrEmpty(Model.ImageName))
+                    {
+                        <img id="imgAvatar" class="thumbnail" src="~/img/bg-img/@Model.ImageName" style="max-width:100%;" />
+                    }
+                    else
+                    {
+                        <img id="imgAvatar" class="thumbnail" src="~/img/bg-img/no-image.png" style="max-width:100%;" />
+                    }
 
+                    <div class="form-group">
+                        <label>انتخاب تصویر جدید</label>
+                        <input type="file" asp-for="ImageFile" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#ImageFile").change(function () {
+            readURL(this);
+        });
+    </script>
+}

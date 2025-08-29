@@ -1,111 +1,88 @@
 ﻿<!DOCTYPE html>
-<html>
-
+<html lang="fa" dir="rtl">
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>پنل مدیریت فروشگاه</title>
 
-    <!-- Core CSS - Include with every page -->
     <link href="/AdminContent/css/bootstrap-rtl.css" rel="stylesheet">
     <link href="/AdminContent/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Page-Level Plugin CSS - Dashboard -->
     <link href="/AdminContent/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     <link href="/AdminContent/css/plugins/timeline/timeline.css" rel="stylesheet">
 
-    <!-- SB Admin CSS - Include with every page -->
-    <link href="/AdminContent/css/sb-admin.css" rel="stylesheet">
-
+    <link href="/AdminContent/css/admin-custom.css" rel="stylesheet">
 </head>
 
 <body>
 
     <div id="wrapper">
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-fixed-top custom-navbar" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <!-- دکمه‌ی موبایل: نمایش/پنهان کردن سایدبار -->
+                <button id="sidebarToggle" type="button" class="navbar-toggle">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="/Admin">پنل مدیریت فروشگاه</a>
             </div>
             <!-- /.navbar-header -->
-
-
-
+            <!-- سایدبار (ثابت در سمت راست برای RTL) -->
             <div class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
+
+                        <!-- بخش آواتار -->
+                        <li class="sidebar-avatar text-center">
+                            <img src="/AdminContent/images/avatar-default.jpg" alt="User Avatar" class="avatar-img">
+                            <h5 class="avatar-name" style="color:white">مدیر سایت</h5>
+                        </li>
+
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="جستجو...">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
+                                    <button class="btn btn-search" type="button">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </span>
                             </div>
-                            <!-- /input-group -->
                         </li>
+
                         <li>
-                            <a href="/Admin"><i class="fa fa-dashboard fa-fw"></i> پنل ادمین</a>
+                            <a href="/Admin"><i class="fa fa-dashboard fa-fw"></i><span class="nav-text">پنل ادمین</span></a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> مدیریت کاربران<span class="fa arrow"></span></a>
+
+                        <li class="has-sub">
+                            <a href="javascript:void(0)"><i class="fa fa-users fa-fw"></i><span class="nav-text">مدیریت کاربران</span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/admin/Role/Index">نقش ها</a>
-                                </li>
-                                <li>
-                                    <a href="/admin/Permission/Index">دسترسی ها</a>
-                                </li>
-                                <li>
-                                    <a href="/admin/User/Index">کاربران</a>
-                                </li>
-                                <li>
-                                    <a href="/admin/User/ListDeleteUsers"> کاربران حذف شده</a>
-                                </li>
-                                <li>
-                                    <a href="/admin/Support/Index">پیام ها</a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/Discount/Index">
-                                        <i class="bi bi-bookmark-star-fill"></i>
-                                        <span>تخفیفات</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/BlogCategory/Index">
-                                        <i class="fa fa-tag"></i>
-                                        <span>گروه مقالات / اخبار</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/Blog/Index">
-                                        <i class="fa fa-newspaper"></i>
-                                        <span>اخبار و مقالات</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/ProductCategory/Index">
-                                        <i class="fa fa-layer-group"></i>
-                                        <span>دسته های محصولات</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/Product/Index">
-                                        <span>محصولات</span>
-                                    </a>
-                                </li>
+                                <li><a href="/admin/Role/Index"><i class="fa fa-user fa-fw"></i> نقش ها</a></li>
+                                <li><a href="/admin/Permission/Index"><i class="fa fa-key fa-fw"></i> دسترسی ها</a></li>
+                                <li><a href="/admin/User/Index"><i class="fa fa-user fa-fw"></i> کاربران</a></li>
+                                <li><a href="/admin/User/ListDeleteUsers"><i class="fa fa-user fa-fw"></i> کاربران حذف شده</a></li>
+                                <li><a href="/admin/Support/Index"><i class="fa fa-envelope fa-fw"></i> پیام ها</a></li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
+
+                        <li class="has-sub">
+                            <a href="javascript:void(0)"><i class="fa fa-th fa-fw"></i><span class="nav-text">دسته بندی محصولات</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="/Admin/ProductCategory/Index"><i class="fa fa-folder fa-fw"></i> گروه محصولات</a></li>
+                                <li><a href="/Admin/Product/Index"><i class="fa fa-folder fa-fw"></i> محصولات</a></li>
+                                <li><a href="/Admin/Discount/Index"><i class="fa fa-folder fa-fw"></i> تخفیفات</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-sub">
+                            <a href="javascript:void(0)"><i class="fa fa-file fa-fw"></i><span class="nav-text">دسته بندی مقالات</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="/Admin/BlogCategory/Index"><i class="fa fa-folder fa-fw"></i> گروه مقالات / اخبار</a></li>
+                                <li><a href="/Admin/Blog/Index"><i class="fa fa-folder fa-fw"></i> اخبار و مقالات</a></li>
+                            </ul>
+                        </li>
+
+
 
                     </ul>
                     <!-- /#side-menu -->
@@ -115,6 +92,7 @@
             <!-- /.navbar-static-side -->
         </nav>
 
+        <!-- محتوای صفحه -->
         <div id="page-wrapper">
             @RenderBody()
         </div>
@@ -122,29 +100,17 @@
 
     </div>
     <!-- /#wrapper -->
-    <!-- Core Scripts - Include with every page -->
+    <!-- Core Scripts -->
     <script src="~/AdminContent/js/jquery-1.10.2.js"></script>
-
-    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
-    @RenderSection("Scripts", false)
-
-
-
     <script src="~/AdminContent/js/bootstrap.min.js"></script>
     <script src="~/AdminContent/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
 
-    <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="~/AdminContent/js/plugins/morris/raphael-2.1.0.min.js"></script>
-    @*<script src="/AdminContent/js/plugins/morris/morris.js"></script>*@
-
-    <!-- SB Admin Scripts - Include with every page -->
-    <script src="~/AdminContent/js/sb-admin.js"></script>
-
-
-
-    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-    <script src="~/AdminContent/js/demo/dashboard-demo.js"></script>
-
+    <!-- === جدید: اسکریپت کوچک برای تعامل منو === -->
+    <script src="/AdminContent/js/admin-custom.js"></script>
+    <!-- ================================================== -->
+    <!-- حذف شده: sb-admin.js   (اگر لازم داری دوباره اضافه نکن) -->
+    @RenderSection("Scripts", false)
 </body>
 
 </html>

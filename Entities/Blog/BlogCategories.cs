@@ -26,10 +26,14 @@ namespace Entities.Blog
         [Display(Name = "حذف شده؟")]
         public bool IsDelete { get; set; }
 
-        [Display(Name = "تاریخ ایجادشده")]
-        public DateTimeOffset CreateDate { get; set; }
 
+        [Display(Name = "تصویر")]
+        public string ImageName { get; set; }
+
+        [Display(Name = "تاریخ ایجادشده")]
         public ICollection<Blogs> Blogs { get; set; }
+
+        public DateTimeOffset CreateDate { get; set; }
     }
     public class BlogCategoriesConfiguration : IEntityTypeConfiguration<BlogCategories>
     {
