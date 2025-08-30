@@ -1,11 +1,14 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using Common;
 using Common.Enums;
 using Data.Contracts;
+using Data.DTOs.Orders;
 using Entities.Order;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
 
 namespace Data.Repositories
 {
@@ -58,6 +61,48 @@ namespace Data.Repositories
             }
             return order.Id;
 
+        }
+
+        public async Task<List<OrderDto>> GetOrdersAsync()
+        {
+            return await _context.Orders
+                .Select(o => new OrderDto
+                {
+                    Id = o.Id,
+                    UserId = o.UserId,
+                    OrderDate = o.OrderDate,
+                    PaymentMethod = o.PaymentMethod.ToString(),
+                    PaymentStatus = o.PaymentStatus.ToString(),
+                    OrderStatus = o.OrderStatus.ToString(),
+                    TotalPrice = o.TotalPrice()
+                })
+                .ToListAsync();
+        }
+
+        public async Task<OrderDto> GetOrderByIdAsync(int orderId)
+        {
+            return await _context.Orders
+                .Where(o => o.Id == orderId)
+                .Select(o => new OrderDto
+                {
+                    Id = o.Id,
+                    UserId = o.UserId,
+                    OrderDate = o.OrderDate,
+                    PaymentMethod = o.PaymentMethod.ToString(),
+                    PaymentStatus = o.PaymentStatus.ToString(),
+                    OrderStatus = o.OrderStatus.ToString(),
+                    TotalPrice = o.TotalPrice(),
+                    OrderDetails = o.OrderItems.Select(d => new OrderDetailDto
+                    {
+                        Id = d.Id,
+                        CatalogItemId = d.CatalogItemId,
+                        ProductName = d.ProductName,
+                        PictureUri = d.PictureUri,
+                        UnitPrice = d.UnitPrice,
+                        Units = d.Units
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
         }
     }
 }

@@ -72,9 +72,14 @@
                     <p class="mb-2"></p>
                     <div class="coupon-form">
                         <form asp-action="Index" method="post">
+                            @Html.AntiForgeryToken()
+
                             <input asp-for="Amount" class="form-control" type="number" placeholder="مبلغ به تومان">
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+
                             <button class="btn btn-primary" type="submit">شارژ کیف پول</button>
                         </form>
+
                     </div>
                     <div class="text-danger" asp-validation-summary="All"></div>
                 </div>

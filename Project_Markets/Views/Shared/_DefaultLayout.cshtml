@@ -34,7 +34,10 @@
     <div class="suha-sidenav-wrapper" id="sidenavWrapper">
         <!-- Sidenav Profile-->
         <div class="sidenav-profile">
-            <div class="user-profile"><img src="img/bg-img/9.jpg" alt=""></div>
+            <div class="user-profile">
+                <img src="/AdminContent/images/avatar-default.jpg" alt="User Avatar">
+            </div>
+
             <div class="user-info">
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -44,6 +47,7 @@
                 {
                     <h6 class="user-name mb-0">کاربر مهمان</h6>
                 }
+                <p class="available-balance">حساب شما <span><span class="counter">350000</span></span><span> تومان</span></p>
             </div>
         </div>
 

@@ -32,7 +32,7 @@ namespace Project_Markets.Controllers
 
 
         [Route("OnlinePayment/{id}")]
-        public IActionResult onlinePayment(int id, CancellationToken cancellationToken)
+        public IActionResult OnlinePayment(int id, CancellationToken cancellationToken)
         {
             if (HttpContext.Request.Query["Status"] != "" &&
                 HttpContext.Request.Query["Status"].ToString().ToLower() == "ok"

@@ -1855,3 +1855,4 @@ C:\Users\soltanmoradi.m\source\repos\Praject_Market\Project_Markets\obj\Debug\ne
 C:\Users\soltanmoradi.m\source\repos\Praject_Market\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\ProductCategory\Create.cshtml.g.cs
 C:\Users\soltanmoradi.m\source\repos\Praject_Market\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\ProductCategory\Edit.cshtml.g.cs
 C:\Users\soltanmoradi.m\source\repos\Praject_Market\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\Product\Edit.cshtml.g.cs
+C:\Users\soltanmoradi.m\source\repos\Praject_Market\Project_Markets\obj\Debug\net5.0\Razor\Areas\Admin\Views\Orders\Index.cshtml.g.cs

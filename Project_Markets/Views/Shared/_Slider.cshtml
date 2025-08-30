@@ -17,7 +17,9 @@
                     <div class="card flash-sale-card">
                         <div class="card-body">
                             <a href="/Product/productInformation/@item.Id">
-                                <img style="border-radius:10px" src="/ImageProductCategory/@item.ProductImageName" alt=""><span class="product-title">@item.ProductTitle</span>
+                                <img src="@(string.IsNullOrEmpty(item.ProductImageName) ? "/img/default.png" : $"/img/bg-img/{item.ProductImageName}")"
+                                     class="img-fluid w-100 rounded" />
+                                @* <img style="border-radius:10px" src="/ImageProductCategory/@item.ProductImageName" alt=""><span class="product-title">@item.ProductTitle</span> *@
                                 <p class="sale-price">@item.ProductPrice تومان </p><span class="progress-title">تنها @item.ProductCount باقی مانده</span>
                                 <!-- Progress Bar-->
                                 <div class="progress">

@@ -44,7 +44,10 @@
                                             </button>
                                         </form>
                                     </th>
-                                    <td><img src="/ImageProductCategory/@item.ImageUrl" alt=""></td>
+                                    <td>
+                                        <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/img/default.png" : $"/img/bg-img/{item.ImageUrl}")"
+                                             class="img-fluid w-100 rounded" />
+                                        </td>
                                     <td><a href="single-product.html"> @item.ProductName<span>@item.UnitPrice   تومان ×  @item.Quantity </span> </a> </td>
                                     <td>
                                         <div class="quantity">

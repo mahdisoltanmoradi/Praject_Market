@@ -2,13 +2,11 @@
 using System.Threading.Tasks;
 using Data.Contracts;
 using Data.DTOs;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Attributes;
 
 namespace Project_Markets.Areas.UserPanel.Controllers
 {
-    [Authorize]
     [Area("UserPanel")]
     [ControllerInfo("کیف پول", "پنل کاربری")]
     public class WalletController : Controller
@@ -19,15 +17,14 @@ namespace Project_Markets.Areas.UserPanel.Controllers
             this._userRepository = userRepository;
         }
 
-        [Route("UserPanel/Wallet")]
         public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
             ViewBag.ListWallet =await _userRepository.GetWalletUser(User.Identity.Name,cancellationToken);
             return View();
         }
 
-        [HttpPost]
-        [Route("UserPanel/Wallet")]
+        [HttpPost("ChargeWallet")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(ChargeWalletViewModel charge,CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid)
@@ -36,18 +33,19 @@ namespace Project_Markets.Areas.UserPanel.Controllers
                 return View(charge);
             }
 
-            int walletId =await _userRepository.ChargeWallet(User.Identity.Name, charge.Amount, "شارژ حساب",cancellationToken);
+            int walletId = await _userRepository.ChargeWallet(User.Identity.Name, charge.Amount, "شارژ حساب",cancellationToken);
 
             #region Online Payment
 
             var payment = new ZarinpalSandbox.Payment(charge.Amount);
 
-            var res = payment.PaymentRequest("شارژ کیف پول", "http://localhost:13148/OnlinePayment/" + walletId);
+            var res = await payment.PaymentRequest("شارژ کیف پول", "https://localhost:44321/OnlinePayment/" + walletId);
 
-            if (res.Result.Status == 100)
+            if (res.Status == 100)
             {
-                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Authority);
             }
+
 
             #endregion
 
